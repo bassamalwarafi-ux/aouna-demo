@@ -1,0 +1,1429 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="عُونة — منصة التمويل الأصغر الرقمية في اليمن: طلب واحد، وعروض تتنافس على مشروعك. نموذج تفاعلي.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0A1628">
+<meta property="og:title" content="عُونة — طلب واحد، وعروض تتنافس على مشروعك">
+<meta property="og:description" content="نموذج تفاعلي لمنصة تربط رواد الأعمال في اليمن بمؤسسات التمويل الأصغر.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2040%2040%22%3E%3Crect%20width%3D%2240%22%20height%3D%2240%22%20rx%3D%2211%22%20fill%3D%22%2312B886%22/%3E%3Cpath%20d%3D%22M20%2012L11%2027M20%2012L29%2027M11%2027H29%22%20stroke%3D%22%2303241A%22%20stroke-width%3D%221.6%22%20opacity%3D%22.55%22%20fill%3D%22none%22/%3E%3Ccircle%20cx%3D%2220%22%20cy%3D%2221.5%22%20r%3D%223.6%22%20fill%3D%22%23D4B05A%22/%3E%3Ccircle%20cx%3D%2220%22%20cy%3D%2212%22%20r%3D%222.6%22%20fill%3D%22%2303241A%22/%3E%3Ccircle%20cx%3D%2211%22%20cy%3D%2227%22%20r%3D%222.6%22%20fill%3D%22%2303241A%22/%3E%3Ccircle%20cx%3D%2229%22%20cy%3D%2227%22%20r%3D%222.6%22%20fill%3D%22%2303241A%22/%3E%3C/svg%3E">
+<style>
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0;font-size:14px}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+<title>منصة عُونة</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: sticky top bar + role sidebar (start edge) + work area; collapses to a horizontal tab strip on phones.
+   Identity follows the Aouna partnership deck: deep navy ground, emerald action color, gold reserved for "selected / money" moments. */
+:root{
+  --bg:#0A1628; --surface:#0F2138; --surface-2:#14294A; --line:#1F3B5E; --line-soft:#182F4D;
+  --fg:#E7EEF6; --muted:#90A4BC; --faint:#5F7591;
+  --accent:#12B886; --accent-ink:#5EEAD4; --accent-soft:rgba(18,184,134,.14); --on-accent:#03241A;
+  --gold:#D4B05A; --gold-soft:rgba(212,176,90,.14);
+  --ok:#34D399; --ok-soft:rgba(52,211,153,.14);
+  --warn:#F5B84C; --warn-soft:rgba(245,184,76,.14);
+  --bad:#F87171; --bad-soft:rgba(248,113,113,.14);
+  --info:#86A8F2; --info-soft:rgba(134,168,242,.14);
+  --shadow:0 18px 40px -18px rgba(0,0,0,.6);
+  --f-display:"Alexandria","IBM Plex Sans Arabic",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans Arabic",system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --r:10px;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){ :root:not([data-theme="dark"]){
+  --bg:#F2F5F8; --surface:#FFFFFF; --surface-2:#E9EFF5; --line:#D3DDE8; --line-soft:#E3EAF1;
+  --fg:#0B1A2E; --muted:#52657B; --faint:#8395AA;
+  --accent:#0A8F68; --accent-ink:#0B6E58; --accent-soft:rgba(10,143,104,.10); --on-accent:#FFFFFF;
+  --gold:#9A7517; --gold-soft:rgba(154,117,23,.10);
+  --ok:#0E8A5C; --ok-soft:rgba(14,138,92,.10);
+  --warn:#A8650A; --warn-soft:rgba(168,101,10,.10);
+  --bad:#C0392B; --bad-soft:rgba(192,57,43,.09);
+  --info:#2F5FC4; --info-soft:rgba(47,95,196,.09);
+  --shadow:0 18px 40px -22px rgba(11,26,46,.35);
+  color-scheme:light; } }
+:root[data-theme="light"]{
+  --bg:#F2F5F8; --surface:#FFFFFF; --surface-2:#E9EFF5; --line:#D3DDE8; --line-soft:#E3EAF1;
+  --fg:#0B1A2E; --muted:#52657B; --faint:#8395AA;
+  --accent:#0A8F68; --accent-ink:#0B6E58; --accent-soft:rgba(10,143,104,.10); --on-accent:#FFFFFF;
+  --gold:#9A7517; --gold-soft:rgba(154,117,23,.10);
+  --ok:#0E8A5C; --ok-soft:rgba(14,138,92,.10);
+  --warn:#A8650A; --warn-soft:rgba(168,101,10,.10);
+  --bad:#C0392B; --bad-soft:rgba(192,57,43,.09);
+  --info:#2F5FC4; --info-soft:rgba(47,95,196,.09);
+  --shadow:0 18px 40px -22px rgba(11,26,46,.35);
+  color-scheme:light; }
+
+*{box-sizing:border-box}
+html,body{background:var(--bg)}
+body{color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:40;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.3;margin:0;text-wrap:balance;font-weight:600}
+p{margin:0}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent-ink);outline-offset:2px;border-radius:6px}
+.num,.mono{font-variant-numeric:tabular-nums}
+.mono{font-family:var(--f-mono);font-size:.86em;letter-spacing:.01em}
+.muted{color:var(--muted)} .faint{color:var(--faint)}
+.ic{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+[dir="rtl"] .flip{transform:scaleX(-1)}
+
+/* ---------- top bar ---------- */
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--surface);border-bottom:1px solid var(--line);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:10px;
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--fg);background:none;border:0;padding:0;cursor:pointer}
+.brand-mark{width:34px;height:34px}
+.brand-name{font-family:var(--f-display);font-weight:700;font-size:22px;letter-spacing:-.01em;line-height:1}
+.brand-tag{font-size:11px;color:var(--muted);display:block;margin-top:3px}
+.demo-flag{font-size:11.5px;color:var(--gold);background:var(--gold-soft);border:1px solid color-mix(in srgb,var(--gold) 35%,transparent);padding:3px 9px;border-radius:99px;white-space:nowrap}
+.tb-spacer{flex:1}
+.tb-group{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.persona{display:flex;align-items:center;gap:8px;background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:3px 4px 3px 12px}
+[dir="rtl"] .persona{padding:3px 12px 3px 4px}
+.persona label{font-size:12px;color:var(--muted);white-space:nowrap}
+.persona select{background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:5px 10px;font-size:13.5px;max-width:230px}
+.icon-btn{position:relative;display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 11px;border-radius:999px;border:1px solid var(--line);background:var(--surface-2);cursor:pointer;font-size:13px;white-space:nowrap}
+.icon-btn:hover{border-color:var(--accent)}
+.icon-btn[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-ink)}
+.dot-count{position:absolute;top:-4px;inset-inline-end:-4px;min-width:18px;height:18px;border-radius:9px;background:var(--bad);color:#fff;font-size:11px;display:grid;place-items:center;padding:0 5px;font-weight:600}
+
+/* ---------- shell ---------- */
+.shell{display:grid;grid-template-columns:236px minmax(0,1fr);min-height:calc(100vh - 60px)}
+.side{border-inline-end:1px solid var(--line);background:var(--surface);padding:18px 12px;display:flex;flex-direction:column;gap:4px}
+.side-who{padding:6px 10px 14px;border-bottom:1px solid var(--line-soft);margin-bottom:8px}
+.side-who b{display:block;font-family:var(--f-display);font-weight:600;font-size:14.5px}
+.side-who span{font-size:12.5px;color:var(--muted)}
+.nav-btn{display:flex;align-items:center;gap:10px;width:100%;text-align:start;padding:9px 10px;border-radius:8px;border:0;background:none;cursor:pointer;color:var(--muted);font-size:14.5px}
+.nav-btn:hover{background:var(--surface-2);color:var(--fg)}
+.nav-btn[aria-current="page"]{background:var(--accent-soft);color:var(--accent-ink);font-weight:600}
+.nav-btn .tag{margin-inline-start:auto;font-size:10.5px;padding:1px 7px;border-radius:99px;background:var(--gold-soft);color:var(--gold);font-weight:500}
+.side-foot{margin-top:auto;padding:12px 10px 0;font-size:12px;color:var(--faint);border-top:1px solid var(--line-soft)}
+main{min-width:0;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:26px 60px}
+.page{max-width:1120px;margin-inline:auto;display:flex;flex-direction:column;gap:22px}
+.page-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.page-head h1{font-size:clamp(22px,2.6vw,28px)}
+.page-head p{color:var(--muted);margin-top:4px;max-width:62ch}
+.crumb{font-size:12.5px;color:var(--muted);display:flex;gap:6px;align-items:center;margin-bottom:6px}
+.crumb button{background:none;border:0;color:var(--accent-ink);cursor:pointer;padding:0}
+
+@media (max-width:860px){
+  .shell{grid-template-columns:minmax(0,1fr)}
+  .side{flex-direction:row;overflow-x:auto;border-inline-end:0;border-bottom:1px solid var(--line);padding:8px max(16px,env(safe-area-inset-right,0px)) 8px max(16px,env(safe-area-inset-left,0px));gap:4px;scrollbar-width:none}
+  .side-who,.side-foot{display:none}
+  .nav-btn{width:auto;white-space:nowrap;flex:none;padding:8px 11px}
+  .persona label{display:none}
+  .tb-hide-sm{display:none}
+}
+
+/* ---------- primitives ---------- */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;min-width:0}
+.card-h{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.card-h h2,.card-h h3{font-size:16.5px}
+.sub{font-size:13px;color:var(--muted)}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+.split{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:980px){.split{grid-template-columns:minmax(0,1fr)}}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.stack{display:flex;flex-direction:column;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:0 16px;border-radius:8px;border:1px solid transparent;cursor:pointer;font-weight:600;font-size:14px;white-space:nowrap;text-decoration:none}
+.btn-p{background:var(--accent);color:var(--on-accent)}
+.btn-p:hover{filter:brightness(1.08)}
+.btn-g{background:transparent;border-color:var(--line);color:var(--fg)}
+.btn-g:hover{border-color:var(--accent);color:var(--accent-ink)}
+.btn-gold{background:var(--gold);color:#1B1405}
+.btn-d{background:transparent;border-color:color-mix(in srgb,var(--bad) 50%,transparent);color:var(--bad)}
+.btn-d:hover{background:var(--bad-soft)}
+.btn-sm{min-height:32px;padding:0 11px;font-size:13px;font-weight:500}
+.btn[disabled]{opacity:.45;cursor:not-allowed;filter:none}
+.link{background:none;border:0;color:var(--accent-ink);cursor:pointer;padding:0;font-weight:500;text-decoration:underline;text-underline-offset:3px}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;padding:2px 10px;border-radius:999px;white-space:nowrap;border:1px solid transparent}
+.pill::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.t-n{background:var(--surface-2);color:var(--muted)}
+.t-i{background:var(--info-soft);color:var(--info)}
+.t-a{background:var(--accent-soft);color:var(--accent-ink)}
+.t-g{background:var(--gold-soft);color:var(--gold)}
+.t-s{background:var(--ok-soft);color:var(--ok)}
+.t-w{background:var(--warn-soft);color:var(--warn)}
+.t-d{background:var(--bad-soft);color:var(--bad)}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;padding:3px 9px;border-radius:6px;background:var(--surface-2);color:var(--muted);border:1px solid var(--line-soft)}
+.chip.on{background:var(--accent-soft);color:var(--accent-ink);border-color:color-mix(in srgb,var(--accent) 45%,transparent)}
+button.chip{cursor:pointer;font-size:13px;padding:6px 11px}
+.spec{display:none;font-family:var(--f-mono);font-size:11px;color:var(--gold);background:var(--gold-soft);border:1px dashed color-mix(in srgb,var(--gold) 50%,transparent);border-radius:5px;padding:1px 7px;white-space:nowrap;direction:ltr;unicode-bidi:isolate}
+.show-spec .spec{display:inline-block}
+.notice{display:flex;gap:12px;align-items:flex-start;padding:13px 15px;border-radius:var(--r);border:1px solid var(--line);background:var(--surface-2);font-size:14px}
+.notice .ic{margin-top:3px}
+.notice.ok{border-color:color-mix(in srgb,var(--ok) 40%,transparent);background:var(--ok-soft)}
+.notice.warn{border-color:color-mix(in srgb,var(--warn) 40%,transparent);background:var(--warn-soft)}
+.notice.gold{border-color:color-mix(in srgb,var(--gold) 40%,transparent);background:var(--gold-soft)}
+.notice.bad{border-color:color-mix(in srgb,var(--bad) 40%,transparent);background:var(--bad-soft)}
+.empty{padding:28px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:var(--r)}
+
+/* kpis */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:12px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px}
+.kpi .k{font-size:12.5px;color:var(--muted)}
+.kpi .v{font-family:var(--f-display);font-size:26px;font-weight:600;margin-top:4px;font-variant-numeric:tabular-nums;line-height:1.2}
+.kpi .d{font-size:12px;color:var(--faint);margin-top:2px}
+
+/* tables */
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{font-size:12px;font-weight:500;color:var(--muted);text-align:start;padding:11px 14px;background:var(--surface-2);border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:12px 14px;border-bottom:1px solid var(--line-soft);vertical-align:middle}
+tr:last-child td{border-bottom:0}
+tbody tr.clickable{cursor:pointer}
+tbody tr.clickable:hover td{background:var(--surface-2)}
+td .t1{font-weight:500}
+td .t2{font-size:12.5px;color:var(--muted)}
+
+/* forms */
+.form{display:grid;gap:16px}
+.f2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:14px}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.field label,.flabel{font-size:13px;font-weight:500}
+.field .hint{font-size:12px;color:var(--faint)}
+.field .err{font-size:12.5px;color:var(--bad)}
+input[type=text],input[type=tel],input[type=email],input[type=number],select,textarea{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:14.5px;min-height:42px}
+textarea{min-height:92px;resize:vertical}
+input:focus,select:focus,textarea:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 3px var(--accent-soft)}
+.invalid{border-color:var(--bad)!important}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:14px;cursor:pointer}
+.check input{width:18px;height:18px;margin-top:3px;accent-color:var(--accent);flex:none}
+.drop{display:flex;align-items:center;gap:12px;padding:14px;border:1.5px dashed var(--line);border-radius:var(--r);background:var(--bg);flex-wrap:wrap}
+.drop.done{border-style:solid;border-color:color-mix(in srgb,var(--ok) 45%,transparent);background:var(--ok-soft)}
+.drop .grow{flex:1;min-width:160px}
+.drop input[type=file]{font-size:12.5px;max-width:100%}
+
+/* stepper (application wizard) */
+.stepper{display:flex;gap:6px;counter-reset:s;overflow-x:auto;padding-bottom:2px}
+.stepper li{list-style:none;flex:1;min-width:112px;display:flex;flex-direction:column;gap:6px;font-size:12.5px;color:var(--faint)}
+.stepper li::before{content:"";height:4px;border-radius:2px;background:var(--line)}
+.stepper li.done{color:var(--muted)} .stepper li.done::before{background:var(--accent)}
+.stepper li.cur{color:var(--fg);font-weight:600} .stepper li.cur::before{background:var(--accent-ink)}
+.stepper{margin:0;padding:0}
+
+/* status track */
+.track{display:flex;gap:0;overflow-x:auto;padding:4px 0 2px}
+.track .st{flex:1;min-width:96px;position:relative;font-size:12px;color:var(--faint);padding-top:22px;text-align:center}
+.track .st::before{content:"";position:absolute;top:6px;inset-inline:0;height:2px;background:var(--line)}
+.track .st::after{content:"";position:absolute;top:1px;left:50%;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:var(--surface);border:2px solid var(--line)}
+.track .st.done{color:var(--muted)} .track .st.done::before{background:var(--accent)} .track .st.done::after{background:var(--accent);border-color:var(--accent)}
+.track .st.cur{color:var(--fg);font-weight:600} .track .st.cur::after{background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 4px var(--gold-soft)}
+.track .st.bad{color:var(--bad)} .track .st.bad::after{background:var(--bad);border-color:var(--bad)}
+
+/* offers comparison */
+.offers{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:14px}
+.offer{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.offer.best{border-color:color-mix(in srgb,var(--accent) 60%,transparent)}
+.offer.sel{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-soft)}
+.offer.dim{opacity:.55}
+.offer-h{padding:14px 16px;border-bottom:1px solid var(--line-soft);display:flex;align-items:center;justify-content:space-between;gap:8px}
+.offer-h b{font-family:var(--f-display);font-size:15px}
+.offer-inst{font-size:12.5px;color:var(--muted)}
+.offer-big{padding:14px 16px 6px}
+.offer-big .lbl{font-size:12px;color:var(--muted)}
+.offer-big .val{font-family:var(--f-display);font-size:24px;font-weight:600;font-variant-numeric:tabular-nums}
+.offer-tags{display:flex;gap:6px;flex-wrap:wrap;padding:0 16px 10px;min-height:30px}
+dl.kv{margin:0;padding:4px 16px 12px;display:grid;grid-template-columns:auto 1fr;gap:0}
+dl.kv dt,dl.kv dd{padding:7px 0;border-bottom:1px solid var(--line-soft);font-size:13.5px}
+dl.kv dt{color:var(--muted)}
+dl.kv dd{margin:0;text-align:end;font-variant-numeric:tabular-nums;font-weight:500}
+dl.kv dt:nth-last-child(2),dl.kv dd:last-child{border-bottom:0}
+.offer-f{margin-top:auto;padding:12px 16px 16px}
+.offer-f .btn{width:100%}
+
+/* hero (public) */
+.hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:36px;align-items:center;padding-block:18px 8px}
+@media (max-width:900px){.hero{grid-template-columns:minmax(0,1fr)}}
+.eyebrow{font-size:12.5px;color:var(--accent-ink);font-weight:600;letter-spacing:.02em}
+.hero h1{font-size:clamp(36px,6vw,62px);font-weight:700;letter-spacing:-.015em;margin-top:10px;line-height:1.15}
+.hero h1 em{font-style:normal;color:var(--accent-ink)}
+.lede{font-size:17px;color:var(--muted);margin-top:16px;max-width:52ch}
+.hero .row{margin-top:24px}
+.mini{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
+.mini-h{padding:14px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.mini-row{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:13px 18px;border-bottom:1px solid var(--line-soft)}
+.mini-row:last-of-type{border-bottom:0}
+.mini-row .lt{width:34px;height:34px;border-radius:8px;display:grid;place-items:center;background:var(--surface-2);font-family:var(--f-display);font-weight:600}
+.mini-row.best .lt{background:var(--accent);color:var(--on-accent)}
+.mini-row .amt{font-family:var(--f-display);font-weight:600;font-variant-numeric:tabular-nums}
+.mini-f{padding:12px 18px;background:var(--surface-2);font-size:12.5px;color:var(--muted);display:flex;gap:8px;align-items:center}
+.steps5{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--surface)}
+.steps5 .s{padding:18px;border-inline-end:1px solid var(--line-soft)}
+.steps5 .s:last-child{border-inline-end:0}
+.steps5 .n{font-family:var(--f-mono);font-size:12px;color:var(--gold)}
+.steps5 h3{font-size:15px;margin-top:6px}
+.steps5 p{font-size:13px;color:var(--muted);margin-top:6px}
+.who-card h3{font-size:17px;margin-top:10px}
+.who-card ul{margin:12px 0 0;padding-inline-start:18px;color:var(--muted);font-size:14px;display:grid;gap:4px}
+.who-card .ib{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent-ink)}
+.stat-band{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:0;border-block:1px solid var(--line)}
+.stat-band div{padding:18px 4px}
+.stat-band b{display:block;font-family:var(--f-display);font-size:30px;font-weight:600;color:var(--accent-ink);font-variant-numeric:tabular-nums}
+.stat-band span{font-size:13px;color:var(--muted)}
+.foot{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between;font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:18px}
+.foot .sel{user-select:all;direction:ltr;unicode-bidi:isolate}
+
+/* bars chart */
+.bars svg{width:100%;height:auto;display:block}
+.bars text{fill:var(--muted);font-size:11px;font-family:var(--f-body)}
+.bars .gl{stroke:var(--line-soft)}
+.bars .b{fill:var(--accent)}
+.bars .b.last{fill:var(--gold)}
+
+/* list rows */
+.lrow{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line-soft)}
+.lrow:last-child{border-bottom:0}
+.lrow .grow{flex:1;min-width:0}
+.lrow .when{font-size:12px;color:var(--faint);white-space:nowrap}
+.seats{height:8px;border-radius:4px;background:var(--surface-2);overflow:hidden}
+.seats i{display:block;height:100%;background:var(--accent)}
+.evlog{font-family:var(--f-mono);font-size:12px;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px 12px;display:grid;gap:4px;direction:ltr;text-align:left;max-height:220px;overflow:auto}
+.evlog .okc{color:var(--ok)} .evlog .bad{color:var(--bad)} .evlog .wc{color:var(--warn)}
+.doc-prev{border:1px solid var(--line);border-radius:8px;background:var(--bg);aspect-ratio:1.5;max-width:100%;display:grid;place-items:center;color:var(--faint);font-size:13px;position:relative;overflow:hidden}
+.doc-prev::after{content:attr(data-wm);position:absolute;inset:0;display:grid;place-items:center;transform:rotate(-18deg);font-family:var(--f-mono);font-size:13px;color:color-mix(in srgb,var(--gold) 45%,transparent);letter-spacing:.1em}
+
+/* modal + toast */
+.scrim{position:fixed;inset:0;z-index:60;background:rgba(3,10,20,.62);display:grid;place-items:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.modal{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);width:min(560px,100%);max-height:calc(100vh - 32px);overflow:auto}
+.modal.wide{width:min(760px,100%)}
+.modal-h{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--line)}
+.modal-h h2{font-size:17px}
+.modal-b{padding:18px 20px;display:flex;flex-direction:column;gap:14px}
+.modal-f{padding:14px 20px;border-top:1px solid var(--line);display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
+.x{background:none;border:0;cursor:pointer;color:var(--muted);padding:4px;border-radius:6px}
+.checks{display:grid;gap:8px}
+.checks div{display:flex;gap:10px;align-items:center;font-size:14px;animation:pop .35s ease both}
+.checks div .ic{color:var(--ok)}
+@keyframes pop{from{transform:translateY(4px)}to{transform:none}}
+.toasts{position:fixed;z-index:70;bottom:calc(16px + env(safe-area-inset-bottom,0px));inset-inline-start:max(16px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:8px;max-width:min(380px,calc(100vw - 32px))}
+.toast{background:var(--surface);border:1px solid var(--line);border-inline-start:3px solid var(--accent);border-radius:8px;padding:11px 14px;box-shadow:var(--shadow);font-size:14px}
+.toast.bad{border-inline-start-color:var(--bad)} .toast.gold{border-inline-start-color:var(--gold)}
+.guide li{display:flex;gap:12px;align-items:flex-start;padding:11px 0;border-bottom:1px solid var(--line-soft)}
+.guide li:last-child{border-bottom:0}
+.guide ol{margin:0;padding:0;list-style:none}
+.guide .n{width:26px;height:26px;border-radius:50%;flex:none;display:grid;place-items:center;font-size:12.5px;font-weight:600;background:var(--surface-2);color:var(--muted);border:1px solid var(--line)}
+.guide .n.ok{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.guide .grow{flex:1;min-width:0}
+/* hero slideshow — illustrated Yemeni scenes behind the thesis */
+.hero-wrap{position:relative;isolation:isolate;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--surface)}
+.slides{position:absolute;inset:0;z-index:-2}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease}
+.slide.on{opacity:1}
+.slide svg{width:100%;height:100%;display:block}
+.slide.on svg{animation:kb 16s ease-in-out infinite alternate;transform-origin:60% 60%}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.07)}}
+.hero-wrap::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to left,var(--bg) 0%,color-mix(in srgb,var(--bg) 84%,transparent) 38%,color-mix(in srgb,var(--bg) 25%,transparent) 72%,transparent 100%)}
+[dir="ltr"] .hero-wrap::before{background:linear-gradient(to right,var(--bg) 0%,color-mix(in srgb,var(--bg) 84%,transparent) 38%,color-mix(in srgb,var(--bg) 25%,transparent) 72%,transparent 100%)}
+.hero-wrap .hero{padding:44px clamp(20px,4vw,52px) 72px}
+.slide-ctl{position:absolute;bottom:18px;inset-inline-start:clamp(20px,4vw,52px);display:flex;align-items:center;gap:12px;flex-wrap:wrap;max-width:calc(100% - 40px)}
+.dots{display:flex;gap:6px}
+.dots button{width:26px;height:6px;border-radius:3px;border:0;padding:0;cursor:pointer;background:color-mix(in srgb,var(--fg) 25%,transparent)}
+.dots button[aria-current="true"]{background:var(--accent-ink)}
+.slide-cap{font-size:12.5px;color:var(--fg);background:color-mix(in srgb,var(--bg) 70%,transparent);border:1px solid var(--line);padding:3px 10px;border-radius:99px;backdrop-filter:blur(4px)}
+.slide-cap small{color:var(--muted);margin-inline-start:6px}
+@media (max-width:900px){
+  .slides{bottom:auto;height:230px}
+  .hero-wrap::before,[dir="ltr"] .hero-wrap::before{bottom:auto;height:230px;background:linear-gradient(to bottom,transparent 50%,var(--surface) 100%)}
+  .hero-wrap .hero{padding-top:214px}
+  .slide-ctl{bottom:auto;top:18px}
+}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+</head>
+<body>
+<header class="topbar" id="topbar"></header>
+<div class="shell">
+  <nav class="side" id="side" aria-label="Main"></nav>
+  <main id="main"></main>
+</div>
+<div id="modal-root"></div>
+<div class="toasts" id="toasts" aria-live="polite"></div>
+
+<script>
+(function(){
+"use strict";
+/* ================================================================
+   عُونة — interactive prototype (reference for the build vendor)
+   "srv" functions model what MUST run server-side in production:
+   authorization (RBAC+ABAC), state transitions, offer math, payments.
+   ================================================================ */
+
+const KEY = "aouna-demo-v4";
+const $ = (s,r=document)=>r.querySelector(s);
+const esc = s => String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+let S;
+
+/* ---------- dictionaries ---------- */
+const GOV = {sanaa:["صنعاء","Sana'a"],aden:["عدن","Aden"],taiz:["تعز","Taiz"],ibb:["إب","Ibb"],hadramawt:["حضرموت","Hadramawt"],hodeidah:["الحديدة","Hodeidah"],marib:["مأرب","Marib"],dhamar:["ذمار","Dhamar"]};
+const ZONE = {old:["ريال — طبعة قديمة","YER (old notes)","ر.ي ق","YER-o"],new:["ريال — طبعة جديدة","YER (new notes)","ر.ي ج","YER-n"]};
+/* governorate → currency zone; admin-editable in production. SPLIT governorates let the applicant choose. */
+const GOV_ZONE = {sanaa:"old",aden:"new",taiz:"new",ibb:"old",hadramawt:"new",hodeidah:"old",marib:"new",dhamar:"old"};
+const SPLIT = ["taiz","hodeidah","marib"];
+const SEC = {retail:["تجارة تجزئة","Retail"],food:["صناعات غذائية","Food processing"],textile:["خياطة ونسيج","Tailoring & textiles"],agri:["زراعة وثروة حيوانية","Agriculture & livestock"],tech:["تقنية وصيانة","Tech & repair"],services:["خدمات","Services"],crafts:["حِرَف يدوية","Handicrafts"]};
+const METHOD = {murabaha:["مرابحة (ربح ثابت)","Murabaha (flat profit)"],declining:["رصيد متناقص","Declining balance"]};
+const APP_ST = {
+  DRAFT:["مسودة","Draft","n"],SUBMITTED:["مُقدَّم","Submitted","i"],NEEDS_INFO:["بحاجة لاستكمال","Needs info","w"],
+  ELIGIBLE:["مؤهَّل","Eligible","i"],REJECTED_AT_INTAKE:["مرفوض عند الاستلام","Rejected at intake","d"],
+  PUBLISHED:["منشور للمؤسسات","Published","a"],OFFER_RECEIVED:["وصلت عروض","Offers received","a"],
+  OFFER_SELECTED:["تم اختيار عرض","Offer selected","g"],PRE_DISBURSEMENT:["إجراءات ما قبل الصرف","Pre-disbursement","g"],
+  FUNDED:["تم التمويل","Funded","s"],DECLINED_AFTER_SELECTION:["اعتذار بعد الاختيار","Declined after selection","d"],
+  EXPIRED:["منتهي الصلاحية","Expired","n"],CANCELLED:["ملغى","Cancelled","n"],CLOSED:["مغلق","Closed","n"]};
+const OF_ST = {DRAFT:["مسودة","Draft","n"],SUBMITTED:["مُرسَل","Submitted","i"],VIEWED:["شاهده المستفيد","Viewed","i"],SELECTED:["مُختار","Selected","g"],DECLINED:["لم يُختر","Not selected","n"],WITHDRAWN:["مسحوب","Withdrawn","n"],EXPIRED:["منتهي","Expired","n"]};
+const KYC_ST = {REVIEW_PENDING:["قيد المراجعة","Pending review","w"],INFO_REQUESTED:["طُلب استكمال","Info requested","w"],ACTIVE:["معتمد","Approved","s"],REJECTED:["مرفوض","Rejected","d"]};
+const INV_ST = {ISSUED:["مستحقة","Due","w"],PROCESSING:["قيد المعالجة","Processing","i"],PAID:["مدفوعة","Paid","s"],VOID:["ملغاة","Void","n"]};
+const MISC_ST = {ACTIVE:["نشط","Active","s"],INVITED:["دعوة مرسلة","Invited","w"],DISABLED:["معطّل","Disabled","n"],PENDING_APPROVAL:["بانتظار الاعتماد","Pending approval","w"],REJECTED:["مرفوض","Rejected","d"],MATCHED:["مطابقة","Matched","s"],NEEDS_REVIEW:["تحتاج مراجعة","Needs review","d"],RESOLVED:["سُوّيت يدوياً","Resolved manually","n"],OPEN:["مفتوحة","Open","i"],ANSWERED:["تم الرد","Answered","s"]};
+const ROLES = {
+  visitor:{l:["زائر","Visitor"],who:["الواجهة العامة","Public site"],home:"home"},
+  beneficiary:{l:["مستفيد","Beneficiary"],who:["أمل الحمادي","Amal Al-Hammadi"],home:"dash"},
+  officer:{l:["ضابط ائتمان","Credit officer"],who:["خالد العبسي · مؤسسة النماء","Khaled Al-Absi · Al-Namaa"],home:"queue"},
+  manager:{l:["مدير مؤسسة","Institution admin"],who:["فؤاد الكبسي · مؤسسة النماء","Fuad Al-Kibsi · Al-Namaa"],home:"team"},
+  kyc:{l:["مراجع KYC","KYC reviewer"],who:["ريم الصبري · عمليات عُونة","Reem Al-Sabri · Aouna ops"],home:"kycq"},
+  admin:{l:["مدير المنصة","Platform admin"],who:["إدارة عُونة","Aouna operations"],home:"overview"}
+};
+const NAV = {
+  visitor:[["home",["الرئيسية","Home"],"home"],["signup",["إنشاء حساب","Create account"],"user"],["vendors",["مزودو الخدمات","Service providers"],"store",1]],
+  beneficiary:[["dash",["لوحتي","My dashboard"],"home"],["apps",["طلباتي","My requests"],"file"],["new",["طلب تمويل جديد","New request"],"plus"],["profile",["ملفي والتحقق","Profile & KYC"],"shield"],["support",["الدعم","Support"],"help"],["vendors",["خدمات داعمة","Support services"],"store",1]],
+  officer:[["queue",["الطلبات المطابقة","Matched requests"],"inbox"],["myoffers",["عروضي","My offers"],"send"]],
+  manager:[["team",["فريق الائتمان","Credit team"],"users"],["policy",["سياسة الأهلية","Eligibility policy"],"sliders"],["billing",["الاشتراك والفواتير","Plan & invoices"],"receipt"],["reports",["التقارير","Reports"],"chart"]],
+  kyc:[["kycq",["قائمة التحقق","Review queue"],"shield"]],
+  admin:[["overview",["نظرة عامة","Overview"],"chart"],["approvals",["اعتماد الجهات","Approvals"],"check"],["appsmon",["مراقبة الطلبات","Requests monitor"],"list"],["recon",["الفوترة والتسوية","Billing & reconciliation"],"receipt"],["msgs",["الرسائل والإشعارات","Messages"],"send"],["audit",["سجل التدقيق","Audit log"],"layers"],["settings",["الإعدادات","Settings"],"gear"],["vendors",["مزودو الخدمات","Service providers"],"store",1]]
+};
+
+/* ---------- icons ---------- */
+const P = {
+  home:'<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
+  user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>',
+  file:'<path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6"/>',
+  plus:'<path d="M12 5v14M5 12h14"/>',
+  inbox:'<path d="M3 13l3-8h12l3 8v6H3z"/><path d="M3 13h5l1 3h6l1-3h5"/>',
+  send:'<path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4z"/>',
+  users:'<circle cx="9" cy="8" r="3.5"/><path d="M2 20c0-3.5 3-5.5 7-5.5s7 2 7 5.5"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14c2.5 0 5 1.5 5 4.5"/>',
+  sliders:'<path d="M4 6h16M4 12h16M4 18h16"/><circle cx="15" cy="6" r="2" fill="var(--surface)"/><circle cx="9" cy="12" r="2" fill="var(--surface)"/><circle cx="17" cy="18" r="2" fill="var(--surface)"/>',
+  receipt:'<path d="M5 2h14v20l-3-2-2 2-2-2-2 2-2-2-3 2z"/><path d="M9 7h6M9 11h6M9 15h4"/>',
+  chart:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
+  shield:'<path d="M12 2l8 3v6c0 5-3.5 9-8 11-4.5-2-8-6-8-11V5z"/><path d="M9 12l2 2 4-4"/>',
+  list:'<path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>',
+  gear:'<circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/>',
+  store:'<path d="M3 9l2-5h14l2 5M3 9v11h18V9M3 9h18M9 20v-6h6v6"/>',
+  help:'<circle cx="12" cy="12" r="10"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.7M12 17h.01"/>',
+  bell:'<path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10 21a2 2 0 0 0 4 0"/>',
+  globe:'<circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2c3 3 3 17 0 20M12 2c-3 3-3 17 0 20"/>',
+  layers:'<path d="M12 2l10 5-10 5L2 7z"/><path d="M2 12l10 5 10-5M2 17l10 5 10-5"/>',
+  check:'<path d="M5 12l5 5L20 7"/>',
+  lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
+  eye:'<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+  refresh:'<path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/>',
+  map:'<path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/>',
+  clock:'<circle cx="12" cy="12" r="10"/><path d="M12 7v5l3 2"/>',
+  x:'<path d="M6 6l12 12M18 6L6 18"/>',
+  arrow:'<path d="M5 12h14M13 6l6 6-6 6"/>',
+  code:'<path d="M8 6l-6 6 6 6M16 6l6 6-6 6"/>',
+  info:'<circle cx="12" cy="12" r="10"/><path d="M12 11v6M12 7h.01"/>',
+  coins:'<ellipse cx="9" cy="7" rx="6" ry="3"/><path d="M3 7v5c0 1.7 2.7 3 6 3s6-1.3 6-3V7"/><path d="M9 15v2c0 1.7 2.7 3 6 3s6-1.3 6-3v-5c0-1.7-2.7-3-6-3"/>'
+};
+const I = (n,c="") => `<svg class="ic ${c}" viewBox="0 0 24 24" aria-hidden="true">${P[n]||""}</svg>`;
+const MARK = `<svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="var(--accent)"/><path d="M20 12 L11 27 M20 12 L29 27 M11 27 H29" stroke="var(--on-accent)" stroke-width="1.6" opacity=".55" fill="none"/><circle cx="20" cy="21.5" r="3.6" fill="var(--gold)"/><circle cx="20" cy="12" r="2.6" fill="var(--on-accent)"/><circle cx="11" cy="27" r="2.6" fill="var(--on-accent)"/><circle cx="29" cy="27" r="2.6" fill="var(--on-accent)"/></svg>`;
+
+/* ---------- helpers ---------- */
+const AR = () => S.lang==="ar";
+const L = (a,e) => AR()?a:e;
+const T = p => Array.isArray(p) ? (AR()?p[0]:p[1]) : (p==null?"":p);
+const fmt = n => Math.round(Number(n)||0).toLocaleString("en-US");
+const curS = z => z ? (AR()?ZONE[z][2]:ZONE[z][3]) : L("ر.ي","YER");
+const zoneName = z => esc(AR()?ZONE[z][0]:ZONE[z][1]);
+const money = (n,z) => `<span class="num">${fmt(n)}</span> ${curS(z)}`;
+const moneyTxt = (n,z) => `${fmt(n)} ${curS(z)}`;
+const zoneSums = pairs => { const t={}; pairs.forEach(([z,v])=>{ t[z]=(t[z]||0)+v; }); const ks=Object.keys(t); return ks.length? ks.map(z=>money(t[z],z)).join(" · ") : "0"; };
+const dt = (iso,withTime) => { try{ const d=new Date(iso); return new Intl.DateTimeFormat(AR()?"ar-YE-u-nu-latn":"en-GB",withTime?{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"}:{day:"numeric",month:"short",year:"numeric"}).format(d);}catch(e){return iso} };
+const ago = iso => { const m=Math.max(1,Math.round((Date.now()-new Date(iso))/60000)); if(m<60) return L(`منذ ${m} د`,`${m}m ago`); const h=Math.round(m/60); if(h<48) return L(`منذ ${h} س`,`${h}h ago`); return L(`منذ ${Math.round(h/24)} يوم`,`${Math.round(h/24)}d ago`); };
+const daysLeft = iso => Math.ceil((new Date(iso)-Date.now())/86400000);
+const pill = (map,k) => { const v=map[k]||[k,k,"n"]; return `<span class="pill t-${v[2]}">${esc(T(v))}</span>`; };
+const spec = s => `<span class="spec">${esc(s)}</span>`;
+const nowISO = (offMin=0) => new Date(Date.now()+offMin*60000).toISOString();
+const rid = (p,n=6) => p+Math.random().toString(16).slice(2,2+n).toUpperCase();
+const inst = id => S.institutions.find(i=>i.id===id);
+const app = id => S.apps.find(a=>a.id===id);
+const LET = ["أ","ب","ج","د","هـ"], LETE=["A","B","C","D","E"];
+
+/* ---------- seed ---------- */
+function seed(){
+  const d = n => nowISO(n*1440);
+  const s = {
+    lang:"ar", role:"visitor", view:"home", sel:null, spec:false,
+    seq:142, invSeq:58,
+    flags:{},
+    settings:{ subFee:1200000, perfFee:1, seats:5, offerDays:7, appDays:21, msgCap:20000 },
+    prefs:{beneficiary:"wa",officer:"wa",manager:"wa",kyc:"wa",admin:"wa"}, msgs:[],
+    me:{ name:["أمل الحمادي","Amal Al-Hammadi"], code:"B-7F3A", phone:"+967 770 000 214", gov:"taiz", kyc:"ACTIVE", kycAt:d(-40) },
+    institutions:[
+      {id:"I1",name:["مؤسسة النماء للتمويل الأصغر","Al-Namaa Microfinance"],kind:["مؤسسة تمويل أصغر","Microfinance institution"],status:"ACTIVE",contact:"+967 1 000 410",branch:["فرع تعز — شارع جمال","Taiz branch — Jamal St."],
+       policy:{govs:["sanaa","aden","taiz","ibb","hadramawt"],secs:["retail","food","textile","agri","tech","services","crafts"],min:300000,max:8000000,products:["murabaha","declining"]}},
+      {id:"I2",name:["بنك الرواد للتمويل الأصغر","Al-Rowad Microfinance Bank"],kind:["بنك تمويل أصغر","Microfinance bank"],status:"ACTIVE",contact:"+967 1 000 522",branch:["الفرع الرئيسي — صنعاء","Main branch — Sana'a"],
+       policy:{govs:Object.keys(GOV),secs:Object.keys(SEC),min:200000,max:10000000,products:["murabaha"]}},
+      {id:"I3",name:["برنامج سند لتمويل المشاريع","Sanad Enterprise Finance"],kind:["برنامج تمويل تنموي","Development finance programme"],status:"ACTIVE",contact:"+967 4 000 318",branch:["مكتب تعز","Taiz office"],
+       policy:{govs:["taiz","ibb","aden","sanaa","dhamar"],secs:Object.keys(SEC),min:100000,max:5000000,products:["murabaha","declining"]}},
+      {id:"I4",name:["بنك الأفق الإسلامي","Al-Ofuq Islamic Bank"],kind:["بنك تجاري","Commercial bank"],status:"PENDING_APPROVAL",submitted:d(-1),contact:"+967 1 000 700",branch:["صنعاء","Sana'a"],policy:{govs:Object.keys(GOV),secs:Object.keys(SEC),min:500000,max:20000000,products:["murabaha"]}},
+      {id:"I5",name:["مؤسسة رافد للتنمية","Rafed Development Foundation"],kind:["منظمة تنموية","Development NGO"],status:"PENDING_APPROVAL",submitted:d(-3),contact:"+967 5 000 120",branch:["المكلا","Mukalla"],policy:{govs:["hadramawt"],secs:Object.keys(SEC),min:100000,max:3000000,products:["declining"]}}
+    ],
+    officers:[
+      {id:"U11",name:["خالد العبسي","Khaled Al-Absi"],email:"khaled@alnamaa.example",status:"ACTIVE",last:d(0),offers:14},
+      {id:"U12",name:["منى الأغبري","Mona Al-Aghbari"],email:"mona@alnamaa.example",status:"ACTIVE",last:d(-1),offers:9},
+      {id:"U13",name:["عبدالله باحميش","Abdullah Bahamish"],email:"a.bahamish@alnamaa.example",status:"ACTIVE",last:d(-2),offers:6},
+      {id:"U14",name:["هدى السقاف","Huda Al-Saqqaf"],email:"huda@alnamaa.example",status:"INVITED",last:null,offers:0}
+    ],
+    apps:[
+      {id:"A1",ref:"AWN-2026-00131",owner:"me",bcode:"B-7F3A",title:["توسعة مشغل خياطة نسائية","Expanding a women's tailoring workshop"],sector:"textile",gov:"taiz",stage:"existing",amount:3500000,term:24,grace:1,
+       purpose:["شراء 4 ماكينات صناعية وتجهيز ركن تدريب للعاملات","4 industrial machines and a training corner"],desc:["مشغل قائم منذ 2022 يعمل فيه 6 عاملات، ويستهدف عقود الزي المدرسي في تعز.","Running since 2022 with 6 staff, targeting school-uniform contracts in Taiz."],
+       gtype:"takaful",guarantors:[{name:"نادية الشرعبي",phone:"+967 771 000 330",rel:["عضو مجموعة","Group member"],consent:"CONSENTED"},{name:"إيمان القدسي",phone:"+967 733 000 118",rel:["عضو مجموعة","Group member"],consent:"CONSENTED"}],
+       docs:[["خطة المشروع.pdf","Business plan.pdf"],["عرض أسعار الماكينات.pdf","Machine quotation.pdf"]],status:"OFFER_RECEIVED",created:d(-10),expires:d(11),selected:null,reveal:false},
+      {id:"A0",ref:"AWN-2026-00087",owner:"me",bcode:"B-7F3A",title:["شراء ماكينات تطريز","Embroidery machines"],sector:"textile",gov:"taiz",stage:"existing",amount:1200000,term:12,grace:0,
+       purpose:["ماكينتا تطريز","Two embroidery machines"],desc:["",""],gtype:"personal",guarantors:[{name:"علي الحمادي",phone:"+967 777 000 912",rel:["أخ","Brother"],consent:"CONSENTED"}],docs:[["خطة المشروع.pdf","Business plan.pdf"]],
+       status:"CLOSED",created:d(-180),expires:d(-150),selected:"O7",reveal:true},
+      {id:"A2",ref:"AWN-2026-00135",owner:"x",bcode:"B-21C9",bname:["هناء الوصابي","Hana Al-Wesabi"],bphone:"+967 772 000 641",title:["مخبز ومعجنات منزلية","Home bakery & pastries"],sector:"food",gov:"sanaa",stage:"existing",amount:2000000,term:18,grace:1,purpose:["فرن تجاري وثلاجة عرض","Commercial oven and display fridge"],desc:["تبيع حالياً لثلاث بقالات في حي حدة، والطلب أعلى من الطاقة الإنتاجية.","Supplies three groceries in Hadda; demand exceeds capacity."],gtype:"takaful",guarantors:[{},{},{}],docs:[["خطة المشروع.pdf","Business plan.pdf"]],status:"PUBLISHED",created:d(-2),expires:d(19),selected:null,reveal:false},
+      {id:"A3",ref:"AWN-2026-00137",owner:"x",bcode:"B-90AE",bname:["مراد باعباد","Murad Ba'abad"],bphone:"+967 734 000 552",title:["صيانة هواتف وإكسسوارات","Phone repair & accessories"],sector:"tech",gov:"aden",stage:"existing",amount:1500000,term:12,grace:0,purpose:["معدات لحام دقيقة ومخزون قطع","Micro-soldering kit and parts stock"],desc:["محل في كريتر، 40 جهاز صيانة أسبوعياً.","Shop in Crater, ~40 repairs a week."],gtype:"personal",guarantors:[{}],docs:[["خطة المشروع.pdf","Business plan.pdf"]],status:"PUBLISHED",created:d(-1),expires:d(20),selected:null,reveal:false},
+      {id:"A4",ref:"AWN-2026-00139",owner:"x",bcode:"B-4D17",bname:["سالم بن بريك","Salem Bin Break"],bphone:"+967 711 000 207",title:["توسعة منحل وتعبئة عسل","Apiary expansion & honey packing"],sector:"agri",gov:"hadramawt",stage:"existing",amount:4800000,term:30,grace:3,purpose:["120 خلية وخط تعبئة يدوي","120 hives and a manual packing line"],desc:["منحل في وادي دوعن، إنتاج موسمي يُصدَّر جزء منه.","Apiary in Wadi Do'an; seasonal output, partly exported."],gtype:"takaful",guarantors:[{},{}],docs:[["خطة المشروع.pdf","Business plan.pdf"]],status:"PUBLISHED",created:d(-3),expires:d(18),selected:null,reveal:false},
+      {id:"A5",ref:"AWN-2026-00140",owner:"x",bcode:"B-C2B8",bname:["فاطمة العديني","Fatima Al-Odaini"],bphone:"+967 735 000 409",title:["بقالة حي","Neighbourhood grocery"],sector:"retail",gov:"ibb",stage:"idea",amount:900000,term:12,grace:0,purpose:["رفوف ومخزون افتتاحي","Shelving and opening stock"],desc:["محل مستأجر قرب سوق المدينة.","Rented shop near the city market."],gtype:"personal",guarantors:[{}],docs:[["خطة المشروع.pdf","Business plan.pdf"]],status:"OFFER_RECEIVED",created:d(-4),expires:d(17),selected:null,reveal:false},
+      {id:"A6",ref:"AWN-2026-00141",owner:"x",bcode:"B-118F",bname:["أحمد الزبيدي","Ahmed Al-Zubaidi"],bphone:"+967 776 000 815",title:["معمل ألبان صغير","Small dairy unit"],sector:"food",gov:"hodeidah",stage:"existing",amount:2600000,term:24,grace:2,purpose:["مبرد حليب ومعدات بسترة","Milk cooler and pasteurizer"],desc:["يجمع الحليب من 15 مربياً في باجل.","Collects milk from 15 herders in Bajil."],gtype:"takaful",guarantors:[{},{}],docs:[["خطة المشروع.pdf","Business plan.pdf"]],status:"PUBLISHED",created:d(-1),expires:d(20),selected:null,reveal:false},
+      {id:"A7",ref:"AWN-2026-00128",owner:"x",bcode:"B-6E40",bname:["سامي المقطري","Sami Al-Maqtari"],bphone:"+967 773 000 260",title:["استوديو تصوير ومونتاج","Photo & video studio"],sector:"services",gov:"sanaa",stage:"existing",amount:2200000,term:18,grace:1,purpose:["كاميرا وإضاءة وحاسوب مونتاج","Camera, lighting, editing PC"],desc:["يصوّر المناسبات والإعلانات لمحلات شارع هائل.","Shoots events and ads for Hayel St. shops."],gtype:"personal",guarantors:[{}],docs:[["خطة المشروع.pdf","Business plan.pdf"]],status:"OFFER_SELECTED",created:d(-12),expires:d(9),selected:"O5",reveal:true}
+    ],
+    offers:[
+      {id:"O1",app:"A1",inst:"I2",amount:3500000,method:"murabaha",rate:12,term:24,fees:35000,grace:1,docs:["عقد إيجار المشغل، بطاقات الضامنين","Workshop lease, guarantor IDs"],status:"VIEWED",created:d(-8),expires:d(4),by:"—"},
+      {id:"O2",app:"A1",inst:"I1",amount:3000000,method:"declining",rate:18,term:24,fees:20000,grace:2,docs:["فواتير مبيعات آخر 6 أشهر","6 months of sales invoices"],status:"VIEWED",created:d(-7),expires:d(5),by:"U11"},
+      {id:"O3",app:"A1",inst:"I3",amount:3500000,method:"murabaha",rate:10,term:18,fees:50000,grace:0,docs:["حضور جلسة تدريب مالي","Attend a financial-literacy session"],status:"SUBMITTED",created:d(-1),expires:d(6),by:"—"},
+      {id:"O4",app:"A5",inst:"I3",amount:900000,method:"murabaha",rate:11,term:12,fees:15000,grace:0,docs:["عقد إيجار المحل","Shop lease"],status:"SUBMITTED",created:d(-2),expires:d(5),by:"—"},
+      {id:"O5",app:"A7",inst:"I1",amount:2200000,method:"murabaha",rate:13,term:18,fees:25000,grace:1,docs:["فواتير شراء المعدات","Equipment invoices"],status:"SELECTED",created:d(-9),expires:d(-2),by:"U11"},
+      {id:"O6",app:"A7",inst:"I2",amount:2000000,method:"murabaha",rate:12,term:18,fees:30000,grace:0,docs:["—","—"],status:"DECLINED",created:d(-9),expires:d(-2),by:"—"},
+      {id:"O7",app:"A0",inst:"I2",amount:1200000,method:"murabaha",rate:12,term:12,fees:15000,grace:0,docs:["—","—"],status:"SELECTED",created:d(-175),expires:d(-170),by:"—"}
+    ],
+    kyc:[
+      {id:"K1",name:"سارة باوزير",nameEn:"Sara Bawazir",type:"beneficiary",phone:"+967 774 000 503",gov:"hadramawt",docs:[["البطاقة الشخصية (الوجهان)","National ID (both sides)"],["صورة شخصية حديثة","Recent photo"],["إثبات السكن","Proof of residence"]],status:"REVIEW_PENDING",at:nowISO(-190),note:""},
+      {id:"K2",name:"محمد الشرعبي",nameEn:"Mohammed Al-Sharabi",type:"beneficiary",phone:"+967 771 000 640",gov:"taiz",docs:[["البطاقة الشخصية (الوجهان)","National ID (both sides)"],["السجل التجاري","Commercial register"],["صورة شخصية حديثة","Recent photo"]],status:"REVIEW_PENDING",at:nowISO(-460),note:""},
+      {id:"K3",name:"بنك الأفق الإسلامي",nameEn:"Al-Ofuq Islamic Bank",type:"institution",phone:"+967 1 000 700",gov:"sanaa",docs:[["ترخيص البنك المركزي","Central Bank licence"],["السجل التجاري","Commercial register"],["تفويض المفوَّض بالتوقيع","Signatory authorisation"]],status:"REVIEW_PENDING",at:nowISO(-1300),note:""},
+      {id:"K4",name:"نادية العمودي",nameEn:"Nadia Al-Amoudi",type:"beneficiary",phone:"+967 712 000 377",gov:"aden",docs:[["البطاقة الشخصية (الوجهان)","National ID (both sides)"],["صورة شخصية حديثة","Recent photo"]],status:"INFO_REQUESTED",at:nowISO(-2900),note:"صورة البطاقة غير واضحة — يرجى إعادة الرفع"},
+      {id:"K5",name:"أمل الحمادي",nameEn:"Amal Al-Hammadi",type:"beneficiary",phone:"+967 770 000 214",gov:"taiz",docs:[["البطاقة الشخصية (الوجهان)","National ID (both sides)"],["صورة شخصية حديثة","Recent photo"],["السجل التجاري","Commercial register"]],status:"ACTIVE",at:d(-41),note:""}
+    ],
+    invoices:[
+      {id:"INV-2026-0041",inst:"I1",kind:"sub",desc:["اشتراك سنوي — الخطة الأساسية (5 ضباط)","Annual plan — Basic (5 officers)"],amount:1200000,status:"PAID",issued:d(-60),due:d(-46),paidAt:d(-50)},
+      {id:"INV-2026-0057",inst:"I1",kind:"perf",desc:["رسوم أداء 1% — الطلب AWN-2026-00102","1% performance fee — AWN-2026-00102"],amount:20000,status:"ISSUED",issued:d(-3),due:d(11)},
+      {id:"INV-2026-0049",inst:"I3",kind:"perf",desc:["رسوم أداء 1% — الطلب AWN-2026-00094","1% performance fee — AWN-2026-00094"],amount:18000,status:"PROCESSING",issued:d(-9),due:d(5)},
+      {id:"INV-2026-0044",inst:"I2",kind:"sub",desc:["اشتراك سنوي — الخطة الأساسية","Annual plan — Basic"],amount:1200000,status:"PAID",issued:d(-55),due:d(-41),paidAt:d(-44)},
+      {id:"INV-2026-0052",inst:"I2",kind:"perf",desc:["رسوم أداء 1% — الطلب AWN-2026-00087","1% performance fee — AWN-2026-00087"],amount:12000,status:"PAID",issued:d(-160),due:d(-146),paidAt:d(-150)}
+    ],
+    txns:[
+      {id:"TX-8F21A0",inv:"INV-2026-0041",provider:["محفظة تجريبية (أ)","Sandbox wallet A"],amount:1200000,status:"SUCCEEDED",recon:"MATCHED",at:d(-50)},
+      {id:"TX-3C77B9",inv:"INV-2026-0044",provider:["بنك تجريبي (ب)","Sandbox bank B"],amount:1200000,status:"SUCCEEDED",recon:"MATCHED",at:d(-44)},
+      {id:"TX-91D0E4",inv:"INV-2026-0049",provider:["محفظة تجريبية (أ)","Sandbox wallet A"],amount:15000,status:"SUCCEEDED",recon:"NEEDS_REVIEW",reason:["المبلغ المستلم 15,000 لا يطابق الفاتورة 18,000","Received 15,000 ≠ invoice 18,000"],at:d(-2)}
+    ],
+    payLog:[],
+    tickets:[{id:"T-2041",subject:["استفسار عن مدة صلاحية العرض","How long is an offer valid?"],cat:["العروض","Offers"],status:"ANSWERED",at:d(-6),reply:["كل عرض يحمل تاريخ انتهاء تحدده المؤسسة، ويظهر أسفل بطاقة العرض.","Each offer carries an expiry set by the institution, shown on the offer card."]}],
+    audit:[
+      {at:d(-41),actor:"ريم الصبري",role:"kyc",action:"kyc.approve",entity:"KYC K5",from:"REVIEW_PENDING",to:"ACTIVE",reason:"",corr:"c-1a90"},
+      {at:d(-9),actor:"خالد العبسي",role:"officer",action:"offer.submit",entity:"Offer O5 → AWN-2026-00128",from:"DRAFT",to:"SUBMITTED",reason:"",corr:"c-3be1"},
+      {at:d(-4),actor:"system",role:"system",action:"offer.select (atomic)",entity:"AWN-2026-00128",from:"OFFER_RECEIVED",to:"OFFER_SELECTED",reason:"O6 → DECLINED",corr:"c-77d2"},
+      {at:d(-2),actor:"system",role:"system",action:"webhook.verify",entity:"TX-91D0E4",from:"—",to:"NEEDS_REVIEW",reason:"amount mismatch",corr:"c-90af"}
+    ],
+    notifs:[
+      {to:"beneficiary",t:["وصل عرض جديد على طلبك AWN-2026-00131","New offer on AWN-2026-00131"],at:d(-1),read:false},
+      {to:"beneficiary",t:["وافقت إيمان القدسي على أن تكون ضامنة في مجموعتك","Eman Al-Qudsi consented as a guarantor"],at:d(-6),read:true},
+      {to:"officer",t:["اختار المستفيد عرضك على الطلب AWN-2026-00128 — تواصل معه لإجراءات الصرف","Your offer on AWN-2026-00128 was selected"],at:d(-4),read:false},
+      {to:"manager",t:["فاتورة INV-2026-0057 مستحقة خلال 11 يوماً","INV-2026-0057 due in 11 days"],at:d(-3),read:false},
+      {to:"kyc",t:["3 حالات تحقق جديدة في القائمة","3 new cases in the queue"],at:nowISO(-180),read:false},
+      {to:"admin",t:["تسوية تحتاج مراجعة: TX-91D0E4","Reconciliation needs review: TX-91D0E4"],at:d(-2),read:false},
+      {to:"admin",t:["مؤسستان بانتظار الاعتماد","Two institutions awaiting approval"],at:d(-1),read:false}
+    ],
+    draft:null, signup:null, uiTab:{}
+  };
+  return postSeed(s);
+}
+function postSeed(s){
+  s.apps.forEach(a=>{ a.zone=GOV_ZONE[a.gov]; });
+  s.offers.forEach(o=>{ o.pay=Math.round(legacyInst(o)/100)*100; o.mlabel=METHOD[o.method]; });
+  const lims={I1:{old:[100000,2700000],new:[300000,8000000]},I2:{old:[70000,3300000],new:[200000,10000000]},I3:{old:[35000,1700000],new:[100000,5000000]},I4:{old:[170000,6700000],new:[500000,20000000]},I5:{new:[100000,3000000]}};
+  s.institutions.forEach(i=>{ i.policy.lim=lims[i.id]; i.policy.zones=Object.keys(lims[i.id]); });
+  s.invoices.forEach(v=>{ v.zone=v.zone||"new"; });
+  s.notifs.forEach((n,i)=>{ n.ch=i===3?"sms":"wa"; n.fb=i===3; });
+  s.msgs=s.notifs.map((n,i)=>({id:"M-"+(10450+i),to:n.to,t:n.t,ch:n.ch,fb:n.fb,at:n.at,status:"DELIVERED",cost:n.fb?55:20}));
+  return s;
+}
+function load(){ try{ const r=localStorage.getItem(KEY); if(r){ const o=JSON.parse(r); if(o && o.apps) return o; } }catch(e){} return seed(); }
+function save(){ try{ const c=Object.assign({},S); delete c.modal; localStorage.setItem(KEY,JSON.stringify(c)); }catch(e){} }
+
+/* ================================================================
+   "Server" layer — authorization + transitions + money math.
+   In production every function here is a server endpoint wrapped in a
+   DB transaction, with an audit_event written after commit (§7.2-6).
+   ================================================================ */
+const ACTOR = () => ({beneficiary:"أمل الحمادي",officer:"خالد العبسي",manager:"فؤاد الكبسي",kyc:"ريم الصبري",admin:"إدارة عُونة",visitor:"visitor"})[S.role];
+function audit(action,entity,from,to,reason,role){ S.audit.unshift({at:nowISO(),actor:role==="system"?"system":ACTOR(),role:role||S.role,action,entity,from:from||"—",to:to||"—",reason:reason||"",corr:"c-"+Math.random().toString(16).slice(2,6)}); }
+/* v2.1 §5 — every in-app notification is also sent by WhatsApp, falling back to SMS */
+const CH={wa:["واتساب","WhatsApp"],sms:["رسالة SMS","SMS"]};
+const MSG_COST={wa:20,sms:35}; /* example cost per message, YER new notes */
+function sendMsg(to,t,force){ const pref=force||(S.prefs&&S.prefs[to])||"wa"; let ch=pref, fb=false; if(pref==="wa" && Math.random()<0.12){ ch="sms"; fb=true; }
+  const m={id:rid("M-",5),to,t,ch,fb,at:nowISO(),status:"DELIVERED",cost:MSG_COST[ch]+(fb?MSG_COST.wa:0)}; (S.msgs=S.msgs||[]).unshift(m); return m; }
+function notify(to,t){ const m=sendMsg(to,t); S.notifs.unshift({to,t,at:nowISO(),read:false,ch:m.ch,fb:m.fb}); }
+
+const APP_FLOW = {DRAFT:["SUBMITTED","CANCELLED"],SUBMITTED:["NEEDS_INFO","ELIGIBLE","REJECTED_AT_INTAKE"],NEEDS_INFO:["SUBMITTED","CANCELLED"],ELIGIBLE:["PUBLISHED"],PUBLISHED:["OFFER_RECEIVED","EXPIRED","CANCELLED"],OFFER_RECEIVED:["OFFER_SELECTED","PUBLISHED","CANCELLED"],OFFER_SELECTED:["PRE_DISBURSEMENT","DECLINED_AFTER_SELECTION"],PRE_DISBURSEMENT:["FUNDED","DECLINED_AFTER_SELECTION"],FUNDED:["CLOSED"]};
+function move(a,to,reason,role){ const ok=(APP_FLOW[a.status]||[]).includes(to); if(!ok){ throw new Error(L(`انتقال غير مسموح: ${a.status} → ${to}`,`Transition not allowed: ${a.status} → ${to}`)); } const from=a.status; a.status=to; audit("application.transition",a.ref,from,to,reason,role); }
+
+/* §3.3 — comparison indicators computed server-side from stored values */
+/* v2.1: each lender computes the instalment its own way; the platform only adds up what was declared */
+function quote(o){ const n=Math.max(1,(+o.term)-(+o.grace||0)); const pay=+o.pay||0; const fees=+o.fees||0; const paid=pay*n+fees; return {inst:pay, n, paid, cost:paid-(+o.amount)}; }
+/* used only to seed sample offers */
+function legacyInst(o){ const P=+o.amount, n=Math.max(1,(+o.term)-(+o.grace||0)); if(o.method==="murabaha"){ return (P+P*(+o.rate/100)*(+o.term/12))/n; } const r=(+o.rate/100)/12; const Pg=P*Math.pow(1+r,+o.grace||0); return r===0?Pg/n:Pg*r/(1-Math.pow(1+r,-n)); }
+function matches(a,i){ const p=i.policy; const lm=p.lim&&p.lim[a.zone]; return i.status==="ACTIVE" && !!lm && p.govs.includes(a.gov) && p.secs.includes(a.sector) && a.amount>=lm[0] && a.amount<=lm[1]; }
+
+/* ABAC: an institution sees only matched, live requests — never identity before selection */
+function officerCanSee(a){ const I1=inst("I1"); const mine=S.offers.find(o=>o.app===a.id&&o.inst==="I1"); return (["PUBLISHED","OFFER_RECEIVED"].includes(a.status) && matches(a,I1)) || !!mine; }
+
+function srvSelectOffer(offerId){
+  const o=S.offers.find(x=>x.id===offerId); const a=app(o.app);
+  if(a.owner!=="me") throw new Error("403");
+  if(a.status!=="OFFER_RECEIVED") throw new Error(L("لا يمكن الاختيار في هذه الحالة","Cannot select in this state"));
+  if(S.offers.some(x=>x.app===a.id && x.status==="SELECTED")) throw new Error(L("يوجد عرض مختار مسبقاً (قيد UNIQUE)","An offer is already selected (UNIQUE)"));
+  if(daysLeft(o.expires)<0) throw new Error(L("انتهت صلاحية العرض","Offer expired"));
+  // atomic block
+  o.status="SELECTED";
+  S.offers.filter(x=>x.app===a.id && x.id!==o.id && ["SUBMITTED","VIEWED"].includes(x.status)).forEach(x=>{ x.status="DECLINED"; audit("offer.auto_close",`Offer ${x.id}`,"SUBMITTED","DECLINED","competitor selected","system"); notify(x.inst==="I1"?"officer":"_other",[`لم يُختر عرضكم على الطلب ${a.ref}`,`Your offer on ${a.ref} was not selected`]); });
+  move(a,"OFFER_SELECTED","",); a.selected=o.id; a.reveal=true;
+  audit("pii.reveal",`${a.ref} → ${o.inst}`,"masked","revealed to selected institution only");
+  if(o.inst==="I1") notify("officer",[`اختار المستفيد عرضكم على الطلب ${a.ref} — بيانات التواصل متاحة الآن`,`Your offer on ${a.ref} was selected — contact details unlocked`]);
+  S.flags.selected=true;
+}
+
+/* ---------- state mutation wrapper ---------- */
+function act(fn){ try{ fn(); save(); render(); return true; }catch(e){ toast(e.message,"bad"); return false; } }
+
+/* ---------- toast / modal ---------- */
+function toast(msg,tone){ const el=document.createElement("div"); el.className="toast "+(tone||""); el.textContent=msg; $("#toasts").appendChild(el); setTimeout(()=>el.remove(),3800); }
+function openModal(m){ S.modal=m; renderModal(); }
+function closeModal(){ S.modal=null; renderModal(); }
+
+/* ================================================================
+   RENDER
+   ================================================================ */
+function render(){
+  document.documentElement.lang=S.lang; document.documentElement.dir=AR()?"rtl":"ltr";
+  document.body.classList.toggle("show-spec",!!S.spec);
+  renderTop(); renderSide();
+  const v=VIEWS[S.view]||VIEWS[ROLES[S.role].home];
+  $("#main").innerHTML = `<div class="page">${v()}</div>`;
+  renderModal();
+}
+function renderTop(){
+  const unread=S.notifs.filter(n=>n.to===S.role && !n.read).length;
+  $("#topbar").innerHTML = `
+    <button class="brand" data-act="go" data-role="visitor" data-view="home" aria-label="${L("عُونة — الرئيسية","Aouna — home")}">${MARK}<span><span class="brand-name">${L("عُونة","Aouna")}</span><span class="brand-tag">${L("تمويلك يبدأ معنا","Your funding starts here")}</span></span></button>
+    <span class="demo-flag tb-hide-sm">${L("نموذج تفاعلي — البيانات أمثلة","Interactive prototype — sample data")}</span>
+    <span class="tb-spacer"></span>
+    <div class="tb-group">
+      <div class="persona"><label for="persona">${L("أعرض المنصة بصفة","Viewing as")}</label>
+        <select id="persona" data-change="persona">${Object.keys(ROLES).map(k=>`<option value="${k}" ${k===S.role?"selected":""}>${esc(T(ROLES[k].l))} — ${esc(T(ROLES[k].who))}</option>`).join("")}</select></div>
+      <button class="icon-btn" data-act="guide" title="${L("سيناريو العرض","Demo script")}">${I("map")}<span class="tb-hide-sm">${L("سيناريو العرض","Demo script")}</span></button>
+      ${S.role!=="visitor"?`<button class="icon-btn" data-act="notifs" aria-label="${L("الإشعارات","Notifications")}">${I("bell")}${unread?`<span class="dot-count">${unread}</span>`:""}</button>`:""}
+      <button class="icon-btn" data-act="spec" aria-pressed="${!!S.spec}" title="${L("إظهار مراجع المواصفات للمطوّر","Show spec references for developers")}">${I("code")}<span class="tb-hide-sm">${L("طبقة المواصفات","Spec layer")}</span></button>
+      <button class="icon-btn" data-act="lang">${I("globe")}${AR()?"English":"العربية"}</button>
+    </div>`;
+}
+function renderSide(){
+  const items=NAV[S.role];
+  $("#side").innerHTML = `
+    <div class="side-who"><b>${esc(T(ROLES[S.role].l))}</b><span>${esc(T(ROLES[S.role].who))}</span></div>
+    ${items.map(([v,l,ic,ph])=>`<button class="nav-btn" data-act="nav" data-view="${v}" ${navActive(v)?'aria-current="page"':""}>${I(ic)}<span>${esc(T(l))}</span>${ph?`<span class="tag">${L("المرحلة 2","Phase 2")}</span>`:""}</button>`).join("")}
+    <div class="side-foot">${L("مرساه لاين للخدمات","Mersah Line Services")}<br><button class="link" data-act="reset" style="font-size:12px">${L("إعادة ضبط بيانات العرض","Reset demo data")}</button></div>`;
+}
+function navActive(v){ const map={app:"apps",req:"queue",kycCase:"kycq"}; return S.view===v || map[S.view]===v; }
+
+/* ---------- shared fragments ---------- */
+function head(title,sub,actions,crumb){ return `<div class="page-head"><div>${crumb?`<div class="crumb">${crumb}</div>`:""}<h1>${title}</h1>${sub?`<p>${sub}</p>`:""}</div>${actions?`<div class="row">${actions}</div>`:""}</div>`; }
+function kpis(list){ return `<div class="kpis">${list.map(k=>`<div class="kpi"><div class="k">${k[0]}</div><div class="v">${k[1]}</div>${k[2]?`<div class="d">${k[2]}</div>`:""}</div>`).join("")}</div>`; }
+const MAIN_PATH=["SUBMITTED","PUBLISHED","OFFER_RECEIVED","OFFER_SELECTED","PRE_DISBURSEMENT","FUNDED","CLOSED"];
+function track(a){
+  let idx=MAIN_PATH.indexOf(a.status); const bad=["DECLINED_AFTER_SELECTION","REJECTED_AT_INTAKE","CANCELLED","EXPIRED"].includes(a.status);
+  if(a.status==="ELIGIBLE") idx=0; if(a.status==="DECLINED_AFTER_SELECTION") idx=MAIN_PATH.indexOf("PRE_DISBURSEMENT");
+  return `<div class="track" role="list">${MAIN_PATH.map((s,i)=>`<div role="listitem" class="st ${i<idx?"done":""} ${i===idx?(bad?"bad":"cur"):""}">${esc(T(i===idx&&bad?APP_ST[a.status]:APP_ST[s]))}</div>`).join("")}</div>`;
+}
+function guarantorNote(a){ const n=(a.guarantors||[]).length; const t=a.gtype==="takaful"?L(`ضمانة تكافلية — ${n} أعضاء`,`Group guarantee — ${n} members`):a.gtype==="personal"?L(`ضامن شخصي (${n})`,`Personal guarantor (${n})`):L("بدون ضامن","No guarantor"); return t; }
+
+/* ================================================================
+   VIEWS
+   ================================================================ */
+const VIEWS = {};
+
+/* ---------- hero scenes (hand-drawn illustrations, no external images) ---------- */
+let heroIdx=0;
+const SCENES=(function(){
+  let sd=11; const r=()=>(sd=(sd*16807)%2147483647)/2147483647; const f=n=>n.toFixed(0);
+  const wrap=(body,defs)=>`<svg viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs>${defs}</defs>${body}</svg>`;
+  // 1 — Aden: Shamsan ridge, Crater houses, Sira fort, harbour at sunset
+  let houses=""; for(let i=0;i<70;i++){ const x=20+r()*640,w=12+r()*22,h=10+r()*20,y=396+r()*26; houses+=`<rect x="${f(x)}" y="${f(y-h)}" width="${f(w)}" height="${f(h)}" fill="${r()>.5?"#eadcc2":"#cbb48d"}"/>`; }
+  let glint=""; for(let k=0;k<10;k++) glint+=`<rect x="${f(820-k*3)}" y="${f(440+k*13)}" width="${f(80-k*5)}" height="2.5" fill="#ffd58a" opacity="${(.6-k*.05).toFixed(2)}"/>`;
+  const boat=(x,y)=>`<path d="M${x} ${y}h44l-9 9h-27z" fill="#0b1626"/><path d="M${x+20} ${y}v-30l16 28z" fill="#efe3cc" opacity=".85"/>`;
+  const aden=wrap(`<rect width="1200" height="600" fill="url(#ad-sky)"/><circle cx="860" cy="380" r="62" fill="#ffd58a" opacity=".9"/>
+    <path d="M0 330L60 270L110 292L170 200L220 245L270 150L330 220L385 175L445 255L505 222L565 298L625 285L690 370L0 380Z" fill="#3c2c47"/>
+    <path d="M0 380L90 330L150 348L235 300L305 332L385 312L465 352L565 342L670 392L0 410Z" fill="#2b2037"/>
+    <rect y="420" width="1200" height="180" fill="url(#ad-sea)"/>${glint}${houses}
+    <path d="M0 420L660 408L720 430L0 440Z" fill="#1f1a2c"/>
+    <path d="M880 452Q950 400 1030 452Z" fill="#2b2037"/>
+    <g fill="#3d2f48"><rect x="928" y="380" width="52" height="44"/><rect x="924" y="371" width="9" height="11"/><rect x="941" y="371" width="9" height="11"/><rect x="958" y="371" width="9" height="11"/><rect x="976" y="362" width="18" height="62"/><rect x="973" y="355" width="6" height="8"/><rect x="986" y="355" width="6" height="8"/></g>
+    ${boat(700,488)}${boat(1060,515)}${boat(560,540)}`,
+    `<linearGradient id="ad-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c2b4d"/><stop offset=".55" stop-color="#b9665a"/><stop offset="1" stop-color="#f3b66c"/></linearGradient><linearGradient id="ad-sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#456a90"/><stop offset="1" stop-color="#0f2038"/></linearGradient>`);
+  // 2 — Haraz: green farming terraces and stone tower houses with gypsum trim
+  let terr=""; const tc=["#7f9a4f","#9bb064","#8a9a52","#a88d5c","#93ab5e"];
+  for(let i=0;i<17;i++){ const y=250+i*22, a=r()*30; terr+=`<path d="M0 ${y+a/3}Q300 ${y-30-a} 600 ${y-8}T1200 ${y-36}L1200 ${y+26}Q900 ${y+14} 600 ${y+16}T0 ${y+26+a/3}Z" fill="${tc[i%5]}" stroke="#4d5f34" stroke-width="2.5"/>`; }
+  let towers=""; for(let j=0;j<11;j++){ const x=650+j*24+r()*8, h=48+r()*70, w=20+r()*12, b=214; towers+=`<rect x="${f(x)}" y="${f(b-h)}" width="${f(w)}" height="${f(h)}" fill="${j%2?"#a9794f":"#b98c5f"}"/><rect x="${f(x)}" y="${f(b-h)}" width="${f(w)}" height="4" fill="#f3ede2"/>`;
+    for(let k=0;k<Math.floor(h/26);k++) towers+=`<rect x="${f(x+w/2-3)}" y="${f(b-h+12+k*24)}" width="6" height="9" fill="#2b2420" stroke="#f3ede2" stroke-width="1.6"/>`; }
+  const haraz=wrap(`<rect width="1200" height="600" fill="url(#hz-sky)"/>
+    <path d="M0 250L140 170L260 210L400 120L520 190L640 140L780 200L920 110L1060 180L1200 140V600H0Z" fill="#8aa0b2" opacity=".7"/>
+    <path d="M0 270Q300 170 560 236Q700 180 820 205Q1000 160 1200 200V600H0Z" fill="#6f7f48"/>${towers}${terr}
+    <rect y="205" width="1200" height="50" fill="#ffffff" opacity=".12"/>`,
+    `<linearGradient id="hz-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#86afc9"/><stop offset="1" stop-color="#f1dcb3"/></linearGradient>`);
+  // 3 — Shibam, Hadramawt: mud-brick towers in the wadi, whitewashed tops, palms
+  let tw=""; const xs=[]; for(let i=0;i<28;i++) xs.push(380+i*16+r()*6);
+  xs.forEach((x,i)=>{ const w=24+r()*20, h=110+r()*160, b=432; tw+=`<rect x="${f(x)}" y="${f(b-h)}" width="${f(w)}" height="${f(h)}" fill="${i%3?"#c79a68":"#b88a5a"}" stroke="#8d6440" stroke-width=".8"/><rect x="${f(x)}" y="${f(b-h)}" width="${f(w)}" height="${f(h*.17)}" fill="#efe6d6"/>`;
+    for(let k=1;k<Math.floor(h/18);k++) tw+=`<rect x="${f(x+w*.25)}" y="${f(b-h+h*.17+k*16)}" width="3" height="6" fill="#4a3020"/><rect x="${f(x+w*.65)}" y="${f(b-h+h*.17+k*16)}" width="3" height="6" fill="#4a3020"/>`; });
+  const palm=(x,b)=>`<path d="M${x} ${b}q6 -60 2 -110" stroke="#5a3d25" stroke-width="7" fill="none"/>`+[[-60,-10],[-46,-34],[-14,-46],[22,-44],[52,-26],[62,0]].map(([dx,dy])=>`<path d="M${x+2} ${b-110}q${dx/2} ${dy-14} ${dx} ${dy}" stroke="#3f5a33" stroke-width="6" fill="none" stroke-linecap="round"/>`).join("");
+  const shibam=wrap(`<rect width="1200" height="600" fill="url(#sb-sky)"/>
+    <path d="M0 200L270 200L290 232L310 234L330 268L350 600H0Z" fill="#6b4632"/><path d="M0 200L270 200L274 208L0 208Z" fill="#8a5d40"/>
+    <path d="M1200 185L905 185L885 222L862 226L842 262L822 600H1200Z" fill="#6b4632"/><path d="M1200 185L905 185L901 193L1200 193Z" fill="#8a5d40"/>
+    <rect y="420" width="1200" height="180" fill="#b88b5a"/>${tw}<rect x="362" y="424" width="476" height="18" fill="#a77a4c"/>
+    <rect y="470" width="1200" height="130" fill="#9c7447"/>${palm(150,520)}${palm(235,540)}${palm(960,525)}${palm(1050,548)}${palm(1130,520)}`,
+    `<linearGradient id="sb-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2c2140"/><stop offset=".6" stop-color="#c9774f"/><stop offset="1" stop-color="#f0b46a"/></linearGradient>`);
+  return [
+    {svg:aden, cap:["عدن — جبل شمسان وقلعة صيرة","Aden — Mount Shamsan and Sira Fort"]},
+    {svg:haraz, cap:["حراز — المدرجات الزراعية وبيوت الحجر","Haraz — farming terraces and stone houses"]},
+    {svg:shibam, cap:["شبام حضرموت — مدينة الأبراج الطينية","Shibam, Hadramawt — the mud-brick tower city"]}
+  ];
+})();
+function showSlide(i){ heroIdx=(i+SCENES.length)%SCENES.length; const box=document.getElementById("hero-slides"); if(!box) return;
+  box.querySelectorAll(".slide").forEach((el,k)=>el.classList.toggle("on",k===heroIdx));
+  document.querySelectorAll(".dots button").forEach((b,k)=>b.setAttribute("aria-current",k===heroIdx?"true":"false"));
+  const c=document.getElementById("slide-cap-t"); if(c) c.textContent=T(SCENES[heroIdx].cap); }
+
+/* ---------- PUBLIC ---------- */
+VIEWS.home = () => {
+  const a=app("A1"); const os=S.offers.filter(o=>o.app==="A1").map(o=>({o,q:quote(o)}));
+  const best=Math.min(...os.map(x=>x.q.cost));
+  return `
+  <section class="hero-wrap" aria-label="${L("الواجهة الرئيسية","Hero")}">
+  <div class="slides" id="hero-slides" aria-hidden="true">${SCENES.map((sc,i)=>`<div class="slide ${i===heroIdx?"on":""}">${sc.svg}</div>`).join("")}</div>
+  <div class="hero">
+    <div>
+      <p class="eyebrow">${L("منصة التمويل الأصغر الرقمية · اليمن","Digital microfinance marketplace · Yemen")}</p>
+      <h1>${L("طلب واحد،<br><em>وعروض تتنافس</em> على مشروعك","One request.<br><em>Lenders compete</em> for your project.")}</h1>
+      <p class="lede">${L("قدّم طلب تمويل مرة واحدة، فتصل نسخة مجهّلة منه إلى المؤسسات المالية المرخّصة المطابقة. تقارن العروض بأرقام واضحة وتختار الأنسب، ولا تُكشف هويتك إلا للمؤسسة التي تختارها.","Submit once; an anonymised copy reaches matching licensed lenders. Compare offers in plain numbers and pick the best. Only the lender you choose ever sees who you are.")}</p>
+      <div class="row">
+        <button class="btn btn-p" data-act="go" data-role="beneficiary" data-view="new">${I("plus")}${L("قدّم طلب تمويل","Request funding")}</button>
+        <button class="btn btn-g" data-act="go" data-role="officer" data-view="queue">${L("أنا مؤسسة مالية","I'm a lender")}</button>
+      </div>
+    </div>
+    <div class="mini" aria-label="${L("مثال على مقارنة العروض","Example offer comparison")}">
+      <div class="mini-h"><div><b style="font-family:var(--f-display)">${esc(T(a.title))}</b><div class="sub"><span class="mono">${a.ref}</span> · ${money(a.amount,a.zone)} · ${a.term} ${L("شهراً","months")}</div></div><span class="pill t-a">${os.length} ${L("عروض","offers")}</span></div>
+      ${os.map((x,i)=>`<div class="mini-row ${x.q.cost===best?"best":""}"><span class="lt">${AR()?LET[i]:LETE[i]}</span><div><div class="sub">${L("القسط الشهري","Monthly")}</div><div class="amt">${money(x.q.inst,a.zone)}</div></div><div style="text-align:end"><div class="sub">${L("إجمالي تكلفة التمويل","Total cost of credit")}</div><div class="num" style="font-weight:600">${fmt(x.q.cost)}</div></div></div>`).join("")}
+      <div class="mini-f">${I("lock")}${L("أسماء المؤسسات تظهر بعد اختيارك للعرض","Lender names appear after you choose")}</div>
+    </div>
+  </div>
+  <div class="slide-ctl"><div class="dots" role="group" aria-label="${L("المشاهد","Scenes")}">${SCENES.map((sc,i)=>`<button data-act="slide" data-i="${i}" aria-current="${i===heroIdx}" aria-label="${esc(T(sc.cap))}"></button>`).join("")}</div><span class="slide-cap"><span id="slide-cap-t">${esc(T(SCENES[heroIdx].cap))}</span><small>${L("رسم توضيحي","Illustration")}</small></span></div>
+  </section>
+
+  <section class="stack">
+    <h2 style="font-size:20px">${L("كيف تعمل عُونة","How Aouna works")}</h2>
+    <div class="steps5">
+      ${[[L("التسجيل والتحقق","Sign up & verify"),L("حساب برقم الهاتف، ورفع الوثائق لمراجعة KYC من موظف مخوّل.","Phone sign-up, documents reviewed by an authorised KYC officer.")],
+        [L("تقديم الطلب","Submit request"),L("المشروع، المبلغ، المدة، والضمانة التكافلية إن وُجدت.","Project, amount, term and optional group guarantee.")],
+        [L("نشر مجهّل الهوية","Anonymous publish"),L("يصل الطلب للمؤسسات المطابقة حسب المحافظة والقطاع والمبلغ فقط.","Routed only to lenders whose policy matches region, sector and size.")],
+        [L("عروض متنافسة","Competing offers"),L("قسط شهري، إجمالي تكلفة، رسوم ومدة — محسوبة بنفس المعادلة للجميع.","Instalment, total cost, fees, term — computed the same way for all.")],
+        [L("الاختيار ثم الصرف","Choose, then disburse"),L("تختار عرضاً واحداً، وتكمل العقد والصرف مع المؤسسة مباشرة.","Pick one offer; contract and disbursement happen with the lender.")]
+      ].map((s,i)=>`<div class="s"><span class="n">0${i+1}</span><h3>${s[0]}</h3><p>${s[1]}</p></div>`).join("")}
+    </div>
+  </section>
+
+  <section class="grid g3">
+    <div class="card who-card"><span class="ib">${I("user")}</span><h3>${L("لرواد الأعمال","For entrepreneurs")}</h3><ul><li>${L("طلب واحد بدل زيارة عدة فروع","One request instead of many branch visits")}</li><li>${L("مقارنة شفافة لتكلفة التمويل","Transparent cost comparison")}</li><li>${L("ضمانة تكافلية مع مجموعتك","Group guarantee with your peers")}</li></ul></div>
+    <div class="card who-card"><span class="ib">${I("coins")}</span><h3>${L("للبنوك ومؤسسات التمويل","For banks & MFIs")}</h3><ul><li>${L("طلبات مكتملة ومطابقة لسياستك","Complete requests that fit your policy")}</li><li>${L("فريق حتى 5 ضباط ائتمان","Team of up to 5 credit officers")}</li><li>${L("قرار الائتمان والصرف يبقيان لديك","Credit decision and disbursement stay with you")}</li></ul></div>
+    <div class="card who-card"><span class="ib">${I("store")}</span><h3>${L("لمزودي الخدمات","For service providers")} <span class="pill t-g">${L("المرحلة 2","Phase 2")}</span></h3><ul><li>${L("عروض خدمات لمشاريع ممولة","Quotes for funded projects")}</li><li>${L("عمولة عند الإنجاز فقط","Commission on completion only")}</li></ul></div>
+  </section>
+
+  <section class="stat-band">
+    <div><b>69,830</b><span>${L("رائد أعمال مسجّل في منظومة التمويل الأصغر","entrepreneurs registered in the sector")}</span></div>
+    <div><b>17 + 5</b><span>${L("بنكاً وبرنامج تمويل عاملة في القطاع","banks and finance programmes")}</span></div>
+    <div><b>220</b><span>${L("فرعاً في المحافظات اليمنية","branches across governorates")}</span></div>
+    <div><b>1</b><span>${L("طلب يكفي للوصول إليها جميعاً","request to reach them all")}</span></div>
+  </section>
+  <p class="faint" style="font-size:12px;margin-top:-12px">${L("المصدر: تقرير الصندوق الاجتماعي للتنمية — ديسمبر 2025، أرقام تقريبية.","Source: Social Fund for Development report, Dec 2025 (approximate).")}</p>
+
+  <div class="notice gold">${I("info")}<div>${L("عُونة وسيط رقمي منظَّم: لا تمنح الائتمان، ولا تتخذ قرار التمويل، ولا تستقبل أموال العملاء أو تحتفظ بها. القرار والعقد والصرف مسؤولية المؤسسة المالية المرخّصة.","Aouna is a regulated digital intermediary: it does not lend, make credit decisions, or hold customer funds. Credit, contract and disbursement remain with the licensed institution.")} ${spec("§1")}</div></div>
+
+  <footer class="foot"><span>${L("مرساه لاين للخدمات — الجهة المالكة","Mersah Line Services — owner")}</span><span class="sel">Bassam@mersahline.com</span><span class="sel">+967 783 618 000</span></footer>`;
+};
+
+VIEWS.signup = () => {
+  const s=S.signup||(S.signup={step:1,role:"beneficiary",name:"",phone:"",otp:"",docs:{},err:{}});
+  const steps=[L("نوع الحساب","Account type"),L("تأكيد الهاتف","Verify phone"),L("وثائق التحقق","KYC documents"),L("قيد المراجعة","Under review")];
+  let body="";
+  if(s.step===1) body=`
+    <div class="form">
+      <div class="field"><span class="flabel">${L("أسجّل بصفتي","I'm registering as")}</span>
+        <div class="row">${[["beneficiary",L("مستفيد / رائد أعمال","Entrepreneur")],["institution",L("مؤسسة مالية","Financial institution")],["vendor",L("مزود خدمة — المرحلة 2","Service provider — phase 2")]].map(r=>`<button class="chip ${s.role===r[0]?"on":""}" data-act="su-role" data-v="${r[0]}" ${r[0]==="vendor"?"disabled":""}>${r[1]}</button>`).join("")}</div></div>
+      <div class="f2">
+        <div class="field"><label for="su-name">${s.role==="institution"?L("اسم المؤسسة","Institution name"):L("الاسم الكامل","Full name")}</label><input id="su-name" type="text" data-su="name" value="${esc(s.name)}" class="${s.err.name?"invalid":""}">${s.err.name?`<span class="err">${s.err.name}</span>`:""}</div>
+        <div class="field"><label for="su-phone">${L("رقم الهاتف","Phone number")}</label><input id="su-phone" type="tel" dir="ltr" placeholder="+967 7XX XXX XXX" data-su="phone" value="${esc(s.phone)}" class="${s.err.phone?"invalid":""}">${s.err.phone?`<span class="err">${s.err.phone}</span>`:`<span class="hint">${L("سيصلك رمز تحقق لمرة واحدة","We'll send a one-time code")}</span>`}</div>
+      </div>
+      <div class="field"><span class="flabel">${L("أرسلوا الرمز عبر","Send the code by")}</span><div class="row">${[["wa",L("واتساب","WhatsApp")],["sms",L("رسالة SMS","SMS")]].map(c=>`<button class="chip ${(s.ch||"wa")===c[0]?"on":""}" data-act="su-ch" data-v="${c[0]}">${c[1]}</button>`).join("")}</div><span class="hint">${L("الرقم نفسه تصله لاحقاً إشعارات العروض والقرارات.","The same number will receive offer and decision messages.")}</span></div>
+      <div class="row"><button class="btn btn-p" data-act="su-next">${L("إرسال رمز التحقق","Send code")}</button><span class="spec">§2 roles · OAuth/OTP</span></div>
+    </div>`;
+  if(s.step===2) body=`
+    <div class="form">
+      <div class="notice">${I("info")}<div>${L("رمز العرض التجريبي:","Demo code:")} <b class="mono">482193</b> — ${L("أُرسل عبر","sent by")} ${esc(T(CH[s.ch||"wa"]))} ${L("إلى","to")} <span dir="ltr">${esc(s.phone)}</span>. ${L("صالح 5 دقائق.","Valid for 5 minutes.")}</div></div>
+      <div class="field" style="max-width:260px"><label for="su-otp">${L("رمز التحقق (6 أرقام)","6-digit code")}</label><input id="su-otp" type="text" inputmode="numeric" dir="ltr" maxlength="6" data-su="otp" value="${esc(s.otp)}" class="mono ${s.err.otp?"invalid":""}">${s.err.otp?`<span class="err">${s.err.otp}</span>`:""}</div>
+      <div class="row"><button class="btn btn-p" data-act="su-next">${L("تأكيد","Verify")}</button><button class="btn btn-g" data-act="su-back">${L("رجوع","Back")}</button></div>
+    </div>`;
+  if(s.step===3){ const need=s.role==="institution"?[["lic",L("ترخيص البنك المركزي","Central Bank licence")],["reg",L("السجل التجاري","Commercial register")],["auth",L("تفويض المفوَّض بالتوقيع","Signatory authorisation")]]:[["id",L("البطاقة الشخصية (الوجهان)","National ID (both sides)")],["photo",L("صورة شخصية حديثة","Recent photo")],["res",L("إثبات السكن (اختياري)","Proof of residence (optional)")]];
+    body=`<div class="form">
+      ${need.map(([k,l])=>docSlot("su",k,l,s.docs[k])).join("")}
+      ${s.err.docs?`<span class="err" style="color:var(--bad);font-size:13px">${s.err.docs}</span>`:""}
+      <div class="notice">${I("lock")}<div>${L("تُخزَّن الوثائق مشفّرة في حاوية خاصة، وتُفتح فقط عبر رابط موقّع مؤقت لمراجع مخوّل، ويُسجَّل كل وصول.","Documents are encrypted in private storage, opened only via short-lived signed links by authorised reviewers, and every access is logged.")} ${spec("§9 KYC files")}</div></div>
+      <div class="row"><button class="btn btn-p" data-act="su-next">${L("إرسال للمراجعة","Submit for review")}</button><button class="btn btn-g" data-act="su-back">${L("رجوع","Back")}</button></div></div>`; }
+  if(s.step===4) body=`
+    <div class="notice warn">${I("clock")}<div><b>${L("حسابك قيد مراجعة KYC","Your account is under KYC review")}</b><br>${L("يراجع موظف مخوّل وثائقك عادة خلال يوم عمل. لا يمكن نشر طلب تمويل أو تقديم عرض قبل الاعتماد.","An authorised reviewer usually decides within one working day. You can't publish a request or submit offers before approval.")} ${spec("REVIEW_PENDING")}</div></div>
+    <div class="row"><button class="btn btn-g" data-act="go" data-role="kyc" data-view="kycq">${L("انتقل لدور مراجع KYC لاعتماده","Switch to the KYC reviewer to decide")}</button><button class="link" data-act="su-reset">${L("تسجيل حساب آخر","Register another")}</button></div>`;
+  return head(L("إنشاء حساب","Create an account"),L("المرحلة الأولى: تسجيل برقم الهاتف وتحقق يدوي من الوثائق.","Phase 1: phone sign-up with manual document review."))+
+    `<ol class="stepper">${steps.map((t,i)=>`<li class="${i+1<s.step?"done":""} ${i+1===s.step?"cur":""}">${t}</li>`).join("")}</ol><div class="card">${body}</div>`;
+};
+function docSlot(scope,k,label,val){
+  return `<div class="drop ${val?"done":""}"><span>${I(val?"check":"file")}</span><div class="grow"><b style="font-size:14px">${esc(label)}</b><div class="sub">${val?`${esc(val.name)} · ${val.scan?L("فحص البرمجيات الضارة: سليم","Malware scan: clean"):L("جارٍ الفحص…","Scanning…")}`:L("PDF أو JPG أو PNG، حتى 10 ميغابايت","PDF, JPG or PNG, up to 10 MB")}</div></div>
+    <input type="file" id="f-${scope}-${k}" data-file="${scope}:${k}" accept=".pdf,.jpg,.jpeg,.png" aria-label="${esc(label)}"><button class="btn btn-g btn-sm" data-act="sample-file" data-k="${scope}:${k}">${L("ملف تجريبي","Use sample")}</button></div>`;
+}
+
+/* ---------- VENDORS (phase 2 preview) ---------- */
+VIEWS.vendors = () => {
+  const cats=[["محاسبة ومسك دفاتر","Bookkeeping"],["خدمات قانونية وعقود","Legal & contracts"],["تسويق وتصميم","Marketing & design"],["تدريب وتطوير","Training"],["لوجستيات ونقل","Logistics"],["تقنية وبرمجة","Tech & software"]];
+  const sample=[["مكتب الدقة للمحاسبة","Al-Diqqa Accounting",0,"35,000 – 90,000"],["هوية للتصميم والتسويق","Hawiya Design",2,"60,000 – 250,000"],["مكتب الوثيقة القانوني","Al-Wathiqa Legal",1,"25,000 – 80,000"]];
+  const flow=["DRAFT","SENT","ACCEPTED","IN_PROGRESS","COMPLETED","SETTLED"];
+  return head(L("مزودو الخدمات","Service providers")+` <span class="pill t-g">${L("المرحلة 2","Phase 2")}</span>`,L("التصميم جاهز ومربوط بالمعمارية، والتفعيل مؤجل حتى يستقر مسار التمويل.","Designed and wired into the architecture; switched on after the funding flow is stable."))+
+  `<div class="notice gold">${I("info")}<div>${L("لن يظهر هذا القسم للمستخدمين في الإطلاق الأول. يبقى مسار التمويل مستقلاً تماماً عنه: لا يحتاج المستفيد عرض Vendor لنشر طلبه.","Hidden at first launch. The funding flow is fully independent: no vendor quote is needed to publish a request.")} ${spec("§3.5 · §4.3")}</div></div>
+  <div class="card"><div class="card-h"><h3>${L("فئات الكتالوج","Catalogue categories")}</h3></div><div class="row">${cats.map(c=>`<span class="chip">${esc(T(c))}</span>`).join("")}</div></div>
+  <div class="grid g3">${sample.map(v=>`<div class="card" style="opacity:.85"><div class="row" style="justify-content:space-between"><b style="font-family:var(--f-display)">${esc(T([v[0],v[1]]))}</b><span class="pill t-s">${L("معتمد","Verified")}</span></div><p class="sub" style="margin-top:6px">${esc(T(cats[v[2]]))}</p><dl class="kv" style="padding:8px 0 0"><dt>${L("نطاق السعر","Price range")}</dt><dd><span class="num">${v[3]}</span> ${L("ر.ي","YER")}</dd><dt>${L("مدة التنفيذ","Delivery")}</dt><dd>${L("5–15 يوماً","5–15 days")}</dd></dl><button class="btn btn-g btn-sm" disabled style="margin-top:10px;width:100%">${L("طلب عرض سعر — قريباً","Request quote — soon")}</button></div>`).join("")}</div>
+  <div class="card"><div class="card-h"><h3>${L("دورة صفقة الخدمة","Service deal lifecycle")}</h3><span class="sub">${L("العمولة تُستحق عند التسوية بعد الإنجاز، لا عند القبول (افتراضياً 2%، قابلة للضبط)","Commission accrues on settlement after completion, not on acceptance (default 2%, configurable)")}</span></div>
+  <div class="track">${flow.map((s,i)=>`<div class="st ${i<4?"done":""} ${i===4?"cur":""}">${s}</div>`).join("")}</div></div>`;
+};
+
+/* ---------- BENEFICIARY ---------- */
+VIEWS.dash = () => {
+  const mine=S.apps.filter(a=>a.owner==="me");
+  const live=mine.filter(a=>!["CLOSED","CANCELLED","EXPIRED","REJECTED_AT_INTAKE","DECLINED_AFTER_SELECTION"].includes(a.status));
+  const pend=S.offers.filter(o=>mine.some(a=>a.id===o.app && a.status==="OFFER_RECEIVED") && ["SUBMITTED","VIEWED"].includes(o.status));
+  const funded=zoneSums(mine.filter(a=>["FUNDED","CLOSED"].includes(a.status)).map(a=>[a.zone,(S.offers.find(o=>o.id===a.selected)||{amount:0}).amount]));
+  const next=mine.find(a=>a.status==="OFFER_RECEIVED");
+  const sel=mine.find(a=>["OFFER_SELECTED","PRE_DISBURSEMENT"].includes(a.status));
+  const notes=S.notifs.filter(n=>n.to==="beneficiary").slice(0,4);
+  return head(L(`أهلاً ${S.me.name[0]}`,`Welcome, ${S.me.name[1]}`),L("حسابك معتمد ويمكنك تقديم طلبات تمويل.","Your account is verified; you can submit funding requests."),
+    `${pill(KYC_ST,S.me.kyc)}<button class="btn btn-p" data-act="nav" data-view="new">${I("plus")}${L("طلب تمويل جديد","New request")}</button>`)+
+  kpis([[L("طلبات نشطة","Active requests"),live.length],[L("عروض بانتظار قرارك","Offers awaiting you"),pend.length],[L("إجمالي ما مُوِّل عبر عُونة","Funded through Aouna"),`<span style="font-size:20px">${funded}</span>`]])+
+  (next?`<div class="notice ok">${I("coins")}<div class="grow" style="flex:1"><b>${L(`لديك ${S.offers.filter(o=>o.app===next.id&&["SUBMITTED","VIEWED"].includes(o.status)).length} عروض على «${next.title[0]}»`,`${S.offers.filter(o=>o.app===next.id&&["SUBMITTED","VIEWED"].includes(o.status)).length} offers on “${next.title[1]}”`)}</b><br><span class="sub">${L("قارن القسط وإجمالي التكلفة قبل انتهاء صلاحية العروض.","Compare instalment and total cost before offers expire.")}</span></div><button class="btn btn-p btn-sm" data-act="open-app" data-id="${next.id}">${L("قارن العروض","Compare offers")}</button></div>`:"")+
+  (sel?`<div class="notice gold">${I("check")}<div style="flex:1"><b>${L("اخترت عرضاً — الخطوة التالية لدى المؤسسة","Offer chosen — next step is with the lender")}</b><br><span class="sub">${esc(T(sel.title))}</span></div><button class="btn btn-g btn-sm" data-act="open-app" data-id="${sel.id}">${L("التفاصيل","Details")}</button></div>`:"")+
+  `<div class="split"><div class="stack"><h2 style="font-size:17px">${L("طلباتي","My requests")}</h2>${appTable(mine)}</div>
+   <div class="card"><div class="card-h"><h3>${L("آخر الإشعارات","Latest notifications")}</h3></div>${notes.map(n=>`<div class="lrow">${I("bell","faint")}<div class="grow" style="font-size:14px">${esc(T(n.t))}</div><span class="when">${ago(n.at)}</span></div>`).join("")||`<div class="empty">${L("لا إشعارات","Nothing yet")}</div>`}</div></div>`;
+};
+function appTable(list,admin){
+  if(!list.length) return `<div class="empty">${L("لا توجد طلبات بعد. ابدأ بطلب تمويل جديد.","No requests yet. Start a new one.")}</div>`;
+  return `<div class="tw"><table><thead><tr><th>${L("الطلب","Request")}</th>${admin?`<th>${L("المحافظة","Region")}</th>`:""}<th>${L("المبلغ","Amount")}</th><th>${L("العروض","Offers")}</th><th>${L("الحالة","Status")}</th><th>${L("أُنشئ","Created")}</th></tr></thead><tbody>
+  ${list.map(a=>`<tr class="clickable" data-act="open-app" data-id="${a.id}" tabindex="0"><td><div class="t1">${esc(T(a.title))}</div><div class="t2 mono">${a.ref}</div></td>${admin?`<td>${esc(T(GOV[a.gov]))}</td>`:""}<td class="num">${fmt(a.amount)} <span class="t2">${curS(a.zone)}</span></td><td class="num">${S.offers.filter(o=>o.app===a.id&&o.status!=="WITHDRAWN").length}</td><td>${pill(APP_ST,a.status)}</td><td class="t2">${dt(a.created)}</td></tr>`).join("")}</tbody></table></div>`;
+}
+VIEWS.apps = () => head(L("طلباتي","My requests"),L("كل طلب يمر بحالات محددة؛ لا تتغير الحالة إلا عبر انتقال مسموح يُسجَّل في سجل التدقيق.","Each request moves through defined states; every transition is permitted and audited."),`<button class="btn btn-p" data-act="nav" data-view="new">${I("plus")}${L("طلب جديد","New request")}</button>`)+appTable(S.apps.filter(a=>a.owner==="me"));
+
+VIEWS.app = () => {
+  const a=app(S.sel); if(!a) return `<div class="empty">—</div>`;
+  if(S.role==="admin") return adminAppView(a);
+  if(a.owner!=="me") return `<div class="notice bad">${I("lock")}<div>403 — ${L("لا تملك صلاحية الوصول لهذا الطلب","You can't access this request")} ${spec("ABAC")}</div></div>`;
+  // mark viewed (offer_events)
+  let changed=false; S.offers.forEach(o=>{ if(o.app===a.id && o.status==="SUBMITTED" && a.status==="OFFER_RECEIVED"){ o.status="VIEWED"; changed=true; audit("offer.viewed",`Offer ${o.id}`,"SUBMITTED","VIEWED","","beneficiary"); } }); if(changed) save();
+  const offers=S.offers.filter(o=>o.app===a.id && o.status!=="WITHDRAWN").sort((x,y)=>new Date(x.created)-new Date(y.created));
+  const qs=offers.map(o=>({o,q:quote(o)}));
+  const live=qs.filter(x=>["SUBMITTED","VIEWED","SELECTED"].includes(x.o.status));
+  const minCost=Math.min(...live.map(x=>x.q.cost)), maxAmt=Math.max(...live.map(x=>x.o.amount)), minInst=Math.min(...live.map(x=>x.q.inst));
+  const canSelect=a.status==="OFFER_RECEIVED";
+  const selO=offers.find(o=>o.status==="SELECTED");
+  const canCancel=["DRAFT","NEEDS_INFO","PUBLISHED","OFFER_RECEIVED"].includes(a.status);
+  return head(esc(T(a.title)),`<span class="mono">${a.ref}</span> · ${esc(T(SEC[a.sector]))} · ${esc(T(GOV[a.gov]))} · <span class="chip">${zoneName(a.zone)}</span>`,
+    `${pill(APP_ST,a.status)}${canCancel?`<button class="btn btn-d btn-sm" data-act="cancel-app" data-id="${a.id}">${L("إلغاء الطلب","Cancel request")}</button>`:""}`,
+    `<button data-act="nav" data-view="apps">${L("طلباتي","My requests")}</button> / <span class="mono">${a.ref}</span>`)+
+  `<div class="card">${track(a)} <div style="margin-top:8px">${spec("§4.1 state machine · "+a.status)}</div></div>`+
+  (selO?selectedPanel(a,selO):"")+
+  (offers.length?`<section class="stack"><div class="row" style="justify-content:space-between"><h2 style="font-size:18px">${L("مقارنة العروض","Compare offers")}</h2><span class="sub">${L("القسط وعدد الأقساط والرسوم كما أعلنتها كل مؤسسة بطريقتها؛ المنصة تجمعها فقط لتسهيل المقارنة.","Instalment, term and fees as each lender declared them; the platform only adds them up.")} ${spec("v2.1 §7 declared terms")}</span></div>
+   <div class="offers">${qs.map((x,i)=>offerCard(a,x,i,{minCost,maxAmt,minInst,canSelect})).join("")}</div>
+   ${(()=>{ const ts=live.map(x=>+x.o.term); return ts.length>1&&Math.max(...ts)-Math.min(...ts)>6?`<div class="notice warn">${I("info")}<div>${L("مدد العروض مختلفة كثيراً: العرض الأقل تكلفة قد يكون بقسط شهري أعلى. قارن القسط مع إجمالي التكلفة.","Offer terms differ widely: the lowest-cost offer may carry a higher instalment. Compare both.")}</div></div>`:""; })()}
+   ${canSelect?`<p class="sub">${L("هوية المؤسسات مخفية حتى تختار؛ هذا يجعل المقارنة على الشروط وحدها.","Lender names stay hidden until you choose, so you compare on terms alone.")}</p>`:""}</section>`
+  :(["PUBLISHED"].includes(a.status)?`<div class="notice">${I("clock")}<div><b>${L("طلبك منشور للمؤسسات المطابقة","Published to matching lenders")}</b><br><span class="sub">${L(`وصل إلى ${S.institutions.filter(i=>matches(a,i)).length} مؤسسات. ستصلك العروض هنا وفي الإشعارات. صلاحية الطلب حتى ${dt(a.expires)}.`,`Reached ${S.institutions.filter(i=>matches(a,i)).length} lenders. Offers will appear here. Valid until ${dt(a.expires)}.`)}</span></div></div>`:""))+
+  `<div class="grid g2">
+    <div class="card"><div class="card-h"><h3>${L("تفاصيل الطلب","Request details")}</h3></div>
+      <dl class="kv" style="padding:0"><dt>${L("المبلغ المطلوب","Amount")}</dt><dd>${money(a.amount,a.zone)}</dd><dt>${L("المدة","Term")}</dt><dd>${a.term} ${L("شهراً","months")}</dd><dt>${L("فترة السماح المطلوبة","Grace requested")}</dt><dd>${a.grace} ${L("شهر","mo")}</dd><dt>${L("مرحلة المشروع","Stage")}</dt><dd>${a.stage==="idea"?L("فكرة","Idea"):L("قائم","Operating")}</dd><dt>${L("الغرض","Purpose")}</dt><dd>${esc(T(a.purpose))}</dd><dt>${L("صالح حتى","Valid until")}</dt><dd>${dt(a.expires)}</dd></dl>
+      <p class="sub" style="margin-top:10px">${esc(T(a.desc))}</p></div>
+    <div class="card"><div class="card-h"><h3>${L("الضمانة والمستندات","Guarantee & documents")}</h3>${spec("guarantor PII hidden from lenders")}</div>
+      <p class="sub" style="margin-bottom:6px">${guarantorNote(a)}</p>
+      ${(a.guarantors||[]).filter(g=>g.name).map(g=>`<div class="lrow">${I("user","faint")}<div class="grow"><div style="font-size:14px">${esc(g.name)}</div><div class="sub" dir="ltr" style="text-align:start">${esc(g.phone)}</div></div>${g.consent==="CONSENTED"?`<span class="pill t-s">${L("وافق","Consented")}</span>`:`<span class="pill t-w">${L("بانتظار الموافقة","Awaiting consent")}</span>`}</div>`).join("")}
+      ${(a.docs||[]).map(d=>`<div class="lrow">${I("file","faint")}<div class="grow" style="font-size:14px">${esc(T(d))}</div><span class="pill t-s">${L("سليم","Clean")}</span></div>`).join("")}</div>
+  </div>`;
+};
+function offerCard(a,x,i,m){
+  const {o,q}=x; const isSel=o.status==="SELECTED"; const dim=o.status==="DECLINED";
+  const tags=[]; if(!dim && ["SUBMITTED","VIEWED","SELECTED"].includes(o.status)){ if(q.cost===m.minCost) tags.push(`<span class="chip on">${L("الأقل تكلفة","Lowest cost")}</span>`); if(q.inst===m.minInst) tags.push(`<span class="chip">${L("أقل قسط","Lowest instalment")}</span>`); if(o.amount===m.maxAmt && o.amount>=a.amount) tags.push(`<span class="chip">${L("المبلغ كاملاً","Full amount")}</span>`); else if(o.amount<a.amount) tags.push(`<span class="chip">${L("مبلغ أقل من المطلوب","Below requested")}</span>`); }
+  const dl=daysLeft(o.expires);
+  const name = a.reveal && isSel ? esc(T(inst(o.inst).name)) : `${I("lock")} ${L("مؤسسة مخفية","Lender hidden")}`;
+  return `<article class="offer ${q.cost===m.minCost&&!dim?"best":""} ${isSel?"sel":""} ${dim?"dim":""}">
+    <div class="offer-h"><div><b>${L("العرض","Offer")} ${AR()?LET[i]:LETE[i]}</b><div class="offer-inst row" style="gap:4px">${name}</div></div>${pill(OF_ST,o.status)}</div>
+    <div class="offer-big"><div class="lbl">${L("القسط الشهري","Monthly instalment")}</div><div class="val">${money(q.inst,a.zone)}</div></div>
+    <div class="offer-tags">${tags.join("")}</div>
+    <dl class="kv">
+      <dt>${L("المبلغ الممنوح","Amount offered")}</dt><dd>${fmt(o.amount)}</dd>
+      <dt>${L("المدة / السماح","Term / grace")}</dt><dd>${o.term} / ${o.grace} ${L("شهر","mo")}</dd>
+      <dt>${L("عدد الأقساط","Instalments")}</dt><dd>${quote(o).n}</dd>
+      <dt>${L("طريقة الاحتساب (كما سمّتها المؤسسة)","Pricing (lender's own)")}</dt><dd style="font-weight:400">${esc(T(o.mlabel||METHOD[o.method]))}</dd>
+      <dt>${L("الرسوم","Fees")}</dt><dd>${fmt(o.fees)}</dd>
+      <dt>${L("إجمالي تكلفة التمويل","Total cost of credit")}</dt><dd>${fmt(q.cost)}</dd>
+      <dt>${L("إجمالي ما ستسدده","Total repayable")}</dt><dd>${fmt(q.paid)}</dd>
+      <dt>${L("مستندات تطلبها المؤسسة","Lender requires")}</dt><dd style="font-weight:400">${esc(T(o.docs))}</dd>
+      <dt>${L("ينتهي العرض","Expires")}</dt><dd>${dl>=0?L(`خلال ${dl} يوم`,`in ${dl}d`):L("منتهي","expired")}</dd>
+    </dl>
+    <div class="offer-f">${m.canSelect && ["SUBMITTED","VIEWED"].includes(o.status)?`<button class="btn btn-p" data-act="ask-select" data-id="${o.id}">${L("اختيار هذا العرض","Choose this offer")}</button>`:isSel?`<span class="pill t-g" style="width:100%;justify-content:center;padding:8px">${L("العرض الذي اخترته","Your chosen offer")}</span>`:""}</div>
+  </article>`;
+}
+function selectedPanel(a,o){
+  const i=inst(o.inst); const q=quote(o);
+  const steps=a.status==="DECLINED_AFTER_SELECTION"?`<div class="notice bad">${I("info")}<div>${L("اعتذرت المؤسسة بعد الاختيار:","The lender declined after selection:")} ${esc(a.declineReason||"")} — ${L("يمكنك إعادة نشر الطلب بإصدار جديد.","You can republish as a new version.")}</div></div>`:"";
+  return `<div class="card" style="border-color:var(--gold)"><div class="card-h"><h3>${L("المؤسسة التي اخترتها","Your chosen lender")}</h3>${pill(APP_ST,a.status)}</div>
+   <div class="grid g2"><dl class="kv" style="padding:0"><dt>${L("المؤسسة","Institution")}</dt><dd>${esc(T(i.name))}</dd><dt>${L("الفرع","Branch")}</dt><dd>${esc(T(i.branch))}</dd><dt>${L("هاتف التواصل","Contact")}</dt><dd dir="ltr" style="text-align:end;user-select:all">${i.contact}</dd><dt>${L("القسط المتفق مبدئياً","Indicative instalment")}</dt><dd>${money(q.inst,a.zone)}</dd></dl>
+   <div class="stack"><p class="sub">${L("الخطوات التالية تتم مع المؤسسة مباشرة: استكمال KYC لديها، توقيع العقد، ثم الصرف عبر قنواتها. عُونة تسجّل النتيجة فقط ولا تصرف التمويل.","Next steps happen with the lender: their KYC, contract signing, then disbursement through their channels. Aouna only records the outcome and never disburses.")}</p>${spec("§3.4 reveal to selected institution only")}</div></div>${steps}</div>`;
+}
+
+/* new request wizard */
+function blankDraft(){ return {step:1,title:"",sector:"",gov:S.me.gov,zone:GOV_ZONE[S.me.gov],stage:"existing",desc:"",amount:"",term:"18",grace:"0",purpose:"",gtype:"takaful",guarantors:[{name:"",phone:"",rel:""},{name:"",phone:"",rel:""}],docs:{},consent:false,err:{}}; }
+VIEWS.new = () => {
+  if(S.me.kyc!=="ACTIVE") return `<div class="notice warn">${I("lock")}<div>${L("لا يمكن تقديم طلب قبل اعتماد KYC.","You can't submit before KYC approval.")}</div></div>`;
+  const d=S.draft||(S.draft=blankDraft()); const e=d.err||{};
+  const steps=[L("المشروع","Project"),L("التمويل","Funding"),L("الضمانة","Guarantee"),L("المستندات","Documents"),L("المراجعة والإرسال","Review & submit")];
+  const fld=(id,label,inp,hint)=>`<div class="field"><label for="d-${id}">${label}</label>${inp}${e[id]?`<span class="err">${e[id]}</span>`:hint?`<span class="hint">${hint}</span>`:""}</div>`;
+  const inv=k=>e[k]?"invalid":"";
+  const opt=(map,v)=>`<option value="">${L("— اختر —","— Select —")}</option>`+Object.keys(map).map(k=>`<option value="${k}" ${v===k?"selected":""}>${esc(T(map[k]))}</option>`).join("");
+  let body="";
+  if(d.step===1) body=`<div class="form">
+    ${fld("title",L("اسم المشروع","Project name"),`<input id="d-title" type="text" data-bind="title" value="${esc(d.title)}" class="${inv("title")}" placeholder="${L("مثال: توسعة ورشة نجارة","e.g. Expanding a carpentry shop")}">`)}
+    <div class="f2">${fld("sector",L("القطاع","Sector"),`<select id="d-sector" data-bind="sector" class="${inv("sector")}">${opt(SEC,d.sector)}</select>`)}
+    ${fld("gov",L("المحافظة","Governorate"),`<select id="d-gov" data-bind="gov" class="${inv("gov")}">${opt(GOV,d.gov)}</select>`,L("تُستخدم لمطابقة المؤسسات العاملة في منطقتك","Used to match lenders active in your area"))}
+    ${fld("stage",L("مرحلة المشروع","Stage"),`<select id="d-stage" data-bind="stage"><option value="existing" ${d.stage==="existing"?"selected":""}>${L("مشروع قائم","Operating business")}</option><option value="idea" ${d.stage==="idea"?"selected":""}>${L("فكرة جديدة","New idea")}</option></select>`)}</div>
+    ${d.gov?`<div class="field"><span class="flabel">${L("عملة الطلب","Request currency")} ${spec("v2.1 §3 zone by governorate")}</span>${SPLIT.includes(d.gov)?`<div class="row">${["new","old"].map(z=>`<button class="chip ${d.zone===z?"on":""}" data-act="d-zone" data-v="${z}">${zoneName(z)}</button>`).join("")}</div><span class="hint">${L("محافظتك مقسومة بين منطقتين نقديتين. اختر العملة المتداولة في مكان مشروعك.","Your governorate spans two currency zones. Pick the one where your project operates.")}</span>`:`<div class="row"><span class="chip on">${zoneName(d.zone)}</span></div><span class="hint">${L("تتحدد تلقائياً من المحافظة، وتُقدَّم كل العروض بها.","Set automatically from the governorate; all offers use it.")}</span>`}</div>`:""}
+    ${fld("desc",L("وصف المشروع","Description"),`<textarea id="d-desc" data-bind="desc" class="${inv("desc")}" placeholder="${L("ماذا تبيع، لمن، ومنذ متى؟ كم عاملاً لديك؟","What do you sell, to whom, since when? Staff count?")}">${esc(d.desc)}</textarea>`,L("يظهر للمؤسسات دون اسمك أو رقمك","Shown to lenders without your name or number"))}
+  </div>`;
+  if(d.step===2) body=`<div class="form"><div class="f2">
+    ${fld("amount",L(`المبلغ المطلوب (${ZONE[d.zone||"new"][0]})`,`Amount (${ZONE[d.zone||"new"][1]})`),`<input id="d-amount" type="number" inputmode="numeric" min="100000" step="50000" data-bind="amount" value="${esc(d.amount)}" class="num ${inv("amount")}">`,L("من 100,000 إلى 20,000,000","100,000 – 20,000,000"))}
+    ${fld("term",L("مدة السداد","Repayment term"),`<select id="d-term" data-bind="term">${[6,9,12,18,24,30,36].map(m=>`<option value="${m}" ${+d.term===m?"selected":""}>${m} ${L("شهراً","months")}</option>`).join("")}</select>`)}
+    ${fld("grace",L("فترة سماح مطلوبة","Grace period"),`<select id="d-grace" data-bind="grace">${[0,1,2,3].map(m=>`<option value="${m}" ${+d.grace===m?"selected":""}>${m} ${L("شهر","mo")}</option>`).join("")}</select>`)}</div>
+    ${fld("purpose",L("استخدام التمويل","Use of funds"),`<input id="d-purpose" type="text" data-bind="purpose" value="${esc(d.purpose)}" class="${inv("purpose")}" placeholder="${L("مثال: شراء ماكينتين وخامات لثلاثة أشهر","e.g. two machines and 3 months of materials")}">`)}
+    <div class="notice">${I("info")}<div>${L("المؤسسات تحدد في عروضها طريقة احتساب التكلفة (مرابحة أو رصيد متناقص) والرسوم، وتعرضها عُونة بنفس المعادلة لتسهيل المقارنة.","Lenders set pricing method (murabaha or declining balance) and fees; Aouna shows all with the same formula.")}</div></div></div>`;
+  if(d.step===3) body=`<div class="form">
+    <div class="field"><span class="flabel">${L("نوع الضمانة","Guarantee type")}</span><div class="row">
+      ${[["takaful",L("ضمانة تكافلية (مجموعة)","Group guarantee")],["personal",L("ضامن شخصي","Personal guarantor")],["none",L("بدون ضامن","None")]].map(g=>`<button class="chip ${d.gtype===g[0]?"on":""}" data-act="d-gtype" data-v="${g[0]}">${g[1]}</button>`).join("")}</div>
+      <span class="hint">${d.gtype==="takaful"?L("يضمن أعضاء المجموعة بعضهم تكافلياً؛ يُطلب عضوان على الأقل ويوافق كل منهم برسالة.","Members guarantee each other; at least two, each confirms by message."):d.gtype==="none"?L("قد تقل العروض المتاحة دون ضامن.","Fewer lenders may offer without a guarantor."):L("يستلم الضامن رسالة لتأكيد موافقته.","The guarantor confirms by message.")}</span></div>
+    ${d.gtype!=="none"?d.guarantors.map((g,i)=>`<div class="f2" style="align-items:end">
+      <div class="field"><label for="g-${i}-name">${L("اسم الضامن","Guarantor name")} ${i+1}</label><input id="g-${i}-name" type="text" data-bind="g.${i}.name" value="${esc(g.name)}"></div>
+      <div class="field"><label for="g-${i}-phone">${L("الهاتف","Phone")}</label><input id="g-${i}-phone" type="tel" dir="ltr" data-bind="g.${i}.phone" value="${esc(g.phone)}"></div>
+      <div class="field"><label for="g-${i}-rel">${L("الصلة","Relation")}</label><input id="g-${i}-rel" type="text" data-bind="g.${i}.rel" value="${esc(g.rel)}"></div></div>`).join("")+
+      `<div class="row"><button class="btn btn-g btn-sm" data-act="d-addg" ${d.guarantors.length>=5?"disabled":""}>${I("plus")}${L("إضافة ضامن","Add guarantor")}</button>${e.g?`<span class="err" style="color:var(--bad);font-size:13px">${e.g}</span>`:""}</div>
+      <div class="notice">${I("lock")}<div>${L("بيانات الضامنين لا تظهر لأي مؤسسة قبل اختيارك للعرض، وتظهر بعدها للمؤسسة المختارة فقط.","Guarantor details stay hidden from all lenders until you choose, then go to the chosen lender only.")}</div></div>`:""}
+  </div>`;
+  if(d.step===4) body=`<div class="form">${docSlot("d","plan",L("خطة المشروع أو وصف تفصيلي (مطلوب)","Business plan (required)"),d.docs.plan)}${docSlot("d","quote",L("عروض أسعار أو فواتير مبدئية (اختياري)","Quotations or pro-forma invoices (optional)"),d.docs.quote)}${e.docs?`<span class="err" style="color:var(--bad);font-size:13px">${e.docs}</span>`:""}
+    <p class="sub">${L("وثائق هويتك معتمدة مسبقاً في ملفك ولا تُرفق بالطلب المنشور.","Your ID documents are already verified and are not attached to the published request.")}</p></div>`;
+  if(d.step===5){ const m=S.institutions.filter(i=>matches({gov:d.gov,sector:d.sector,amount:+d.amount,zone:d.zone},i)).length;
+    body=`<div class="form"><div class="grid g2">
+      <dl class="kv" style="padding:0"><dt>${L("المشروع","Project")}</dt><dd>${esc(d.title)}</dd><dt>${L("القطاع","Sector")}</dt><dd>${esc(T(SEC[d.sector]))}</dd><dt>${L("المحافظة","Governorate")}</dt><dd>${esc(T(GOV[d.gov]))}</dd><dt>${L("المبلغ","Amount")}</dt><dd>${money(d.amount,d.zone)}</dd><dt>${L("المدة","Term")}</dt><dd>${d.term} ${L("شهراً","months")}</dd><dt>${L("الضمانة","Guarantee")}</dt><dd>${d.gtype==="takaful"?L("تكافلية","Group"):d.gtype==="personal"?L("شخصية","Personal"):L("بدون","None")}</dd></dl>
+      <div class="stack"><div class="notice ${m?"ok":"warn"}">${I(m?"check":"info")}<div>${m?L(`سيصل طلبك إلى ${m} مؤسسات تعمل في ${T(GOV[d.gov])} وتموّل قطاع ${T(SEC[d.sector])}.`,`Your request will reach ${m} lenders active in ${T(GOV[d.gov])} for ${T(SEC[d.sector])}.`):L("لا توجد مؤسسة مطابقة حالياً؛ سيبقى الطلب منشوراً حتى تنضم مؤسسة مطابقة.","No matching lender yet; the request stays published until one joins.")}</div></div>
+      <div class="notice">${I("eye")}<div><b>${L("ما تراه المؤسسات","What lenders see")}</b><br><span class="sub">${L("المشروع والقطاع والمحافظة والمبلغ والمدة وعدد الضامنين. لا يظهر اسمك ولا هاتفك ولا وثائق هويتك.","Project, sector, region, amount, term, guarantor count. Not your name, phone or ID.")}</span></div></div></div></div>
+      <label class="check"><input type="checkbox" id="d-consent" data-bind="consent" ${d.consent?"checked":""}><span>${L("أوافق على نشر طلبي مجهّل الهوية للمؤسسات المطابقة، وعلى كشف بيانات التواصل للمؤسسة التي أختار عرضها فقط.","I agree to publish my request anonymously to matching lenders, and to share my contact details only with the lender I choose.")}</span></label>${e.consent?`<span class="err" style="color:var(--bad);font-size:13px">${e.consent}</span>`:""}</div>`; }
+  return head(L("طلب تمويل جديد","New funding request"),L("يُحفظ ما تكتبه تلقائياً كمسودة.","Your progress is saved as a draft."),"",`<button data-act="nav" data-view="apps">${L("طلباتي","My requests")}</button> / ${L("جديد","New")}`)+
+   `<ol class="stepper">${steps.map((t,i)=>`<li class="${i+1<d.step?"done":""} ${i+1===d.step?"cur":""}">${t}</li>`).join("")}</ol>
+   <div class="card">${body}<div class="row" style="justify-content:space-between;margin-top:20px;border-top:1px solid var(--line-soft);padding-top:16px">
+     <div class="row">${d.step>1?`<button class="btn btn-g" data-act="d-back">${L("السابق","Back")}</button>`:""}<button class="link" data-act="d-sample">${L("تعبئة بمثال","Fill with example")}</button></div>
+     ${d.step<5?`<button class="btn btn-p" data-act="d-next">${L("التالي","Next")} ${I("arrow","flip")}</button>`:`<button class="btn btn-p" data-act="d-submit">${I("send","flip")}${L("إرسال الطلب","Submit request")}</button>`}</div></div>`;
+};
+function validateDraft(d,step){
+  const e={};
+  if(step===1){ if((d.title||"").trim().length<4) e.title=L("اكتب اسماً واضحاً للمشروع (4 أحرف على الأقل)","Enter a clear name (4+ characters)"); if(!d.sector) e.sector=L("اختر القطاع","Choose a sector"); if(!d.gov) e.gov=L("اختر المحافظة","Choose a governorate"); if((d.desc||"").trim().length<20) e.desc=L("صف المشروع في 20 حرفاً على الأقل لتفهمه المؤسسات","Describe the project in at least 20 characters"); }
+  if(step===2){ const a=+d.amount; if(!a||a<100000||a>20000000) e.amount=L("أدخل مبلغاً بين 100,000 و20,000,000 ريال","Enter 100,000 – 20,000,000 YER"); if((d.purpose||"").trim().length<4) e.purpose=L("اذكر كيف ستستخدم التمويل","Say how you'll use the funds"); }
+  if(step===3){ const ok=d.guarantors.filter(g=>g.name.trim().length>2 && g.phone.replace(/\D/g,"").length>=9).length; if(d.gtype==="takaful"&&ok<2) e.g=L("أدخل اسم ورقم هاتف عضوين على الأقل","Enter name and phone for at least two members"); if(d.gtype==="personal"&&ok<1) e.g=L("أدخل اسم ورقم هاتف الضامن","Enter the guarantor's name and phone"); }
+  if(step===4){ if(!d.docs.plan) e.docs=L("خطة المشروع مطلوبة","The business plan is required"); }
+  if(step===5){ if(!d.consent) e.consent=L("الموافقة مطلوبة لنشر الطلب","Consent is required to publish"); }
+  return e;
+}
+
+VIEWS.profile = () => head(L("ملفي والتحقق","Profile & KYC"),"")+
+  `<div class="grid g2"><div class="card"><div class="card-h"><h3>${L("بيانات الحساب","Account")}</h3>${pill(KYC_ST,S.me.kyc)}</div>
+    <dl class="kv" style="padding:0"><dt>${L("الاسم","Name")}</dt><dd>${esc(T(S.me.name))}</dd><dt>${L("الهاتف","Phone")}</dt><dd dir="ltr" style="text-align:end">${S.me.phone}</dd><dt>${L("المحافظة","Governorate")}</dt><dd>${esc(T(GOV[S.me.gov]))}</dd><dt>${L("الرمز المجهّل","Anonymous code")}</dt><dd class="mono">${S.me.code}</dd><dt>${L("تاريخ الاعتماد","Approved on")}</dt><dd>${dt(S.me.kycAt)}</dd></dl></div>
+   <div class="card"><div class="card-h"><h3>${L("وثائق التحقق","KYC documents")}</h3></div>
+    ${S.kyc.find(k=>k.id==="K5").docs.map(d=>`<div class="lrow">${I("file","faint")}<div class="grow" style="font-size:14px">${esc(T(d))}</div><span class="pill t-s">${L("معتمد","Approved")}</span></div>`).join("")}
+    <p class="sub" style="margin-top:10px">${L("لتحديث وثيقة منتهية ارفعها من جديد؛ سيُعاد فتح حالة مراجعة دون إيقاف طلباتك الجارية.","To update an expired document, upload it again; a review case reopens without pausing live requests.")}</p></div></div>
+   <div class="card"><div class="card-h"><h3>${L("الخصوصية والموافقات","Privacy & consents")}</h3>${spec("§9 privacy")}</div><div class="stack">
+    <label class="check"><input type="checkbox" checked disabled><span>${L("نشر طلباتي مجهّلة الهوية للمؤسسات المطابقة (مطلوب لاستخدام المنصة)","Publish my requests anonymously (required)")}</span></label>
+    <div class="field"><span class="flabel">${L("قناة الإشعارات ورمز الدخول","Notifications & login code")}</span><div class="row">${[["wa",L("واتساب أولاً، ثم SMS عند التعذّر","WhatsApp first, SMS fallback")],["sms",L("رسائل SMS فقط","SMS only")]].map(c=>`<button class="chip ${S.prefs.beneficiary===c[0]?"on":""}" data-act="pref-ch" data-v="${c[0]}">${c[1]}</button>`).join("")}</div><span class="hint">${L("تصلك رسالة عند: وصول عرض، قرب انتهاء العروض، قرار التحقق، اعتذار مؤسسة، وسؤال تأكيد الصرف. الرسالة تحمل رابطاً ولا تحمل تفاصيل طلبك.","You're messaged on a new offer, offers expiring, KYC decision, a lender decline and the disbursement check. Messages carry a link, not your details.")} ${spec("v2.1 §5")}</span></div>
+    <div class="row"><button class="btn btn-g btn-sm" data-act="toast" data-msg="${L("سيصلك ملف ببياناتك خلال 24 ساعة","Your data export will be ready within 24h")}">${L("طلب نسخة من بياناتي","Export my data")}</button><button class="btn btn-g btn-sm" data-act="toast" data-msg="${L("أُرسل طلب التصحيح لفريق الدعم","Correction request sent")}">${L("طلب تصحيح","Request correction")}</button></div></div></div>`;
+
+VIEWS.support = () => {
+  const s=S.uiTab.ticket||{subject:"",cat:"offers",msg:"",err:{}};
+  return head(L("الدعم","Support"),L("نرد على التذاكر خلال يوم عمل.","We reply within one working day."))+
+  `<div class="split"><div class="stack">${S.tickets.map(t=>`<div class="card"><div class="card-h"><div><h3>${esc(T(t.subject))}</h3><span class="sub"><span class="mono">${t.id}</span> · ${esc(T(t.cat))} · ${ago(t.at)}</span></div>${pill(MISC_ST,t.status)}</div>${t.reply?`<div class="notice">${I("help")}<div>${esc(T(t.reply))}</div></div>`:`<p class="sub">${L("مدة الاستجابة المستهدفة: 24 ساعة","Target response: 24 hours")}</p>`}</div>`).join("")}</div>
+  <div class="card"><div class="card-h"><h3>${L("تذكرة جديدة","New ticket")}</h3></div><div class="form">
+    <div class="field"><label for="tk-subject">${L("الموضوع","Subject")}</label><input id="tk-subject" type="text" data-tk="subject" value="${esc(s.subject)}" class="${s.err.subject?"invalid":""}">${s.err.subject?`<span class="err">${s.err.subject}</span>`:""}</div>
+    <div class="field"><label for="tk-cat">${L("التصنيف","Category")}</label><select id="tk-cat" data-tk="cat"><option value="offers">${L("العروض","Offers")}</option><option value="kyc">${L("التحقق والحساب","Account & KYC")}</option><option value="complaint">${L("شكوى على مؤسسة","Complaint about a lender")}</option></select></div>
+    <div class="field"><label for="tk-msg">${L("الرسالة","Message")}</label><textarea id="tk-msg" data-tk="msg">${esc(s.msg)}</textarea></div>
+    <button class="btn btn-p" data-act="tk-send">${L("إرسال","Send")}</button></div></div></div>`;
+};
+
+/* ---------- OFFICER ---------- */
+VIEWS.queue = () => {
+  const I1=inst("I1"); const f=S.uiTab.qf||"all";
+  let list=S.apps.filter(a=>officerCanSee(a) && ["PUBLISHED","OFFER_RECEIVED"].includes(a.status));
+  if(f==="todo") list=list.filter(a=>!S.offers.some(o=>o.app===a.id&&o.inst==="I1"&&o.status!=="WITHDRAWN"));
+  const hidden=S.apps.filter(a=>["PUBLISHED","OFFER_RECEIVED"].includes(a.status) && !matches(a,I1)).length;
+  return head(L("الطلبات المطابقة لسياستكم","Requests matching your policy"),L("تظهر الطلبات مجهّلة الهوية. الاسم والهاتف يظهران فقط إذا اختار المستفيد عرضكم.","Requests are anonymised. Name and phone appear only if the applicant chooses your offer."),`<span class="spec">ABAC · institution scope</span>`)+
+  `<div class="row">${[["all",L("الكل","All")],["todo",L("لم نقدّم عليها","Not yet offered")]].map(x=>`<button class="chip ${f===x[0]?"on":""}" data-act="qf" data-v="${x[0]}">${x[1]}</button>`).join("")}<span class="sub" style="margin-inline-start:auto">${L(`${hidden} طلبات خارج سياستكم لا تظهر لكم`,`${hidden} requests outside your policy are hidden`)}</span></div>`+
+  (list.length?`<div class="tw"><table><thead><tr><th>${L("المشروع","Project")}</th><th>${L("القطاع / المحافظة","Sector / region")}</th><th>${L("المبلغ","Amount")}</th><th>${L("المدة","Term")}</th><th>${L("الضمانة","Guarantee")}</th><th>${L("عرضكم","Your offer")}</th><th>${L("يُغلق","Closes")}</th></tr></thead><tbody>
+  ${list.map(a=>{const mo=S.offers.find(o=>o.app===a.id&&o.inst==="I1"&&o.status!=="WITHDRAWN");return `<tr class="clickable" data-act="open-req" data-id="${a.id}" tabindex="0"><td><div class="t1">${esc(T(a.title))}</div><div class="t2"><span class="mono">${a.ref}</span> · ${L("مستفيد","Applicant")} <span class="mono">${a.bcode}</span> · KYC ✓</div></td><td><div>${esc(T(SEC[a.sector]))}</div><div class="t2">${esc(T(GOV[a.gov]))}</div></td><td class="num">${fmt(a.amount)} <span class="t2">${curS(a.zone)}</span></td><td class="num">${a.term}</td><td class="t2">${guarantorNote(a)}</td><td>${mo?pill(OF_ST,mo.status):`<span class="pill t-w">${L("لم يُقدَّم","None")}</span>`}</td><td class="t2">${L(`${daysLeft(a.expires)} يوماً`,`${daysLeft(a.expires)}d`)}</td></tr>`;}).join("")}</tbody></table></div>`:`<div class="empty">${L("لا طلبات مطابقة الآن. عدّل سياسة الأهلية من حساب مدير المؤسسة لتوسيع النطاق.","No matching requests. The institution admin can widen the eligibility policy.")}</div>`);
+};
+VIEWS.req = () => {
+  const a=app(S.sel); if(!a||!officerCanSee(a)) return `<div class="notice bad">${I("lock")}<div>403 — ${L("هذا الطلب خارج نطاق مؤسستكم","Outside your institution's scope")} ${spec("ABAC deny")}</div></div>`;
+  const mo=S.offers.find(o=>o.app===a.id&&o.inst==="I1"&&o.status!=="WITHDRAWN");
+  const I1=inst("I1");
+  const f=S.uiTab.of||{amount:a.amount,mlabel:L("مرابحة","Murabaha"),pay:Math.round(legacyInst({amount:a.amount,method:"murabaha",rate:14,term:a.term,grace:a.grace})/100)*100,term:a.term,fees:25000,grace:a.grace,docs:"",valid:S.settings.offerDays,reviewed:false};
+  S.uiTab.of=f;
+  const q=quote(f);
+  const revealed=a.reveal && mo && mo.status==="SELECTED";
+  const form = !mo && ["PUBLISHED","OFFER_RECEIVED"].includes(a.status) ? `<div class="card"><div class="card-h"><h3>${L("تقديم عرض تمويل","Submit an offer")}</h3>${spec("funding_offers · offer_conditions")}</div><div class="form" id="offer-form">
+    <div class="f2">
+      <div class="field"><label for="of-amount">${L("المبلغ الممنوح","Amount")}</label><input id="of-amount" type="number" data-of="amount" value="${f.amount}" class="num"><span class="hint">${L(`سقف سياستكم ${fmt(I1.policy.lim[a.zone][1])} ${curS(a.zone)}`,`Policy cap ${fmt(I1.policy.lim[a.zone][1])} ${curS(a.zone)}`)}</span></div>
+      <div class="field"><label for="of-pay">${L("القسط الشهري","Monthly instalment")} (${curS(a.zone)})</label><input id="of-pay" type="number" data-of="pay" value="${f.pay}" class="num"><span class="hint">${L("تحسبونه بطريقة مؤسستكم","Computed your own way")}</span></div>
+      <div class="field"><label for="of-mlabel">${L("طريقة الاحتساب كما تسمّونها","Your pricing method")}</label><input id="of-mlabel" type="text" data-of="mlabel" value="${esc(f.mlabel)}"><span class="hint">${L("تظهر للمستفيد كما كتبتموها","Shown to the applicant as written")}</span></div>
+      <div class="field"><label for="of-term">${L("المدة (شهر)","Term (months)")}</label><input id="of-term" type="number" data-of="term" value="${f.term}" class="num"></div>
+      <div class="field"><label for="of-grace">${L("فترة السماح (شهر)","Grace (months)")}</label><input id="of-grace" type="number" data-of="grace" value="${f.grace}" class="num"></div>
+      <div class="field"><label for="of-fees">${L("رسوم إدارية","Admin fees")}</label><input id="of-fees" type="number" data-of="fees" value="${f.fees}" class="num"></div>
+      <div class="field"><label for="of-valid">${L("صلاحية العرض (يوم)","Valid for (days)")}</label><input id="of-valid" type="number" data-of="valid" value="${f.valid}" class="num"></div>
+    </div>
+    <div class="field"><label for="of-docs">${L("المستندات والشروط المطلوبة","Required documents & conditions")}</label><input id="of-docs" type="text" data-of="docs" value="${esc(f.docs)}" placeholder="${L("مثال: عقد إيجار المحل، كشف حساب 3 أشهر","e.g. shop lease, 3-month statement")}"></div>
+    <div class="kpis" id="of-preview">${previewKpis(q)}</div>
+    <label class="check"><input type="checkbox" id="of-reviewed" data-of="reviewed" ${f.reviewed?"checked":""}><span>${L("راجعتُ العرض وفق سياسة الائتمان الداخلية لمؤسستنا","Reviewed against our internal credit policy")}</span></label>
+    <div class="row"><button class="btn btn-p" data-act="of-submit" data-id="${a.id}">${I("send","flip")}${L("إرسال العرض","Submit offer")}</button><span class="sub">${L("يمكن سحب العرض قبل أن يختاره المستفيد.","You can withdraw before the applicant chooses.")}</span></div></div></div>`
+  : mo ? `<div class="card ${mo.status==="SELECTED"?"":""}" style="${mo.status==="SELECTED"?"border-color:var(--gold)":""}"><div class="card-h"><h3>${L("عرضكم","Your offer")}</h3>${pill(OF_ST,mo.status)}</div>
+     <div class="kpis">${previewKpis(quote(mo))}</div>
+     <dl class="kv" style="padding:12px 0 0"><dt>${L("المبلغ","Amount")}</dt><dd>${fmt(mo.amount)}</dd><dt>${L("القسط","Instalment")}</dt><dd>${money(mo.pay,a.zone)}</dd><dt>${L("الطريقة","Method")}</dt><dd>${esc(T(mo.mlabel||METHOD[mo.method]))}</dd><dt>${L("المدة / السماح","Term / grace")}</dt><dd>${mo.term} / ${mo.grace}</dd><dt>${L("ينتهي","Expires")}</dt><dd>${dt(mo.expires)}</dd></dl>
+     ${["SUBMITTED","VIEWED"].includes(mo.status)?`<div class="row" style="margin-top:12px"><button class="btn btn-d btn-sm" data-act="of-withdraw" data-id="${mo.id}">${L("سحب العرض","Withdraw")}</button></div>`:""}</div>` : "";
+  const contact = revealed ? `<div class="card" style="border-color:var(--gold)"><div class="card-h"><h3>${L("بيانات المستفيد — متاحة بعد الاختيار","Applicant details — unlocked on selection")}</h3>${spec("pii.reveal · audited")}</div>
+     <dl class="kv" style="padding:0"><dt>${L("الاسم","Name")}</dt><dd>${esc(T(a.owner==="me"?S.me.name:a.bname))}</dd><dt>${L("الهاتف","Phone")}</dt><dd dir="ltr" style="text-align:end;user-select:all">${a.owner==="me"?S.me.phone:a.bphone}</dd>${a.owner==="me"?(a.guarantors||[]).map((g,i)=>`<dt>${L("ضامن","Guarantor")} ${i+1}</dt><dd>${esc(g.name)} · <span dir="ltr">${esc(g.phone)}</span></dd>`).join(""):""}</dl>
+     <div class="row" style="margin-top:14px">${a.status==="OFFER_SELECTED"?`<button class="btn btn-p" data-act="disb" data-id="${a.id}" data-to="PRE_DISBURSEMENT">${L("بدء إجراءات ما قبل الصرف","Start pre-disbursement")}</button>`:""}${a.status==="PRE_DISBURSEMENT"?`<button class="btn btn-gold" data-act="disb" data-id="${a.id}" data-to="FUNDED">${I("check")}${L("تأكيد الصرف (مرجعي)","Confirm disbursed (reference)")}</button>`:""}${["OFFER_SELECTED","PRE_DISBURSEMENT"].includes(a.status)?`<button class="btn btn-d" data-act="ask-decline" data-id="${a.id}">${L("اعتذار بعد الاختيار","Decline after selection")}</button>`:""}</div>
+     <p class="sub" style="margin-top:10px">${L("الصرف يتم عبر قنوات مؤسستكم. تأكيدكم هنا يسجّل الحالة المرجعية فقط وينشئ فاتورة رسوم الأداء.","Disbursement happens in your own channels. Confirming here records the reference status and issues the performance-fee invoice.")}</p></div>` : "";
+  return head(esc(T(a.title)),`<span class="mono">${a.ref}</span> · ${L("مستفيد","Applicant")} <span class="mono">${a.bcode}</span>`,pill(APP_ST,a.status),`<button data-act="nav" data-view="queue">${L("الطلبات المطابقة","Matched requests")}</button> / <span class="mono">${a.ref}</span>`)+
+  `<div class="split"><div class="stack">${contact}${form}</div>
+   <div class="stack"><div class="card"><div class="card-h"><h3>${L("بيانات المشروع","Project data")}</h3></div>
+     <dl class="kv" style="padding:0"><dt>${L("القطاع","Sector")}</dt><dd>${esc(T(SEC[a.sector]))}</dd><dt>${L("المحافظة","Region")}</dt><dd>${esc(T(GOV[a.gov]))}</dd><dt>${L("المرحلة","Stage")}</dt><dd>${a.stage==="idea"?L("فكرة","Idea"):L("قائم","Operating")}</dd><dt>${L("المبلغ","Amount")}</dt><dd>${money(a.amount,a.zone)}</dd><dt>${L("المدة / السماح","Term / grace")}</dt><dd>${a.term} / ${a.grace}</dd><dt>${L("الغرض","Purpose")}</dt><dd>${esc(T(a.purpose))}</dd><dt>${L("الضمانة","Guarantee")}</dt><dd>${guarantorNote(a)}</dd><dt>KYC</dt><dd>${L("معتمد من عُونة","Verified by Aouna")}</dd></dl>
+     <p class="sub" style="margin-top:10px">${esc(T(a.desc))}</p></div>
+     <div class="card"><div class="card-h"><h3>${L("المستندات","Documents")}</h3></div>${(a.docs||[]).map(d=>`<div class="lrow">${I("file","faint")}<div class="grow" style="font-size:14px">${esc(T(d))}</div><button class="btn btn-g btn-sm" data-act="open-doc" data-name="${esc(T(d))}">${L("فتح","Open")}</button></div>`).join("")}
+     <div class="lrow">${I("lock","faint")}<div class="grow sub">${L("وثائق الهوية وبيانات الضامنين مخفية","Identity documents and guarantor details hidden")}</div></div></div></div></div>`;
+};
+function previewKpis(q){ return `<div class="kpi"><div class="k">${L("القسط الشهري","Monthly instalment")}</div><div class="v">${fmt(q.inst)}</div></div><div class="kpi"><div class="k">${L("إجمالي تكلفة التمويل","Total cost of credit")}</div><div class="v">${fmt(q.cost)}</div></div><div class="kpi"><div class="k">${L("إجمالي المسدَّد","Total repayable")}</div><div class="v">${fmt(q.paid)}</div></div>`; }
+VIEWS.myoffers = () => {
+  const mine=S.offers.filter(o=>o.inst==="I1");
+  const sel=mine.filter(o=>o.status==="SELECTED" && ["OFFER_SELECTED","PRE_DISBURSEMENT"].includes(app(o.app).status));
+  const sent=mine.length, won=mine.filter(o=>o.status==="SELECTED").length;
+  return head(L("عروضي","My offers"),L("متابعة العروض المرسلة وما تم اختياره منها.","Track sent offers and those selected."))+
+  kpis([[L("عروض مرسلة","Offers sent"),sent],[L("تم اختيارها","Selected"),won],[L("نسبة الفوز","Win rate"),sent?Math.round(won/sent*100)+"%":"—"],[L("تحتاج إجراء الآن","Need action now"),sel.length]])+
+  (sel.length?`<div class="stack"><h2 style="font-size:17px">${L("تم اختيارها — تابع مع المستفيد","Selected — follow up")}</h2>${sel.map(o=>{const a=app(o.app);return `<div class="notice gold">${I("check")}<div style="flex:1"><b>${esc(T(a.title))}</b> · <span class="mono">${a.ref}</span><br><span class="sub">${esc(T(a.owner==="me"?S.me.name:a.bname))} · <span dir="ltr">${a.owner==="me"?S.me.phone:a.bphone}</span> · ${esc(T(APP_ST[a.status]))}</span></div><button class="btn btn-g btn-sm" data-act="open-req" data-id="${a.id}">${L("فتح","Open")}</button></div>`;}).join("")}</div>`:"")+
+  `<div class="tw"><table><thead><tr><th>${L("الطلب","Request")}</th><th>${L("المبلغ","Amount")}</th><th>${L("القسط","Instalment")}</th><th>${L("حالة العرض","Offer status")}</th><th>${L("حالة الطلب","Request status")}</th><th>${L("أُرسل","Sent")}</th></tr></thead><tbody>
+  ${mine.map(o=>{const a=app(o.app);return `<tr class="clickable" data-act="open-req" data-id="${a.id}" tabindex="0"><td><div class="t1">${esc(T(a.title))}</div><div class="t2 mono">${a.ref}</div></td><td class="num">${fmt(o.amount)}</td><td class="num">${fmt(quote(o).inst)}</td><td>${pill(OF_ST,o.status)}</td><td>${pill(APP_ST,a.status)}</td><td class="t2">${dt(o.created)}</td></tr>`;}).join("")}</tbody></table></div>`;
+};
+
+/* ---------- INSTITUTION ADMIN ---------- */
+VIEWS.team = () => {
+  const used=S.officers.filter(o=>o.status!=="DISABLED").length, cap=S.settings.seats;
+  const inv=S.uiTab.inv||{name:"",email:"",err:{}};
+  return head(L("فريق الائتمان","Credit team"),L("كل ضابط يعمل ضمن نطاق مؤسسة النماء فقط ولا يدير الاشتراك.","Officers act only within Al-Namaa's scope and can't manage billing."))+
+  `<div class="card"><div class="row" style="justify-content:space-between"><b>${L("المقاعد المستخدمة","Seats used")}: <span class="num">${used} / ${cap}</span></b><span class="sub">${L("الخطة الأساسية","Basic plan")} ${spec("§5 cap 5 officers")}</span></div><div class="seats" style="margin-top:10px"><i style="width:${Math.min(100,used/cap*100)}%"></i></div></div>
+  <div class="split"><div class="tw"><table><thead><tr><th>${L("الضابط","Officer")}</th><th>${L("الحالة","Status")}</th><th>${L("عروض","Offers")}</th><th>${L("آخر نشاط","Last active")}</th><th></th></tr></thead><tbody>
+  ${S.officers.map(o=>`<tr><td><div class="t1">${esc(T(o.name))}</div><div class="t2" dir="ltr" style="text-align:start">${esc(o.email)}</div></td><td>${pill(MISC_ST,o.status)}</td><td class="num">${o.offers}</td><td class="t2">${o.last?ago(o.last):"—"}</td><td>${o.status==="ACTIVE"&&o.id!=="U11"?`<button class="btn btn-g btn-sm" data-act="off-disable" data-id="${o.id}">${L("تعطيل","Disable")}</button>`:o.status==="INVITED"?`<button class="btn btn-g btn-sm" data-act="toast" data-msg="${L("أُعيد إرسال رابط الدعوة الآمن","Secure invite link resent")}">${L("إعادة الإرسال","Resend")}</button>`:""}</td></tr>`).join("")}</tbody></table></div>
+  <div class="card"><div class="card-h"><h3>${L("دعوة ضابط ائتمان","Invite an officer")}</h3></div>
+   ${used>=cap?`<div class="notice warn">${I("info")}<div>${L(`بلغتم سقف ${cap} ضباط في خطتكم. عطّلوا حساباً أو تواصلوا معنا لترقية الخطة.`,`You've reached the ${cap}-officer cap. Disable an account or upgrade.`)}</div></div>`:
+   `<div class="form"><div class="field"><label for="inv-name">${L("الاسم","Name")}</label><input id="inv-name" type="text" data-inv="name" value="${esc(inv.name)}" class="${inv.err.name?"invalid":""}">${inv.err.name?`<span class="err">${inv.err.name}</span>`:""}</div>
+    <div class="field"><label for="inv-email">${L("البريد المؤسسي","Work email")}</label><input id="inv-email" type="email" dir="ltr" data-inv="email" value="${esc(inv.email)}" class="${inv.err.email?"invalid":""}">${inv.err.email?`<span class="err">${inv.err.email}</span>`:""}</div>
+    <div class="field"><label for="inv-phone">${L("رقم الجوال","Mobile number")}</label><input id="inv-phone" type="tel" dir="ltr" placeholder="+967 7XX XXX XXX" data-inv="phone" value="${esc(inv.phone||"")}" class="${inv.err.phone?"invalid":""}">${inv.err.phone?`<span class="err">${inv.err.phone}</span>`:`<span class="hint">${L("يصله رابط تفعيل عبر واتساب أو SMS صالح 48 ساعة","Gets a 48-hour activation link by WhatsApp or SMS")}</span>`}</div>
+    <button class="btn btn-p" data-act="inv-send">${L("إرسال الدعوة","Send invite")}</button></div>`}</div></div>`;
+};
+VIEWS.policy = () => {
+  const p=S.uiTab.pol||JSON.parse(JSON.stringify(inst("I1").policy)); S.uiTab.pol=p;
+  return head(L("سياسة الأهلية","Eligibility policy"),L("تحدد أي الطلبات تصل لفريقكم. التعديل يسري فوراً على قائمة الطلبات المطابقة.","Controls which requests reach your team. Changes apply immediately."))+
+  `<div class="card"><div class="form">
+   <div class="field"><span class="flabel">${L("المحافظات","Governorates")}</span><div class="row">${Object.keys(GOV).map(k=>`<button class="chip ${p.govs.includes(k)?"on":""}" data-act="pol-tog" data-f="govs" data-v="${k}" aria-pressed="${p.govs.includes(k)}">${esc(T(GOV[k]))}</button>`).join("")}</div></div>
+   <div class="field"><span class="flabel">${L("القطاعات","Sectors")}</span><div class="row">${Object.keys(SEC).map(k=>`<button class="chip ${p.secs.includes(k)?"on":""}" data-act="pol-tog" data-f="secs" data-v="${k}" aria-pressed="${p.secs.includes(k)}">${esc(T(SEC[k]))}</button>`).join("")}</div></div>
+   ${["new","old"].map(z=>`<div class="f2"><div class="field"><label for="pol-${z}-min">${L("أدنى مبلغ","Minimum")} — ${zoneName(z)}</label><input id="pol-${z}-min" type="number" data-pol="${z}.0" value="${p.lim[z]?p.lim[z][0]:""}" class="num"></div><div class="field"><label for="pol-${z}-max">${L("أعلى مبلغ","Maximum")} — ${zoneName(z)}</label><input id="pol-${z}-max" type="number" data-pol="${z}.1" value="${p.lim[z]?p.lim[z][1]:""}" class="num"></div></div>`).join("")}
+   <p class="sub">${L("السقوف منفصلة لكل عملة لأن قيمة الريال تختلف بين المنطقتين.","Separate limits per currency, since the rial's value differs between zones.")}</p>
+   <div class="field"><span class="flabel">${L("المنتجات","Products")}</span><div class="row">${Object.keys(METHOD).map(k=>`<button class="chip ${p.products.includes(k)?"on":""}" data-act="pol-tog" data-f="products" data-v="${k}">${esc(T(METHOD[k]))}</button>`).join("")}</div></div>
+   <div class="row"><button class="btn btn-p" data-act="pol-save">${L("حفظ السياسة","Save policy")}</button><span class="sub">${L(`ستطابق حالياً ${S.apps.filter(a=>["PUBLISHED","OFFER_RECEIVED"].includes(a.status)&&p.govs.includes(a.gov)&&p.secs.includes(a.sector)&&p.lim[a.zone]&&a.amount>=p.lim[a.zone][0]&&a.amount<=p.lim[a.zone][1]).length} طلبات منشورة`,`Would match ${S.apps.filter(a=>["PUBLISHED","OFFER_RECEIVED"].includes(a.status)&&p.govs.includes(a.gov)&&p.secs.includes(a.sector)&&p.lim[a.zone]&&a.amount>=p.lim[a.zone][0]&&a.amount<=p.lim[a.zone][1]).length} published requests`)}</span>${spec("eligibility_rules")}</div></div></div>`;
+};
+VIEWS.billing = () => {
+  const invs=S.invoices.filter(i=>i.inst==="I1");
+  return head(L("الاشتراك والفواتير","Plan & invoices"),L("الدفع عبر بنك أو محفظة مرخّصة. لا تُعتبر الفاتورة مدفوعة إلا بعد تأكيد موقّع من المزود.","Paid via a licensed bank or wallet. An invoice is paid only after a signed provider confirmation."))+
+  `<div class="grid g3"><div class="kpi"><div class="k">${L("الخطة الحالية","Current plan")}</div><div class="v" style="font-size:20px">${L("الأساسية — سنوية","Basic — annual")}</div><div class="d">${moneyTxt(S.settings.subFee,"new")} · ${S.settings.seats} ${L("ضباط","officers")}</div></div><div class="kpi"><div class="k">${L("رسوم الأداء","Performance fee")}</div><div class="v">${S.settings.perfFee}%</div><div class="d">${L("من المبلغ المصروف، عند تأكيد الصرف","of disbursed amount, on confirmation")}</div></div><div class="kpi"><div class="k">${L("مستحق الآن","Due now")}</div><div class="v" style="font-size:20px">${zoneSums(invs.filter(i=>i.status==="ISSUED").map(i=>[i.zone||"new",i.amount]))}</div></div></div>
+  <div class="tw"><table><thead><tr><th>${L("الفاتورة","Invoice")}</th><th>${L("البيان","Description")}</th><th>${L("المبلغ","Amount")}</th><th>${L("الاستحقاق","Due")}</th><th>${L("الحالة","Status")}</th><th></th></tr></thead><tbody>
+  ${invs.map(i=>`<tr><td class="mono">${i.id}</td><td>${esc(T(i.desc))}</td><td class="num">${fmt(i.amount)} <span class="t2">${curS(i.zone||"new")}</span></td><td class="t2">${dt(i.due)}</td><td>${pill(INV_ST,i.status)}</td><td>${i.status==="ISSUED"?`<button class="btn btn-p btn-sm" data-act="pay" data-id="${i.id}">${L("ادفع","Pay")}</button>`:""}</td></tr>`).join("")}</tbody></table></div>
+  ${S.payLog.length?`<div class="card"><div class="card-h"><h3>${L("سجل أحداث الدفع","Payment event log")}</h3>${spec("PaymentIntent ≠ Transaction ≠ Invoice")}</div><div class="evlog">${S.payLog.map(l=>`<div class="${l[1]}">${esc(l[0])}</div>`).join("")}</div></div>`:""}`;
+};
+VIEWS.reports = () => {
+  const data=[[L("يونيو","Jun"),6],[L("يوليو","Jul"),9],[L("أغسطس","Aug"),14],[L("سبتمبر","Sep"),12],[L("أكتوبر","Oct"),19],[L("نوفمبر","Nov"),S.offers.filter(o=>o.inst==="I1").length]];
+  const W=560,H=220,pl=34,pb=26,pt=12,max=20; const bw=(W-pl-10)/data.length;
+  const y=v=>pt+(H-pt-pb)*(1-v/max);
+  const svg=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${L("العروض المرسلة شهرياً","Offers sent per month")}">${[0,5,10,15,20].map(v=>`<line class="gl" x1="${pl}" x2="${W-6}" y1="${y(v)}" y2="${y(v)}"/><text x="${pl-6}" y="${y(v)+4}" text-anchor="end">${v}</text>`).join("")}
+   ${data.map((d,i)=>{const x=pl+i*bw+bw*.2, w=bw*.6; return `<rect class="b ${i===data.length-1?"last":""}" x="${x}" y="${y(d[1])}" width="${w}" height="${y(0)-y(d[1])}" rx="3"/><text x="${x+w/2}" y="${y(d[1])-5}" text-anchor="middle">${d[1]}</text><text x="${x+w/2}" y="${H-8}" text-anchor="middle">${d[0]}</text>`;}).join("")}</svg>`;
+  const funded=S.apps.filter(a=>["FUNDED","CLOSED"].includes(a.status)&&S.offers.find(o=>o.id===a.selected&&o.inst==="I1"));
+  return head(L("تقارير المؤسسة","Institution reports"),L("أداء الفريق والعروض. الأشهر السابقة أمثلة توضيحية.","Team and offer performance. Earlier months are illustrative."),`<button class="btn btn-g btn-sm" data-act="toast" data-msg="${L("تم تجهيز ملف CSV للتنزيل","CSV export prepared")}">${L("تصدير CSV","Export CSV")}</button>`)+
+  kpis([[L("عروض هذا الشهر","Offers this month"),data[5][1]],[L("تم اختيارها","Selected"),S.offers.filter(o=>o.inst==="I1"&&o.status==="SELECTED").length],[L("تمويلات مؤكدة عبر عُونة","Funded via Aouna"),funded.length],[L("متوسط زمن الرد على طلب","Avg. time to offer"),L("1.8 يوم","1.8 days")]])+
+  `<div class="card bars"><div class="card-h"><h3>${L("العروض المرسلة شهرياً","Offers sent per month")}</h3><span class="sub">${L("الشهر الحالي حتى اليوم","Current month to date")}</span></div><div style="overflow-x:auto">${svg}</div></div>`;
+};
+
+/* ---------- KYC ---------- */
+VIEWS.kycq = () => {
+  const list=S.kyc.slice().sort((a,b)=>({REVIEW_PENDING:0,INFO_REQUESTED:1}[a.status]??2)-({REVIEW_PENDING:0,INFO_REQUESTED:1}[b.status]??2) || new Date(a.at)-new Date(b.at));
+  const pend=S.kyc.filter(k=>k.status==="REVIEW_PENDING");
+  return head(L("قائمة التحقق KYC","KYC review queue"),L("القرار يُتخذ يدوياً من موظف مخوّل. الرفض وطلب الاستكمال يتطلبان سبباً مكتوباً.","Decisions are manual. Rejections and info requests need a written reason."))+
+  kpis([[L("بانتظار المراجعة","Pending"),pend.length],[L("الأقدم في القائمة","Oldest waiting"),pend.length?ago(pend.reduce((m,k)=>new Date(k.at)<new Date(m.at)?k:m).at):"—"],[L("هدف زمن القرار","Decision target"),L("24 ساعة","24 hours")]])+
+  `<div class="tw"><table><thead><tr><th>${L("المتقدم","Applicant")}</th><th>${L("النوع","Type")}</th><th>${L("الوثائق","Docs")}</th><th>${L("منذ","Waiting")}</th><th>${L("الحالة","Status")}</th></tr></thead><tbody>
+  ${list.map(k=>`<tr class="clickable" data-act="open-kyc" data-id="${k.id}" tabindex="0"><td><div class="t1">${esc(AR()?k.name:k.nameEn)}</div><div class="t2">${esc(T(GOV[k.gov]))}</div></td><td>${k.type==="institution"?L("مؤسسة مالية","Institution"):L("مستفيد","Beneficiary")}</td><td class="num">${k.docs.length}</td><td class="t2">${ago(k.at)}</td><td>${pill(KYC_ST,k.status)}</td></tr>`).join("")}</tbody></table></div>`;
+};
+VIEWS.kycCase = () => {
+  const k=S.kyc.find(x=>x.id===S.sel); if(!k) return "";
+  const c=S.uiTab["kc"+k.id]||(S.uiTab["kc"+k.id]={chk:[false,false,false,false],reason:"",err:""});
+  const items=[L("الاسم مطابق في جميع الوثائق","Name matches across documents"),L("الوثائق سارية وغير منتهية","Documents valid and unexpired"),L("الصورة الشخصية تطابق صورة البطاقة","Photo matches ID"),k.type==="institution"?L("الترخيص صادر من البنك المركزي وساري","Central Bank licence valid"):L("رقم الهاتف مُتحقَّق منه برمز OTP","Phone verified by OTP")];
+  const open=["REVIEW_PENDING","INFO_REQUESTED"].includes(k.status);
+  return head(esc(AR()?k.name:k.nameEn),`${k.type==="institution"?L("مؤسسة مالية","Institution"):L("مستفيد","Beneficiary")} · <span dir="ltr">${k.phone}</span> · ${esc(T(GOV[k.gov]))}`,pill(KYC_ST,k.status),`<button data-act="nav" data-view="kycq">${L("قائمة التحقق","Queue")}</button> / ${k.id}`)+
+  `<div class="split"><div class="card"><div class="card-h"><h3>${L("الوثائق","Documents")}</h3>${spec("signed URL · TTL 5m · access logged")}</div>
+   ${k.docs.map(d=>`<div class="lrow">${I("file","faint")}<div class="grow" style="font-size:14px">${esc(T(d))}<div class="sub">${L("مشفّرة · فحص البرمجيات الضارة: سليم","Encrypted · malware scan: clean")}</div></div><button class="btn btn-g btn-sm" data-act="open-doc" data-name="${esc(T(d))}" data-kyc="${k.id}">${I("eye")}${L("فتح","Open")}</button></div>`).join("")}
+   ${k.note?`<div class="notice warn" style="margin-top:10px">${I("info")}<div>${L("ملاحظة سابقة:","Previous note:")} ${esc(k.note)}</div></div>`:""}</div>
+   <div class="card"><div class="card-h"><h3>${L("قرار المراجعة","Decision")}</h3></div>
+   ${open?`<div class="form"><div class="stack">${items.map((t,i)=>`<label class="check"><input type="checkbox" id="kc-${k.id}-${i}" data-kc="${k.id}" data-i="${i}" ${c.chk[i]?"checked":""}><span>${t}</span></label>`).join("")}</div>
+    <div class="field"><label for="kc-reason">${L("السبب / الملاحظة (إلزامي للرفض وطلب الاستكمال)","Reason (required to reject or request info)")}</label><textarea id="kc-reason" data-kcr="${k.id}" class="${c.err?"invalid":""}">${esc(c.reason)}</textarea>${c.err?`<span class="err">${c.err}</span>`:""}</div>
+    <div class="row"><button class="btn btn-p" data-act="kyc-dec" data-id="${k.id}" data-d="ACTIVE" ${c.chk.every(Boolean)?"":"disabled"}>${I("check")}${L("اعتماد","Approve")}</button><button class="btn btn-g" data-act="kyc-dec" data-id="${k.id}" data-d="INFO_REQUESTED">${L("طلب استكمال","Request info")}</button><button class="btn btn-d" data-act="kyc-dec" data-id="${k.id}" data-d="REJECTED">${L("رفض","Reject")}</button></div>
+    ${c.chk.every(Boolean)?"":`<p class="sub">${L("أكمل قائمة التحقق لتفعيل الاعتماد.","Complete the checklist to enable approval.")}</p>`}</div>`
+   :`<p class="sub">${L("تم اتخاذ القرار. أي تعديل يتطلب إعادة فتح الحالة من الإدارة.","Decided. Changes require the admin to reopen the case.")}</p>${k.note?`<p style="margin-top:8px">${esc(k.note)}</p>`:""}`}</div></div>`;
+};
+
+/* ---------- PLATFORM ADMIN ---------- */
+VIEWS.overview = () => {
+  const pub=S.apps.filter(a=>["PUBLISHED","OFFER_RECEIVED"].includes(a.status)).length;
+  const withO=S.apps.filter(a=>S.offers.some(o=>o.app===a.id)).length;
+  const sel=S.apps.filter(a=>a.selected).length;
+  const fund=S.apps.filter(a=>["FUNDED","CLOSED"].includes(a.status));
+  const fundAmt=fund.reduce((s,a)=>s+(S.offers.find(o=>o.id===a.selected)||{amount:0}).amount,0);
+  const funnel=[[L("طلبات أُنشئت","Created"),S.apps.length],[L("وصلها عرض واحد على الأقل","Got ≥1 offer"),withO],[L("اختير فيها عرض","Offer selected"),sel],[L("تأكد صرفها","Funded"),fund.length]];
+  const exc=S.txns.filter(t=>t.recon==="NEEDS_REVIEW").length;
+  return head(L("نظرة عامة على المنصة","Platform overview"),L("أرقام حية من بيانات هذا العرض، لا أرقام ثابتة.","Live figures from this demo's data."))+
+  kpis([[L("طلبات منشورة الآن","Published now"),pub],[L("مؤسسات نشطة","Active lenders"),S.institutions.filter(i=>i.status==="ACTIVE").length],[L("إجمالي ما مُوِّل","Total funded"),`<span style="font-size:18px">${zoneSums(fund.map(a=>[a.zone,(S.offers.find(o=>o.id===a.selected)||{amount:0}).amount]))}</span>`],[L("حالات KYC معلقة","KYC pending"),S.kyc.filter(k=>k.status==="REVIEW_PENDING").length],[L("استثناءات تسوية","Recon. exceptions"),exc]])+
+  `<div class="split"><div class="card"><div class="card-h"><h3>${L("قمع التمويل","Funding funnel")}</h3></div>
+   ${funnel.map(f=>`<div style="margin-bottom:12px"><div class="row" style="justify-content:space-between;font-size:14px"><span>${f[0]}</span><b class="num">${f[1]}</b></div><div class="seats" style="margin-top:5px"><i style="width:${S.apps.length?f[1]/S.apps.length*100:0}%"></i></div></div>`).join("")}</div>
+   <div class="card"><div class="card-h"><h3>${L("صحة التشغيل","Operational health")}</h3></div>
+   ${[[L("مهمة انتهاء العروض","Offer-expiry job"),L("آخر تشغيل قبل 12 د","Ran 12m ago"),"s"],[L("استقبال Webhooks","Webhook intake"),L("0 أخطاء توقيع اليوم","0 signature failures today"),"s"],[L("استثناءات التسوية","Reconciliation"),exc?L(`${exc} بحاجة لمراجعة`,`${exc} need review`):L("لا شيء","None"),exc?"d":"s"],[L("النسخ الاحتياطي","Backups"),L("آخر نسخة 02:00 — ناجحة","Last 02:00 — OK"),"s"]].map(h=>`<div class="lrow"><span class="pill t-${h[2]}" style="padding:2px 6px"></span><div class="grow" style="font-size:14px">${h[0]}<div class="sub">${h[1]}</div></div></div>`).join("")}
+   ${exc?`<button class="btn btn-g btn-sm" data-act="nav" data-view="recon" style="margin-top:8px">${L("مراجعة الاستثناءات","Review exceptions")}</button>`:""}</div></div>`;
+};
+VIEWS.approvals = () => {
+  const pend=S.institutions.filter(i=>i.status==="PENDING_APPROVAL");
+  return head(L("اعتماد الجهات","Approvals"),L("لا تظهر أي مؤسسة للمستفيدين ولا تستقبل طلبات قبل اعتمادها.","No institution receives requests before approval."))+
+  (pend.length?`<div class="grid g2">${pend.map(i=>`<div class="card"><div class="card-h"><div><h3>${esc(T(i.name))}</h3><span class="sub">${esc(T(i.kind))} · ${esc(T(i.branch))}</span></div>${pill(MISC_ST,i.status)}</div>
+    <dl class="kv" style="padding:0"><dt>${L("قُدّم","Submitted")}</dt><dd>${ago(i.submitted)}</dd><dt>${L("النطاق المطلوب","Coverage")}</dt><dd>${i.policy.govs.length} ${L("محافظات","regions")}</dd><dt>${L("سقف التمويل","Max ticket")}</dt><dd>${i.policy.lim.new?money(i.policy.lim.new[1],"new"):"—"}</dd><dt>KYC</dt><dd>${i.id==="I4"?pill(KYC_ST,S.kyc.find(k=>k.id==="K3").status):pill(KYC_ST,"ACTIVE")}</dd></dl>
+    <div class="row" style="margin-top:14px"><button class="btn btn-p btn-sm" data-act="inst-dec" data-id="${i.id}" data-d="ACTIVE">${L("اعتماد وتفعيل","Approve")}</button><button class="btn btn-d btn-sm" data-act="inst-dec" data-id="${i.id}" data-d="REJECTED">${L("رفض","Reject")}</button></div></div>`).join("")}</div>`:`<div class="empty">${L("لا جهات بانتظار الاعتماد","Nothing awaiting approval")}</div>`)+
+  `<div class="card"><div class="card-h"><h3>${L("المؤسسات المعتمدة","Approved institutions")}</h3></div>${S.institutions.filter(i=>i.status==="ACTIVE").map(i=>`<div class="lrow">${I("coins","faint")}<div class="grow"><b style="font-size:14px">${esc(T(i.name))}</b><div class="sub">${esc(T(i.kind))} · ${i.policy.govs.length} ${L("محافظات","regions")}</div></div>${pill(MISC_ST,"ACTIVE")}</div>`).join("")}</div>`;
+};
+function adminAppView(a){
+  const offers=S.offers.filter(o=>o.app===a.id);
+  return head(esc(T(a.title)),`<span class="mono">${a.ref}</span>`,pill(APP_ST,a.status),`<button data-act="nav" data-view="appsmon">${L("مراقبة الطلبات","Monitor")}</button> / ${a.ref}`)+`<div class="card">${track(a)}</div>`+
+  `<div class="tw"><table><thead><tr><th>${L("العرض","Offer")}</th><th>${L("المؤسسة","Institution")}</th><th>${L("المبلغ","Amount")}</th><th>${L("القسط","Instalment")}</th><th>${L("الحالة","Status")}</th></tr></thead><tbody>${offers.map(o=>`<tr><td class="mono">${o.id}</td><td>${esc(T(inst(o.inst).name))}</td><td class="num">${fmt(o.amount)}</td><td class="num">${fmt(quote(o).inst)}</td><td>${pill(OF_ST,o.status)}</td></tr>`).join("")||`<tr><td colspan="5" class="muted">—</td></tr>`}</tbody></table></div>`+
+  (a.status==="FUNDED"?`<button class="btn btn-g" data-act="close-app" data-id="${a.id}">${L("إغلاق الطلب","Close request")}</button>`:"");
+}
+VIEWS.appsmon = () => head(L("مراقبة الطلبات","Requests monitor"),L("عرض إداري لكل الطلبات وحالاتها. الوصول مسجَّل.","Admin view of all requests. Access is logged."))+appTable(S.apps,true);
+VIEWS.recon = () => head(L("الفوترة والتسوية","Billing & reconciliation"),L("مقارنة الفواتير بالمعاملات وتأكيدات المزوّد. لا يُفعَّل أي دفع يدوياً من الواجهة دون سبب موثّق.","Invoices vs transactions vs provider confirmations. No manual override without a documented reason."))+
+  `<div class="stack"><h2 style="font-size:17px">${L("الاستثناءات","Exceptions")}</h2>${S.txns.filter(t=>t.recon==="NEEDS_REVIEW").map(t=>`<div class="notice bad">${I("info")}<div style="flex:1"><b class="mono">${t.id}</b> → <span class="mono">${t.inv}</span><br><span class="sub">${esc(T(t.reason))} · ${esc(T(t.provider))}</span></div><button class="btn btn-g btn-sm" data-act="ask-resolve" data-id="${t.id}">${L("تسوية يدوية","Resolve")}</button></div>`).join("")||`<div class="empty">${L("لا استثناءات مفتوحة","No open exceptions")}</div>`}</div>
+  <div class="tw"><table><thead><tr><th>${L("المعاملة","Transaction")}</th><th>${L("الفاتورة","Invoice")}</th><th>${L("المزود","Provider")}</th><th>${L("المبلغ","Amount")}</th><th>${L("التسوية","Reconciliation")}</th><th>${L("الوقت","Time")}</th></tr></thead><tbody>${S.txns.map(t=>`<tr><td class="mono">${t.id}</td><td class="mono">${t.inv}</td><td>${esc(T(t.provider))}</td><td class="num">${fmt(t.amount)}</td><td>${pill(MISC_ST,t.recon)}</td><td class="t2">${dt(t.at,true)}</td></tr>`).join("")}</tbody></table></div>
+  <div class="tw"><table><thead><tr><th>${L("الفاتورة","Invoice")}</th><th>${L("المؤسسة","Institution")}</th><th>${L("البيان","Description")}</th><th>${L("المبلغ","Amount")}</th><th>${L("الحالة","Status")}</th></tr></thead><tbody>${S.invoices.map(i=>`<tr><td class="mono">${i.id}</td><td>${esc(T(inst(i.inst).name))}</td><td class="t2">${esc(T(i.desc))}</td><td class="num">${fmt(i.amount)} <span class="t2">${curS(i.zone||"new")}</span></td><td>${pill(INV_ST,i.status)}</td></tr>`).join("")}</tbody></table></div>`;
+VIEWS.msgs = () => {
+  const ms=S.msgs||[]; const wa=ms.filter(m=>m.ch==="wa").length, fb=ms.filter(m=>m.fb).length, cost=ms.reduce((a,m)=>a+m.cost,0), cap=S.settings.msgCap||20000;
+  const who=t=>ROLES[t]?T(ROLES[t].l):t==="guarantor"?L("ضامن","Guarantor"):t==="invitee"?L("ضابط مدعو","Invited officer"):t==="signup"?L("مستخدم جديد","New user"):L("مؤسسة أخرى","Other lender");
+  return head(L("الرسائل والإشعارات","Messages & notifications"),L("كل إشعار داخل المنصة يُرسل أيضاً عبر واتساب، وعند التعذّر عبر SMS. الرسالة تحمل رابطاً ولا تحمل بيانات حساسة.","Every in-app notification also goes out by WhatsApp, with SMS as fallback. Messages carry a link, never sensitive data."),`<span class="spec">v2.1 §5 · message_log</span>`)+
+  kpis([[L("رسائل هذا الشهر","Messages this month"),ms.length,L(`من سقف ${fmt(cap)}`,`of ${fmt(cap)} cap`)],[L("عبر واتساب","Via WhatsApp"),ms.length?Math.round(wa/ms.length*100)+"%":"—"],[L("تحوّلت إلى SMS","Fell back to SMS"),fb],[L("التكلفة التقديرية","Estimated cost"),`<span style="font-size:20px">${money(cost,"new")}</span>`,L("أسعار مثال","example rates")]])+
+  `<div class="card"><div class="row" style="justify-content:space-between"><b>${L("استهلاك السقف الشهري","Monthly cap used")}</b><span class="num sub">${fmt(ms.length)} / ${fmt(cap)}</span></div><div class="seats" style="margin-top:10px"><i style="width:${Math.min(100,ms.length/cap*100)}%"></i></div></div>
+  <div class="tw"><table><thead><tr><th>${L("الوقت","Time")}</th><th>${L("المستلم","Recipient")}</th><th>${L("القناة","Channel")}</th><th>${L("المحتوى","Content")}</th><th>${L("الحالة","Status")}</th><th>${L("التكلفة","Cost")}</th></tr></thead><tbody>
+  ${ms.slice(0,60).map(m=>`<tr><td class="t2">${dt(m.at,true)}</td><td>${esc(who(m.to))}</td><td><span class="pill ${m.ch==="wa"?"t-s":"t-i"}">${esc(T(CH[m.ch]))}</span>${m.fb?`<div class="t2">${L("بعد تعذّر واتساب","after WhatsApp failed")}</div>`:""}</td><td style="min-width:220px">${esc(T(m.t))}</td><td><span class="pill t-s">${L("وصلت","Delivered")}</span></td><td class="num">${fmt(m.cost)}</td></tr>`).join("")}</tbody></table></div>`;
+};
+VIEWS.audit = () => {
+  S.flags.audit=true; save();
+  const f=S.uiTab.af||"all"; const list=S.audit.filter(e=>f==="all"||e.role===f);
+  return head(L("سجل التدقيق","Audit log"),L("كل فعل حساس: الفاعل، الكيان، الحالة قبل وبعد، الوقت، السبب، ومعرّف الارتباط.","Every sensitive action: actor, entity, before/after, time, reason, correlation id."),`<span class="spec">audit_events · append-only</span>`)+
+  `<div class="row">${["all","beneficiary","officer","manager","kyc","admin","system"].map(r=>`<button class="chip ${f===r?"on":""}" data-act="af" data-v="${r}">${r==="all"?L("الكل","All"):r==="system"?L("النظام","System"):esc(T(ROLES[r].l))}</button>`).join("")}</div>
+  <div class="tw"><table><thead><tr><th>${L("الوقت (UTC)","Time (UTC)")}</th><th>${L("الفاعل","Actor")}</th><th>${L("العملية","Action")}</th><th>${L("الكيان","Entity")}</th><th>${L("قبل → بعد","Before → after")}</th><th>${L("السبب","Reason")}</th><th>corr</th></tr></thead><tbody>
+  ${list.slice(0,80).map(e=>`<tr><td class="mono t2">${e.at.slice(0,16).replace("T"," ")}</td><td>${esc(e.actor)}<div class="t2">${e.role}</div></td><td class="mono">${esc(e.action)}</td><td>${esc(e.entity)}</td><td class="mono t2" dir="ltr">${esc(e.from)} → ${esc(e.to)}</td><td class="t2">${esc(e.reason)}</td><td class="mono t2">${e.corr}</td></tr>`).join("")}</tbody></table></div>`;
+};
+VIEWS.settings = () => {
+  const s=S.uiTab.set||Object.assign({},S.settings); S.uiTab.set=s;
+  const f=(k,l,h)=>`<div class="field"><label for="set-${k}">${l}</label><input id="set-${k}" type="number" class="num" data-set="${k}" value="${s[k]}"><span class="hint">${h}</span></div>`;
+  return head(L("إعدادات المنصة","Platform settings"),L("قيم الرسوم والحدود قابلة للضبط وليست مثبتة في الكود. كل تغيير يُسجَّل.","Fees and limits are configurable, not hard-coded. Every change is audited."))+
+  `<div class="card"><div class="form"><div class="f2">
+   ${f("subFee",L("الاشتراك السنوي للمؤسسة (ر.ي — طبعة جديدة)","Annual plan (YER, new notes)"),L("قيمة تجريبية — يحددها العقد","Demo value — set by contract"))}
+   ${f("perfFee",L("رسوم الأداء %","Performance fee %"),L("تُحتسب عند تأكيد الصرف","Charged on confirmed disbursement"))}
+   ${f("seats",L("سقف الضباط في الخطة الأساسية","Officer seats (basic plan)"),"§5")}
+   ${f("offerDays",L("صلاحية العرض الافتراضية (يوم)","Default offer validity (days)"),"")}
+   ${f("appDays",L("صلاحية الطلب المنشور (يوم)","Published request validity (days)"),"")}
+   ${f("msgCap",L("سقف الرسائل الشهري","Monthly message cap"),L("تنبيه للإدارة عند 80%","Admin alert at 80%"))}</div>
+   <button class="btn btn-p" data-act="set-save" style="justify-self:start">${L("حفظ الإعدادات","Save settings")}</button></div></div>`;
+};
+
+/* ================================================================
+   MODALS
+   ================================================================ */
+function renderModal(){
+  const m=S.modal; const root=$("#modal-root");
+  if(!m){ root.innerHTML=""; return; }
+  let h="",b="",f="",wide=false;
+  if(m.type==="select"){ const o=S.offers.find(x=>x.id===m.id); const a=app(o.app); const i=S.offers.filter(x=>x.app===a.id&&x.status!=="WITHDRAWN").sort((x,y)=>new Date(x.created)-new Date(y.created)).findIndex(x=>x.id===o.id); const q=quote(o);
+    h=L(`اختيار العرض ${LET[i]}`,`Choose offer ${LETE[i]}`);
+    b=`<p>${L("بتأكيد الاختيار:","When you confirm:")}</p><ul style="margin:0;padding-inline-start:18px;display:grid;gap:6px;color:var(--muted)"><li>${L("تُغلق بقية العروض تلقائياً ويُبلَّغ أصحابها.","All other offers close automatically and their lenders are notified.")}</li><li>${L("تظهر بيانات تواصلك وضامنيك لهذه المؤسسة فقط.","Your and your guarantors' contact details go to this lender only.")}</li><li>${L("يكمل القرار الائتماني والعقد والصرف لدى المؤسسة.","Credit decision, contract and disbursement continue with the lender.")}</li></ul>
+      <div class="kpis">${previewKpis(q)}</div>${spec("atomic tx · UNIQUE(app_id) WHERE status=SELECTED")}`;
+    f=`<button class="btn btn-g" data-act="close">${L("رجوع","Back")}</button><button class="btn btn-p" data-act="do-select" data-id="${o.id}">${L("تأكيد الاختيار","Confirm choice")}</button>`; }
+  if(m.type==="intake"){ h=L("تم استلام طلبك","Request received");
+    b=`<div class="checks">${m.checks.map(c=>`<div>${I("check")}<span>${c}</span></div>`).join("")}</div><div class="notice ok">${I("send","flip")}<div><b>${L("نُشر طلبك","Your request is published")}</b><br><span class="sub">${L(`وصل إلى ${m.n} مؤسسات مطابقة. سنُشعرك عند وصول كل عرض.`,`Sent to ${m.n} matching lenders. We'll notify you on each offer.`)}</span></div></div>`;
+    f=`<button class="btn btn-g" data-act="go" data-role="officer" data-view="queue">${L("انتقل لدور ضابط الائتمان","Switch to credit officer")}</button><button class="btn btn-p" data-act="close-open" data-id="${m.id}">${L("متابعة الطلب","View request")}</button>`; }
+  if(m.type==="decline"){ h=L("اعتذار بعد الاختيار","Decline after selection");
+    b=`<p class="sub">${L("سيُبلَّغ المستفيد بالسبب ويمكنه إعادة نشر طلبه. السبب يُحفظ في سجل التدقيق.","The applicant is told the reason and can republish. Stored in the audit log.")}</p><div class="field"><label for="dec-reason">${L("السبب","Reason")}</label><select id="dec-reason"><option value="">${L("— اختر —","— Select —")}</option><option>${L("لم تكتمل مستندات المؤسسة","Lender documents incomplete")}</option><option>${L("نتيجة الاستعلام الائتماني","Credit bureau result")}</option><option>${L("تعذّر التواصل مع المستفيد","Applicant unreachable")}</option><option>${L("انسحاب المستفيد","Applicant withdrew")}</option></select></div><span class="err" id="dec-err" style="color:var(--bad);font-size:13px"></span>`;
+    f=`<button class="btn btn-g" data-act="close">${L("رجوع","Back")}</button><button class="btn btn-d" data-act="do-decline" data-id="${m.id}">${L("تأكيد الاعتذار","Confirm decline")}</button>`; }
+  if(m.type==="pay"){ const inv=S.invoices.find(i=>i.id===m.id); h=L(`دفع الفاتورة ${inv.id}`,`Pay ${inv.id}`);
+    b=`<dl class="kv" style="padding:0"><dt>${L("البيان","Description")}</dt><dd>${esc(T(inv.desc))}</dd><dt>${L("المبلغ","Amount")}</dt><dd>${money(inv.amount,inv.zone||"new")}</dd></dl>
+      <div class="field"><span class="flabel">${L("قناة الدفع","Payment channel")}</span><div class="row">${[["A",L("محفظة تجريبية (أ)","Sandbox wallet A")],["B",L("بنك تجريبي (ب)","Sandbox bank B")]].map(p=>`<button class="chip ${m.p===p[0]?"on":""}" data-act="pay-p" data-v="${p[0]}">${p[1]}</button>`).join("")}</div><span class="hint">${L("يُستبدل بالبنوك والمحافظ اليمنية الشريكة عند توفر واجهاتها البرمجية.","Replaced by partner Yemeni banks and wallets once their APIs are available.")} ${spec("Payment Adapter §8.1")}</span></div>
+      ${m.stage?`<div class="evlog" id="paylog">${(m.log||[]).map(l=>`<div class="${l[1]}">${esc(l[0])}</div>`).join("")}</div>`:""}`;
+    f=m.stage==="done"?`<button class="btn btn-p" data-act="close">${L("تم","Done")}</button>`:`<button class="btn btn-g" data-act="close" ${m.stage?"disabled":""}>${L("إلغاء","Cancel")}</button><button class="btn btn-p" data-act="pay-go" data-id="${inv.id}" ${m.stage||!m.p?"disabled":""}>${m.stage?L("بانتظار تأكيد المزود…","Waiting for provider…"):L("متابعة الدفع","Continue")}</button>`; }
+  if(m.type==="resolve"){ h=L("تسوية يدوية","Manual resolution");
+    b=`<p class="sub">${L("التسوية اليدوية تتطلب سبباً موثقاً ومرجعاً من المزود، وتُسجَّل في سجل التدقيق.","Requires a documented reason and provider reference; audited.")}</p><div class="field"><label for="res-reason">${L("السبب ومرجع المزود","Reason and provider reference")}</label><textarea id="res-reason"></textarea></div><span class="err" id="res-err" style="color:var(--bad);font-size:13px"></span>`;
+    f=`<button class="btn btn-g" data-act="close">${L("رجوع","Back")}</button><button class="btn btn-p" data-act="do-resolve" data-id="${m.id}">${L("تأكيد التسوية","Confirm")}</button>`; }
+  if(m.type==="inst-reject"){ h=L("رفض المؤسسة","Reject institution"); b=`<div class="field"><label for="ir-reason">${L("السبب","Reason")}</label><textarea id="ir-reason"></textarea></div><span class="err" id="ir-err" style="color:var(--bad);font-size:13px"></span>`; f=`<button class="btn btn-g" data-act="close">${L("رجوع","Back")}</button><button class="btn btn-d" data-act="do-inst-reject" data-id="${m.id}">${L("رفض","Reject")}</button>`; }
+  if(m.type==="doc"){ h=esc(m.name); b=`<div class="doc-prev" data-wm="${esc(ACTOR())} · ${new Date().toISOString().slice(0,16)}">${I("file")} ${L("معاينة الوثيقة","Document preview")}</div><p class="sub">${L("رابط موقّع مؤقت ينتهي خلال 5 دقائق. سُجّل هذا الوصول باسمك.","Short-lived signed link, expires in 5 minutes. This access was logged under your name.")}</p>${spec("document_access_events")}`; f=`<button class="btn btn-p" data-act="close">${L("إغلاق","Close")}</button>`; }
+  if(m.type==="notifs"){ const ns=S.notifs.filter(n=>n.to===S.role); h=L("الإشعارات","Notifications"); b=`<div class="field"><span class="flabel">${L("أين تصلني الرسائل ورمز الدخول","Where messages and login codes reach me")}</span><div class="row">${[["wa",L("واتساب أولاً، ثم SMS عند التعذّر","WhatsApp first, SMS fallback")],["sms",L("رسائل SMS فقط","SMS only")]].map(c=>`<button class="chip ${(S.prefs[S.role]||"wa")===c[0]?"on":""}" data-act="pref-ch" data-v="${c[0]}">${c[1]}</button>`).join("")}</div></div>`+(ns.map(n=>`<div class="lrow">${I("bell",n.read?"faint":"")}<div class="grow" style="font-size:14px;${n.read?"color:var(--muted)":"font-weight:500"}">${esc(T(n.t))}<div class="sub" style="font-weight:400">${L("أُرسل أيضاً عبر","Also sent via")} ${esc(T(CH[n.ch||"wa"]))}${n.fb?L(" بعد تعذّر واتساب"," after WhatsApp failed"):""}</div></div><span class="when">${ago(n.at)}</span></div>`).join("")||`<div class="empty">${L("لا إشعارات","Nothing here")}</div>`); f=`<button class="btn btn-g" data-act="close">${L("إغلاق","Close")}</button>`; }
+  if(m.type==="guide"){ wide=true; h=L("سيناريو العرض — 6 خطوات","Demo script — 6 steps");
+    const steps=[
+      [S.flags.newApp,L("المستفيد يقدّم طلب تمويل جديد","Beneficiary submits a new request"),L("اختر محافظة ضمن سياسة النماء (مثل تعز أو صنعاء) ليظهر للضابط.","Pick a region in Al-Namaa's policy (e.g. Taiz) so the officer sees it."),"beneficiary","new"],
+      [S.flags.offerOnNew,L("ضابط الائتمان يقدّم عرضاً على الطلب الجديد","Credit officer offers on it"),L("لاحظ أن اسم المستفيد مخفي. سيصل عرض منافس آلياً من مؤسسة أخرى.","The applicant's name is hidden. A competing offer arrives automatically."),"officer","queue"],
+      [S.flags.selected,L("المستفيد يقارن العروض ويختار واحداً","Beneficiary compares and chooses"),L("تُغلق العروض الأخرى في معاملة واحدة وتظهر بيانات التواصل للمؤسسة المختارة فقط.","Others close atomically; contact details go to the chosen lender only."),"beneficiary","apps"],
+      [S.flags.funded,L("الضابط يؤكد الصرف المرجعي","Officer confirms disbursement"),L("ينشئ ذلك فاتورة رسوم أداء للمؤسسة.","This issues a performance-fee invoice."),"officer","myoffers"],
+      [S.flags.paid,L("مدير المؤسسة يدفع الفاتورة","Institution admin pays the invoice"),L("شاهد التحقق من توقيع Webhook ورفض التكرار.","Watch webhook signature checks and duplicate rejection."),"manager","billing"],
+      [S.flags.audit,L("مدير المنصة يراجع سجل التدقيق","Platform admin reviews the audit log"),L("كل خطوة سابقة مسجّلة بالفاعل والحالة قبل وبعد.","Every step above is logged with before/after state."),"admin","audit"]];
+    b=`<div class="guide"><ol>${steps.map((s,i)=>`<li><span class="n ${s[0]?"ok":""}">${s[0]?"✓":i+1}</span><div class="grow"><b style="font-size:14.5px">${s[1]}</b><div class="sub">${s[2]}</div></div><button class="btn btn-g btn-sm" data-act="go" data-role="${s[3]}" data-view="${s[4]}">${L("اذهب","Go")}</button></li>`).join("")}</ol></div>
+     <p class="sub">${L("مسارات إضافية: سجّل حساباً جديداً كزائر ثم اعتمده من دور مراجع KYC، أو عدّل سياسة الأهلية ولاحظ تغيّر قائمة الضابط. فعّل «طبقة المواصفات» لترى مرجع كل عنصر في وثيقة المواصفات.","More: register as a visitor and approve from the KYC role, or edit the eligibility policy and watch the officer queue change. Turn on the spec layer to see each element's reference.")}</p>`;
+    f=`<button class="btn btn-g" data-act="reset">${L("إعادة ضبط البيانات","Reset data")}</button><button class="btn btn-p" data-act="close">${L("إغلاق","Close")}</button>`; }
+  root.innerHTML=`<div class="scrim" data-act="scrim"><div class="modal ${wide?"wide":""}" role="dialog" aria-modal="true" aria-labelledby="mh"><div class="modal-h"><h2 id="mh">${h}</h2><button class="x" data-act="close" aria-label="${L("إغلاق","Close")}">${I("x")}</button></div><div class="modal-b">${b}</div>${f?`<div class="modal-f">${f}</div>`:""}</div></div>`;
+}
+
+/* ================================================================
+   ACTIONS
+   ================================================================ */
+const A = {
+  go:(d)=>{ if(d.role&&d.role!==S.role){ S.role=d.role; } S.view=d.view||ROLES[S.role].home; S.sel=d.id||null; S.modal=null; save(); render(); window.scrollTo(0,0); },
+  nav:(d)=>{ S.view=d.view; S.sel=null; if(d.view==="new"&&S.draft&&S.draft.done) S.draft=null; save(); render(); window.scrollTo(0,0); },
+  lang:()=>{ S.lang=AR()?"en":"ar"; save(); render(); },
+  spec:()=>{ S.spec=!S.spec; save(); render(); },
+  guide:()=>openModal({type:"guide"}),
+  notifs:()=>{ openModal({type:"notifs"}); S.notifs.forEach(n=>{ if(n.to===S.role) n.read=true; }); save(); renderTop(); },
+  close:()=>closeModal(),
+  scrim:(d,el,e)=>{ if(e.target===el) closeModal(); },
+  reset:()=>{ try{localStorage.removeItem(KEY);}catch(e){} const lang=S.lang; S=seed(); S.lang=lang; S.modal=null; save(); render(); toast(L("أُعيدت بيانات العرض إلى حالتها الأولى","Demo data reset")); },
+  toast:(d)=>toast(d.msg),
+  "pref-ch":(d)=>{ S.prefs[S.role]=d.v; audit("prefs.channel",S.role,"—",d.v); save(); if(S.modal) renderModal(); else render(); toast(d.v==="wa"?L("ستصلك الرسائل عبر واتساب، وSMS عند التعذّر","Messages go to WhatsApp, SMS as fallback"):L("ستصلك الرسائل عبر SMS","Messages go by SMS")); },
+  slide:(d)=>{ showSlide(+d.i); heroPaused=Date.now(); },
+  "open-app":(d)=>{ S.view="app"; S.sel=d.id; render(); window.scrollTo(0,0); },
+  "open-req":(d)=>{ S.view="req"; S.sel=d.id; S.uiTab.of=null; render(); window.scrollTo(0,0); },
+  "open-kyc":(d)=>{ S.view="kycCase"; S.sel=d.id; render(); window.scrollTo(0,0); },
+  "close-open":(d)=>{ S.modal=null; S.view="app"; S.sel=d.id; render(); },
+  "open-doc":(d)=>{ audit("document.access",d.name,"—","signed-url issued (5m)",""); save(); openModal({type:"doc",name:d.name}); },
+  qf:(d)=>{ S.uiTab.qf=d.v; render(); },
+  af:(d)=>{ S.uiTab.af=d.v; render(); },
+
+  /* signup */
+  "su-role":(d)=>{ S.signup.role=d.v; render(); },
+  "su-ch":(d)=>{ S.signup.ch=d.v; render(); },
+  "su-back":()=>{ S.signup.step--; render(); },
+  "su-reset":()=>{ S.signup=null; render(); },
+  "su-next":()=>{ const s=S.signup; s.err={};
+    if(s.step===1){ if(s.name.trim().length<3) s.err.name=L("أدخل الاسم كاملاً","Enter the full name"); if(s.phone.replace(/\D/g,"").length<9) s.err.phone=L("أدخل رقم هاتف يمني صحيح","Enter a valid Yemeni number"); }
+    if(s.step===2){ if(s.otp!=="482193") s.err.otp=L("الرمز غير صحيح. استخدم رمز العرض الظاهر أعلاه.","Wrong code. Use the demo code shown above."); }
+    if(s.step===3){ const req=s.role==="institution"?["lic","reg","auth"]:["id","photo"]; if(!req.every(k=>s.docs[k])) s.err.docs=L("ارفع الوثائق المطلوبة أولاً","Upload the required documents first"); }
+    if(Object.keys(s.err).length){ render(); return; }
+    if(s.step===1){ sendMsg("signup",["رمز التحقق لتسجيل الدخول إلى عُونة","Aouna login code"],s.ch||"wa"); }
+    if(s.step===3){ const id="K"+(S.kyc.length+1)+rid("",2); S.kyc.unshift({id,name:s.name,nameEn:s.name,type:s.role,phone:s.phone,gov:"sanaa",docs:(s.role==="institution"?[["ترخيص البنك المركزي","Central Bank licence"],["السجل التجاري","Commercial register"],["تفويض المفوَّض بالتوقيع","Signatory authorisation"]]:[["البطاقة الشخصية (الوجهان)","National ID (both sides)"],["صورة شخصية حديثة","Recent photo"]]),status:"REVIEW_PENDING",at:nowISO(),note:""});
+      audit("kyc.case_created",`KYC ${id}`,"—","REVIEW_PENDING","","visitor"); notify("kyc",[`حالة تحقق جديدة: ${s.name}`,`New KYC case: ${s.name}`]); }
+    s.step++; save(); render(); },
+
+  /* wizard */
+  "d-back":()=>{ S.draft.step--; S.draft.err={}; save(); render(); },
+  "d-next":()=>{ const d=S.draft; d.err=validateDraft(d,d.step); if(Object.keys(d.err).length){ render(); const f=document.querySelector(".invalid,.err"); if(f&&f.focus) f.focus(); return; } d.step++; save(); render(); window.scrollTo(0,0); },
+  "d-gtype":(d)=>{ S.draft.gtype=d.v; if(d.v==="personal") S.draft.guarantors=S.draft.guarantors.slice(0,1); if(d.v==="takaful"&&S.draft.guarantors.length<2) S.draft.guarantors.push({name:"",phone:"",rel:""}); save(); render(); },
+  "d-zone":(d)=>{ S.draft.zone=d.v; save(); render(); },
+  "d-addg":()=>{ S.draft.guarantors.push({name:"",phone:"",rel:""}); save(); render(); },
+  "d-sample":()=>{ Object.assign(S.draft,{title:L("ورشة نجارة وأثاث منزلي","Carpentry & home furniture workshop"),sector:"crafts",gov:"taiz",zone:"new",stage:"existing",desc:L("ورشة قائمة منذ 2021 في الحوبان، تصنع غرف نوم ومطابخ بالطلب ويعمل فيها 4 حرفيين.","Running since 2021 in Al-Hawban; custom bedrooms and kitchens, 4 craftsmen."),amount:"2800000",term:"24",grace:"1",purpose:L("منشار طاولة ومكبس وخشب لثلاثة أشهر","Table saw, press and 3 months of timber"),gtype:"takaful",guarantors:[{name:"وليد الأصبحي",phone:"+967 771 000 455",rel:L("عضو مجموعة","Group member")},{name:"رشا المخلافي",phone:"+967 733 000 902",rel:L("عضو مجموعة","Group member")}],docs:{plan:{name:L("خطة الورشة.pdf","Workshop plan.pdf"),scan:true},quote:{name:L("عرض أسعار المعدات.pdf","Equipment quote.pdf"),scan:true}},err:{}}); save(); render(); },
+  "d-submit":()=>{ const d=S.draft; d.err=validateDraft(d,5); if(Object.keys(d.err).length){ render(); return; }
+    S.seq++; const ref=`AWN-2026-00${S.seq}`; const id="A"+S.seq;
+    const a={id,ref,owner:"me",bcode:S.me.code,zone:d.zone||GOV_ZONE[d.gov],title:[d.title,d.title],sector:d.sector,gov:d.gov,stage:d.stage,amount:+d.amount,term:+d.term,grace:+d.grace,purpose:[d.purpose,d.purpose],desc:[d.desc,d.desc],gtype:d.gtype,guarantors:d.gtype==="none"?[]:d.guarantors.filter(g=>g.name).map(g=>({name:g.name,phone:g.phone,rel:[g.rel,g.rel],consent:"PENDING"})),docs:Object.values(d.docs).map(x=>[x.name,x.name]),status:"DRAFT",created:nowISO(),expires:nowISO(S.settings.appDays*1440),selected:null,reveal:false,isNew:true};
+    S.apps.unshift(a);
+    try{ move(a,"SUBMITTED"); move(a,"ELIGIBLE","completeness check passed","system"); move(a,"PUBLISHED","anonymised copy published","system"); }catch(e){ toast(e.message,"bad"); }
+    const n=S.institutions.filter(i=>matches(a,i)).length;
+    S.flags.newApp=true; S.lastNew=id; S.draft={done:true};
+    if(matches(a,inst("I1"))) notify("officer",[`طلب جديد مطابق لسياستكم: ${a.ref} · ${T(SEC[a.sector])} · ${moneyTxt(a.amount,a.zone)}`,`New matching request: ${a.ref} · ${moneyTxt(a.amount,a.zone)}`]);
+    a.guarantors.forEach(g=>{ sendMsg("guarantor",[`${S.me.name[0]} تطلب موافقتك ضامناً — افتح الرابط للموافقة أو الرفض`,`${S.me.name[1]} asks you to be a guarantor — open the link to respond`]); });
+    if(a.guarantors.length) setTimeout(()=>{ const x=app(id); if(!x) return; x.guarantors.forEach(g=>g.consent="CONSENTED"); audit("guarantor.consent",x.ref,"PENDING","CONSENTED","via signed link","system"); notify("beneficiary",[`وافق جميع الضامنين على طلبك ${x.ref}`,`All guarantors consented on ${x.ref}`]); save(); if(!S.modal) render(); else renderTop(); },4000);
+    save();
+    // simulate a competing offer from another lender (async, as in production)
+    setTimeout(()=>autoCompetitor(id),6000);
+    openModal({type:"intake",id,n,checks:[L("اكتمال الحقول الإلزامية","Required fields complete"),L("حساب المستفيد معتمد (KYC)","Applicant verified (KYC)"),L("فحص الملفات: سليمة","Files scanned: clean"),L("إزالة البيانات التعريفية من النسخة المنشورة","Identifying data removed from published copy"),L(`مطابقة المؤسسات: ${n}`,`Lenders matched: ${n}`),L("إشعار المؤسسات المطابقة والضامنين عبر واتساب","Matching lenders and guarantors notified by WhatsApp")]});
+    render(); },
+
+  /* select offer */
+  "ask-select":(d)=>openModal({type:"select",id:d.id}),
+  "do-select":(d)=>{ if(act(()=>srvSelectOffer(d.id))){ closeModal(); toast(L("تم اختيار العرض وإبلاغ المؤسسة","Offer chosen and lender notified"),"gold"); window.scrollTo(0,0);} },
+  "cancel-app":(d)=>act(()=>{ const a=app(d.id); move(a,"CANCELLED","by beneficiary"); S.offers.filter(o=>o.app===a.id&&["SUBMITTED","VIEWED"].includes(o.status)).forEach(o=>o.status="DECLINED"); toast(L("أُلغي الطلب","Request cancelled")); }),
+
+  /* officer */
+  "of-submit":(d)=>{ const a=app(d.id); const f=S.uiTab.of; const I1=inst("I1"); const errs=[];
+    if(!(+f.amount>0)) errs.push(L("أدخل المبلغ","Enter amount")); if(+f.amount>I1.policy.lim[a.zone][1]) errs.push(L("المبلغ يتجاوز سقف سياستكم","Above your policy cap")); if(+f.amount>a.amount) errs.push(L("لا يتجاوز العرض المبلغ المطلوب","Can't exceed the requested amount"));
+    if(!(+f.pay>0)) errs.push(L("أدخل القسط الشهري","Enter the monthly instalment")); else if(+f.pay*((+f.term)-(+f.grace))<+f.amount) errs.push(L("مجموع الأقساط أقل من المبلغ الممنوح — راجع القسط","Instalments total less than the amount — check the instalment")); if(!(+f.term>=3&&+f.term<=60)) errs.push(L("المدة بين 3 و60 شهراً","Term 3–60 months")); if(+f.grace>=+f.term) errs.push(L("فترة السماح أقل من المدة","Grace must be shorter than term")); if(!f.reviewed) errs.push(L("أكّد المراجعة الداخلية","Confirm internal review"));
+    if(errs.length){ toast(errs.join(" · "),"bad"); return; }
+    act(()=>{ if(S.offers.some(o=>o.app===a.id&&o.inst==="I1"&&o.status!=="WITHDRAWN")) throw new Error(L("لديكم عرض قائم على هذا الطلب","You already have an offer here"));
+      const o={id:rid("O",4),app:a.id,inst:"I1",amount:+f.amount,method:"custom",rate:0,pay:+f.pay,mlabel:[f.mlabel,f.mlabel],term:+f.term,fees:+f.fees,grace:+f.grace,docs:[f.docs||"—",f.docs||"—"],status:"SUBMITTED",created:nowISO(),expires:nowISO((+f.valid||7)*1440),by:"U11"};
+      S.offers.push(o); audit("offer.submit",`Offer ${o.id} → ${a.ref}`,"DRAFT","SUBMITTED");
+      if(a.status==="PUBLISHED") move(a,"OFFER_RECEIVED","","system");
+      if(a.owner==="me"){ notify("beneficiary",[`وصل عرض جديد على طلبك ${a.ref}`,`New offer on ${a.ref}`]); if(a.isNew) S.flags.offerOnNew=true; }
+      S.uiTab.of=null; toast(L("أُرسل العرض للمستفيد","Offer sent"));
+    }); },
+  "of-withdraw":(d)=>act(()=>{ const o=S.offers.find(x=>x.id===d.id); if(!["SUBMITTED","VIEWED"].includes(o.status)) throw new Error("409"); o.status="WITHDRAWN"; audit("offer.withdraw",`Offer ${o.id}`,"SUBMITTED","WITHDRAWN"); const a=app(o.app); if(a.status==="OFFER_RECEIVED"&&!S.offers.some(x=>x.app===a.id&&["SUBMITTED","VIEWED"].includes(x.status))) move(a,"PUBLISHED","no active offers","system"); toast(L("سُحب العرض","Offer withdrawn")); }),
+  disb:(d)=>act(()=>{ const a=app(d.id); move(a,d.to); if(d.to==="FUNDED"){ const o=S.offers.find(x=>x.id===a.selected); S.invSeq++; const amt=Math.round(o.amount*S.settings.perfFee/100); const id=`INV-2026-00${S.invSeq}`; S.invoices.unshift({id,inst:o.inst,zone:a.zone,kind:"perf",desc:[`رسوم أداء ${S.settings.perfFee}% — الطلب ${a.ref}`,`${S.settings.perfFee}% performance fee — ${a.ref}`],amount:amt,status:"ISSUED",issued:nowISO(),due:nowISO(14*1440)}); audit("invoice.issue",id,"—","ISSUED",`${S.settings.perfFee}% of ${o.amount}`,"system"); notify("manager",[`فاتورة جديدة ${id} بقيمة ${moneyTxt(amt,a.zone)}`,`New invoice ${id}: ${moneyTxt(amt,a.zone)}`]); if(a.owner==="me") notify("beneficiary",[`أكدت المؤسسة صرف تمويل طلبك ${a.ref}`,`Disbursement confirmed for ${a.ref}`]); S.flags.funded=true; toast(L("سُجّل الصرف وأُصدرت فاتورة رسوم الأداء","Disbursement recorded; fee invoice issued"),"gold"); } else toast(L("بدأت إجراءات ما قبل الصرف","Pre-disbursement started")); }),
+  "ask-decline":(d)=>openModal({type:"decline",id:d.id}),
+  "do-decline":(d)=>{ const r=$("#dec-reason").value; if(!r){ $("#dec-err").textContent=L("اختر السبب","Choose a reason"); return; } if(act(()=>{ const a=app(d.id); move(a,"DECLINED_AFTER_SELECTION",r); a.declineReason=r; if(a.owner==="me") notify("beneficiary",[`اعتذرت المؤسسة عن طلبك ${a.ref}: ${r}`,`Lender declined ${a.ref}: ${r}`]); })) closeModal(); },
+
+  /* manager */
+  "inv-send":()=>{ const v=S.uiTab.inv||{name:"",email:"",err:{}}; v.err={}; if(v.name.trim().length<3) v.err.name=L("أدخل الاسم","Enter a name"); if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v.email)) v.err.email=L("أدخل بريداً صحيحاً","Enter a valid email"); if(String(v.phone||"").replace(/\D/g,"").length<9) v.err.phone=L("أدخل رقم جوال صحيحاً","Enter a valid mobile number"); S.uiTab.inv=v; if(Object.keys(v.err).length){ render(); return; }
+    act(()=>{ if(S.officers.filter(o=>o.status!=="DISABLED").length>=S.settings.seats) throw new Error(L("بلغتم سقف المقاعد","Seat cap reached")); S.officers.push({id:rid("U",3),name:[v.name,v.name],email:v.email,status:"INVITED",last:null,offers:0}); sendMsg("invitee",["دعوة للانضمام إلى فريق مؤسسة النماء على عُونة — رابط تفعيل صالح 48 ساعة","Invitation to join Al-Namaa on Aouna — 48h activation link"]); audit("member.invite",v.email,"—","INVITED"); S.uiTab.inv=null; toast(L("أُرسلت الدعوة","Invite sent")); }); },
+  "off-disable":(d)=>act(()=>{ const o=S.officers.find(x=>x.id===d.id); o.status="DISABLED"; audit("member.disable",o.email,"ACTIVE","DISABLED"); toast(L("عُطّل الحساب وأُنهيت جلساته","Account disabled and sessions revoked")); }),
+  "pol-tog":(d)=>{ const p=S.uiTab.pol; const arr=p[d.f]; const i=arr.indexOf(d.v); if(i>=0){ if(arr.length>1) arr.splice(i,1); else toast(L("اختر عنصراً واحداً على الأقل","Keep at least one"),"bad"); } else arr.push(d.v); render(); },
+  "pol-save":()=>act(()=>{ const p=S.uiTab.pol; if(["new","old"].some(z=>p.lim[z]&&+p.lim[z][0]>=+p.lim[z][1])) throw new Error(L("الحد الأدنى يجب أن يكون أقل من الأعلى","Minimum must be below maximum")); const before=JSON.stringify(inst("I1").policy).length; inst("I1").policy=JSON.parse(JSON.stringify(p)); audit("policy.update","I1 eligibility_rules","v"+before,"updated"); toast(L("حُفظت السياسة وتحدّثت قائمة الطلبات","Policy saved; queue updated")); }),
+  pay:(d)=>openModal({type:"pay",id:d.id,p:null}),
+  "pay-p":(d)=>{ S.modal.p=d.v; renderModal(); },
+  "pay-go":(d)=>payFlow(d.id),
+
+  /* kyc */
+  "kyc-dec":(d)=>{ const k=S.kyc.find(x=>x.id===d.id); const c=S.uiTab["kc"+k.id]; c.err="";
+    if(d.d!=="ACTIVE" && c.reason.trim().length<5){ c.err=L("اكتب سبباً واضحاً (5 أحرف على الأقل)","Write a clear reason (5+ characters)"); render(); $("#kc-reason").focus(); return; }
+    if(d.d==="ACTIVE" && !c.chk.every(Boolean)) return;
+    act(()=>{ const from=k.status; k.status=d.d; k.note=c.reason; audit("kyc.decision",`KYC ${k.id}`,from,d.d,c.reason); if(k.type==="institution"&&d.d==="ACTIVE") notify("admin",[`اكتمل KYC لـ ${k.name} — يمكن اعتماد المؤسسة`,`KYC done for ${k.nameEn}`]); toast(d.d==="ACTIVE"?L("اعتُمد الحساب","Approved"):d.d==="REJECTED"?L("رُفضت الحالة وأُبلغ المتقدم بالسبب","Rejected; applicant told why"):L("طُلب الاستكمال من المتقدم","Info requested")); S.view="kycq"; }); },
+
+  /* admin */
+  "inst-dec":(d)=>{ if(d.d==="REJECTED") return openModal({type:"inst-reject",id:d.id}); act(()=>{ const i=inst(d.id); i.status="ACTIVE"; S.invSeq++; S.invoices.unshift({id:`INV-2026-00${S.invSeq}`,inst:i.id,zone:"new",kind:"sub",desc:["اشتراك سنوي — الخطة الأساسية","Annual plan — Basic"],amount:S.settings.subFee,status:"ISSUED",issued:nowISO(),due:nowISO(14*1440)}); audit("institution.approve",T(i.name),"PENDING_APPROVAL","ACTIVE"); toast(L("اعتُمدت المؤسسة وأُصدرت فاتورة الاشتراك","Approved; plan invoice issued")); }); },
+  "do-inst-reject":(d)=>{ const r=$("#ir-reason").value.trim(); if(r.length<5){ $("#ir-err").textContent=L("اكتب السبب","Write a reason"); return; } if(act(()=>{ const i=inst(d.id); i.status="REJECTED"; audit("institution.reject",T(i.name),"PENDING_APPROVAL","REJECTED",r); })) closeModal(); },
+  "ask-resolve":(d)=>openModal({type:"resolve",id:d.id}),
+  "do-resolve":(d)=>{ const r=$("#res-reason").value.trim(); if(r.length<8){ $("#res-err").textContent=L("اكتب السبب ومرجع المزود","Enter reason and provider reference"); return; } if(act(()=>{ const t=S.txns.find(x=>x.id===d.id); t.recon="RESOLVED"; audit("recon.manual_resolve",t.id,"NEEDS_REVIEW","RESOLVED",r); toast(L("سُجّلت التسوية اليدوية","Manual resolution recorded")); })) closeModal(); },
+  "close-app":(d)=>act(()=>{ move(app(d.id),"CLOSED","admin close"); }),
+  "set-save":()=>act(()=>{ const s=S.uiTab.set; const ch=Object.keys(s).filter(k=>+s[k]!==S.settings[k]); if(+s.perfFee<0||+s.perfFee>10) throw new Error(L("رسوم الأداء بين 0 و10%","Fee must be 0–10%")); if(+s.seats<1) throw new Error("seats ≥ 1"); ch.forEach(k=>{ audit("settings.update",k,String(S.settings[k]),String(s[k])); S.settings[k]=+s[k]; }); S.uiTab.set=null; toast(ch.length?L("حُفظت الإعدادات","Settings saved"):L("لا تغييرات","No changes")); }),
+  "sample-file":(d)=>{ const [scope,k]=d.k.split(":"); setDoc(scope,k,{name:L("ملف تجريبي.pdf","sample.pdf"),size:240000}); },
+  "tk-send":()=>{ const s=S.uiTab.ticket||{subject:"",cat:"offers",msg:"",err:{}}; s.err={}; if(s.subject.trim().length<4) s.err.subject=L("اكتب موضوعاً واضحاً","Enter a subject"); S.uiTab.ticket=s; if(Object.keys(s.err).length){ render(); return; } act(()=>{ S.tickets.unshift({id:rid("T-",4),subject:[s.subject,s.subject],cat:s.cat==="kyc"?["التحقق والحساب","Account & KYC"]:s.cat==="complaint"?["شكوى على مؤسسة","Complaint"]:["العروض","Offers"],status:"OPEN",at:nowISO()}); S.uiTab.ticket=null; toast(L("أُنشئت التذكرة","Ticket created")); }); }
+};
+
+function setDoc(scope,k,file){
+  const okExt=/\.(pdf|jpe?g|png)$/i.test(file.name);
+  if(!okExt){ toast(L("نوع الملف غير مسموح. استخدم PDF أو JPG أو PNG.","File type not allowed. Use PDF, JPG or PNG."),"bad"); return; }
+  if(file.size>10*1024*1024){ toast(L("الملف أكبر من 10 ميغابايت","File exceeds 10 MB"),"bad"); return; }
+  const target = scope==="su" ? S.signup.docs : S.draft.docs;
+  target[k]={name:file.name,scan:false}; render();
+  setTimeout(()=>{ if(target[k]){ target[k].scan=true; save(); render(); } },700);
+}
+
+function autoCompetitor(appId){
+  const a=app(appId); if(!a || !["PUBLISHED","OFFER_RECEIVED"].includes(a.status)) return;
+  const cand=["I2","I3"].map(inst).find(i=>matches(a,i) && !S.offers.some(o=>o.app===a.id&&o.inst===i.id));
+  if(!cand) return;
+  const o={id:rid("O",4),app:a.id,inst:cand.id,amount:a.amount,method:"murabaha",rate:cand.id==="I2"?13:11.5,term:a.term,fees:cand.id==="I2"?30000:45000,grace:Math.min(1,a.grace),docs:["كشف مبيعات 3 أشهر","3-month sales record"],status:"SUBMITTED",created:nowISO(),expires:nowISO(S.settings.offerDays*1440),by:"—"};
+  o.pay=Math.round(legacyInst(o)/100)*100; o.mlabel=METHOD.murabaha;
+  S.offers.push(o); audit("offer.submit",`Offer ${o.id} → ${a.ref}`,"DRAFT","SUBMITTED","",'system');
+  if(a.status==="PUBLISHED"){ a.status="OFFER_RECEIVED"; audit("application.transition",a.ref,"PUBLISHED","OFFER_RECEIVED","","system"); }
+  notify("beneficiary",[`وصل عرض جديد على طلبك ${a.ref}`,`New offer on ${a.ref}`]);
+  save(); if(S.role==="beneficiary"){ toast(L("وصل عرض جديد على طلبك","A new offer arrived"),"gold"); } if(!S.modal) render(); else renderTop();
+}
+
+function payFlow(invId){
+  const m=S.modal; const inv=S.invoices.find(i=>i.id===invId); const prov=m.p==="A"?["محفظة تجريبية (أ)","Sandbox wallet A"]:["بنك تجريبي (ب)","Sandbox bank B"];
+  const pi="PI-"+Math.random().toString(16).slice(2,8).toUpperCase(), tx="TX-"+Math.random().toString(16).slice(2,8).toUpperCase(), idem="idem_"+Math.random().toString(16).slice(2,10);
+  const ts=()=>new Date().toISOString().slice(11,19);
+  const log=(t,c)=>{ m.log.push([`${ts()}  ${t}`,c||""]); S.payLog.push([`${ts()}  ${t}`,c||""]); renderModal(); };
+  m.stage="wait"; m.log=[]; inv.status="PROCESSING";
+  log(`POST /payments/intents  ${pi}  amount=${inv.amount} ${inv.zone==="old"?"YER_OLD":"YER_NEW"}  ${idem}`);
+  log(`adapter=${m.p==="A"?"wallet_a":"bank_b"}  status=REQUIRES_CUSTOMER_ACTION`);
+  audit("payment.intent_created",pi,"—","REQUIRES_ACTION",inv.id);
+  setTimeout(()=>{ log(`webhook received  event=payment.succeeded  ref=${inv.id}`); },1100);
+  setTimeout(()=>{ log(`✓ HMAC signature valid   ✓ amount ${inv.amount}   ✓ currency ${inv.zone==="old"?"YER_OLD":"YER_NEW"}   ✓ ref ${inv.id}`,"okc"); },1700);
+  setTimeout(()=>{ inv.status="PAID"; inv.paidAt=nowISO(); S.txns.unshift({id:tx,inv:inv.id,provider:prov,amount:inv.amount,status:"SUCCEEDED",recon:"MATCHED",at:nowISO()}); audit("payment.succeeded",tx,"PROCESSING","PAID",`via ${prov[1]}`,"system"); log(`${tx} SUCCEEDED → invoice ${inv.id} PAID → reconciliation MATCHED`,"okc"); S.flags.paid=true; save(); },2300);
+  setTimeout(()=>{ log(`webhook received again (replay)  ref=${inv.id}`,"wc"); log(`✗ duplicate event ignored (idempotency key seen)`,"bad"); audit("webhook.duplicate_ignored",tx,"—","ignored","replay","system"); m.stage="done"; save(); renderModal(); toast(L("تم الدفع وتأكيده من المزود","Payment confirmed by provider"),"gold"); },3200);
+  renderModal();
+}
+
+/* ---------- events ---------- */
+document.addEventListener("click",e=>{
+  const el=e.target.closest("[data-act]"); if(!el) return;
+  const fn=A[el.dataset.act]; if(!fn) return;
+  if(el.dataset.act==="scrim"){ fn(el.dataset,el,e); return; }
+  e.preventDefault(); fn(el.dataset,el,e);
+});
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"&&S.modal) closeModal();
+  if((e.key==="Enter"||e.key===" ")&&e.target.matches("tr[data-act]")){ e.preventDefault(); A[e.target.dataset.act](e.target.dataset); }
+});
+document.addEventListener("change",e=>{
+  const t=e.target;
+  if(t.dataset.change==="persona"){ A.go({role:t.value}); return; }
+  if(t.dataset.file){ const [scope,k]=t.dataset.file.split(":"); const f=t.files&&t.files[0]; if(f) setDoc(scope,k,{name:f.name,size:f.size}); return; }
+  if(t.dataset.kc){ const c=S.uiTab["kc"+t.dataset.kc]; c.chk[+t.dataset.i]=t.checked; render(); return; }
+  if(t.dataset.bind){ bind(t); if(t.tagName==="SELECT"||t.type==="checkbox") save(); }
+  if(t.dataset.of){ ofBind(t); if(t.dataset.of==="method") render(); }
+  if(t.dataset.tk){ S.uiTab.ticket=S.uiTab.ticket||{subject:"",cat:"offers",msg:"",err:{}}; S.uiTab.ticket[t.dataset.tk]=t.value; }
+});
+document.addEventListener("input",e=>{
+  const t=e.target;
+  if(t.dataset.bind) { bind(t); save(); }
+  if(t.dataset.su){ S.signup[t.dataset.su]=t.value; }
+  if(t.dataset.of) ofBind(t);
+  if(t.dataset.inv){ S.uiTab.inv=S.uiTab.inv||{name:"",email:"",err:{}}; S.uiTab.inv[t.dataset.inv]=t.value; }
+  if(t.dataset.pol){ const [z,i]=t.dataset.pol.split("."); const p=S.uiTab.pol; p.lim[z]=p.lim[z]||[0,0]; p.lim[z][+i]=+t.value; }
+  if(t.dataset.set){ S.uiTab.set[t.dataset.set]=t.value; }
+  if(t.dataset.kcr){ S.uiTab["kc"+t.dataset.kcr].reason=t.value; }
+  if(t.dataset.tk){ S.uiTab.ticket=S.uiTab.ticket||{subject:"",cat:"offers",msg:"",err:{}}; S.uiTab.ticket[t.dataset.tk]=t.value; }
+});
+function bind(t){ const d=S.draft; const k=t.dataset.bind; const v=t.type==="checkbox"?t.checked:t.value;
+  if(k.startsWith("g.")){ const [,i,f]=k.split("."); d.guarantors[+i][f]=v; } else d[k]=v;
+  if(k==="gov"){ d.zone=GOV_ZONE[v]; setTimeout(render,0); }
+  if(d.err&&d.err[k]){ delete d.err[k]; t.classList.remove("invalid"); const er=t.parentElement.querySelector(".err"); if(er) er.remove(); } }
+function ofBind(t){ const f=S.uiTab.of; f[t.dataset.of]=t.type==="checkbox"?t.checked:t.value; const p=$("#of-preview"); if(p) p.innerHTML=previewKpis(quote(f)); }
+
+/* ---------- boot ---------- */
+S=load(); S.modal=null;
+render();
+let heroPaused=0;
+const reduceMotion=(()=>{ try{ return window.matchMedia("(prefers-reduced-motion: reduce)").matches; }catch(e){ return false; } })();
+if(!reduceMotion) setInterval(()=>{ if(document.hidden || Date.now()-heroPaused<12000) return; if(document.getElementById("hero-slides")) showSlide(heroIdx+1); },6500);
+})();
+</script>
+
+</body>
+</html>
